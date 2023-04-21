@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS cardwise_db;
+
+CREATE DATABASE cardwise_db;
