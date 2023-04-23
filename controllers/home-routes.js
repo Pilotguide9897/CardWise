@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { Card, User } = require('../models');
+const { Deck, User } = require('../models');
 
 // GET Home page
 router.get('/', async (req, res) => {
   res.render('homepage');
 });
 
-// GET All decks for user
+// GET New deck page
 
-// GET New card form
+// Get Update deck page
 
 // GET login/signup page
 

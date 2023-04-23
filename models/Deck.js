@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Card extends Model {}
+class Deck extends Model {}
 
-Card.init(
+Deck.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,45 +11,30 @@ Card.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    deck_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'deck',
+        model: 'user',
         key: 'id',
       },
     },
-    front: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    back: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    is_queued: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    interval: {
+    new_cards_per_day: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    repetition: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    e_factor: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
+      defaultValue: 10,
     },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'card',
+    modelName: 'deck',
   }
 );
 
-module.exports = Card;
+module.exports = Deck;
