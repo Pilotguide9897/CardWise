@@ -4,8 +4,8 @@
     --black: #4D3E3E;
     --white: #f8f8f8;
     --blue: #52B1D1;
-    --lightBlue: #A3D5EC;
-    --borderRadius: 15px;
+    --lightBlue: #9ecee4;
+    --borderRadius: 25px;
     --headerSize: 2em;
     --mainSize: 1.2em;
     --smallSize: 0.7em;
@@ -16,4 +16,32 @@
     padding:0;
     box-sizing: border-box;
 }
+body{
+    font-family: var(--fontFamily);
+    font-size: var(--mainSize);
+    color: var(--black);
+}
+button{
+    padding: 1em 2em;
+    background-color: var(--lightBlue);
+    border: none;
+    border-radius: var(--borderRadius);
+}
+/* Header/Nav */
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 1em;
+    opacity: 80%;
+    
+}
+nav a {
+    text-decoration: none;
+    padding: 1em;
+    color: var(--white);
+}
+/* Main Page */
 
