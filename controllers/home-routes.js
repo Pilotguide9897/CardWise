@@ -4,16 +4,17 @@ const { withAuth, checkAuth } = require('../utils/helpers');
 
 // GET Home page
 router.get('/', checkAuth, async (req, res) => {
-  if (req.session.logged_in ) {
+  if (req.session.logged_in) {
     try {
       const decks = await Deck.findAll({
         where: {
-          user_id: req.session.user_id
-        }
+          user_id: req.session.user_id,
+        },
       });
-
-      res.render("homepage", { userDeckData: decks,
-      logged_in: req.session.logged_in })
+      res.render('homepage', {
+        userDeckData: decks,
+        logged_in: req.session.logged_in,
+      });
     } catch (error) {
       console.error('Error fetching deck data:', error);
       res.status(500).send('Error fetching deck data');
@@ -25,14 +26,15 @@ router.get('/', checkAuth, async (req, res) => {
 
 // GET New deck page
 router.get('/decks/new', withAuth, async (req, res) => {
-  if (req.session.logged_in ) {
-  try {
-    res.render('newDeck', {
-  logged_in: req.session.logged_in});
-  } catch (error) {
-    console.error('Error rendering your page:', error);
-    res.status(500).send('Error fetching /decks/new');
-  }
+  if (req.session.logged_in) {
+    try {
+      res.render('newDeck', {
+        logged_in: req.session.logged_in,
+      });
+    } catch (error) {
+      console.error('Error rendering your page:', error);
+      res.status(500).send('Error fetching /decks/new');
+    }
   } else {
     res.render('homepage');
   }
@@ -43,20 +45,20 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckToUpdate = await Deck.findByPk(req.params.id, {
-        include: [Card]
-        });
-        if (!deckToUpdate) {
-      res.status(404).send('Deck not found');
-      return;
-    }
-       res.render('updateDeck', { 
-       deckData: deckToUpdate, 
+        include: [Card],
+      });
+      if (!deckToUpdate) {
+        res.status(404).send('Deck not found');
+        return;
+      }
+      res.render('updateDeck', {
+        deckData: deckToUpdate,
         deck: deckToUpdate.Cards,
-       logged_in: req.session.logged_in,
-       });
+        logged_in: req.session.logged_in,
+      });
     } catch (error) {
       console.error('Error rendering your page:', error);
-    res.status(500).send('Error fetching /decks/:id');
+      res.status(500).send('Error fetching /decks/:id');
     }
   } else {
     res.render('homepage');
