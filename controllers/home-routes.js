@@ -12,7 +12,7 @@ router.get('/', checkAuth, async (req, res) => {
         }
       });
 
-      res.render("homepage", { userDeckData: 'decks',
+      res.render("homepage", { userDeckData: decks,
       logged_in: req.session.logged_in })
     } catch (error) {
       console.error('Error fetching deck data:', error);
@@ -78,7 +78,8 @@ router.get('/decks/:id', withAuth, async (req, res) => {
   res.render('deckView', { logged_in: req.session.logged_in });
 });
 
-app.get('*', (req, res) => {
+// Catch all route for redirecting request to incorrect endpoints.
+router.get('*', (req, res) => {
   res.redirect('/');
 });
 
