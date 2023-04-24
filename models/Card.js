@@ -40,7 +40,7 @@ Card.init(
       allowNull: false,
     },
     e_factor: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   },
