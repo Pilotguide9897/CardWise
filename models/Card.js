@@ -29,7 +29,8 @@ Card.init(
     },
     is_queued: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      defaultValue: false,
+      allowNull: true,
     },
     interval: {
       type: DataTypes.INTEGER,
