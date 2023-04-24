@@ -51,6 +51,16 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+//DELETE ME - Victoria
+router.get('/login', async (req, res) => {
+  res.render('login');
+});
+
+
+
+
+
+
 // GET New deck page
 router.get('/decks/new', withAuth, async (req, res) => {
   if (req.session.logged_in) {

@@ -3,9 +3,9 @@
 :root{
     --black: #4D3E3E;
     --white: #f8f8f8;
-    --blue: #52B1D1;
+    --blue: #87BED6;
     --lightBlue: #9ecee4;
-    --borderRadius: 25px;
+    --borderRadius: 35px;
     --headerSize: 2em;
     --mainSize: 1.2em;
     --smallSize: 0.7em;
@@ -20,12 +20,14 @@ body{
     font-family: var(--fontFamily);
     font-size: var(--mainSize);
     color: var(--black);
+    background-color: var(--white);
 }
 button{
-    padding: 1em 2em;
+    padding: 1em 1.5em;
     background-color: var(--lightBlue);
     border: none;
     border-radius: var(--borderRadius);
+    
 }
 /* Header/Nav */
 header{
@@ -34,14 +36,47 @@ header{
     justify-content: space-between;
     background-color: var(--blue);
     color: var(--white);
-    padding: 1em;
-    opacity: 80%;
-    
+    padding-left: 1em;
+}
+nav{
+    margin: 1em;
 }
 nav a {
     text-decoration: none;
     padding: 1em;
     color: var(--white);
 }
+nav a:hover{
+    color: var(--black);
+}
 /* Main Page */
+main{
+    text-align: center;
+}
+main h2{
+    font-size: var(--headerSize);
+    padding-bottom: 1.3em;  
+}
+/* Login / SignUp Forms */
+#credsDiv {
+    display: flex;
+    flex-direction: row;
+    padding: 2em;
+    flex-wrap: nowrap;
+    gap: 2em;
+    margin-block: 3em;
+}
+#loginDiv, #signupDiv{
+    border: 3px solid var(--lightBlue);
+    border-radius: var(--borderRadius); 
+    padding: 1em;
+}
+#loginForm, #signupForm{
 
+}
+#loginForm input, #signupForm input{
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--lightBlue);
+    padding: 1em;
+    margin: 0.5em;
+}
