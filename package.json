@@ -14,7 +14,7 @@
   "devDependencies": {
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.8"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
