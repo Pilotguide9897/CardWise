@@ -30,8 +30,36 @@ router.get('/', async (req, res) => {
 });
 
 // Updating a deck
+// batch update cards
 
 // deleting a deck
+router.delete('/:id', async (req, res) => {
+  try {
+    const deckData = await Deck.destroy({
+      where: {
+        id: req.params.id,
+        // user_id: req.session.user_id,
+      },
+    });
+
+    console.log(deckData);
+
+    if (!deckData) {
+      res.status(400).json({ message: 'No Deck found with that id.' });
+      return;
+    }
+
+    res.json({ message: 'Deck deleted successfully.', data: deckData });
+  } catch (err) {
+    console.error({
+      message: 'There was an error deleting the Deck',
+      error: err,
+    });
+    res
+      .status(500)
+      .json({ message: 'There was an error deleting the Deck', error: err });
+  }
+});
 
 // Getting a single deck.
 
