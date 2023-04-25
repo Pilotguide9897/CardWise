@@ -55,7 +55,7 @@ main{
 }
 main h2{
     font-size: var(--headerSize);
-    padding-bottom: 1.3em;  
+    padding-bottom: 1em;  
 }
 /* Login / SignUp Forms */
 #credsDiv {
@@ -66,17 +66,45 @@ main h2{
     gap: 2em;
     margin-block: 3em;
 }
+#credsDiv h2{
+    padding-inline: 1em;
+}
+
 #loginDiv, #signupDiv{
     border: 3px solid var(--lightBlue);
     border-radius: var(--borderRadius); 
     padding: 1em;
 }
 #loginForm, #signupForm{
-
+    display: flex;
+    flex-direction: column;
 }
 #loginForm input, #signupForm input{
     border-radius: var(--borderRadius);
     border: 1px solid var(--lightBlue);
     padding: 1em;
     margin: 0.5em;
+    margin-bottom: 1em;
 }
+/* Decks Homepage */
+
+
+/* Create a deck */
+
+
+/* Deck Single Card 8?
+
+
+
+/* Media screens */
+@media only screen and (max-width: 750px) {
+    nav{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    #credsDiv{
+     flex-wrap: wrap;
+    }
+   }

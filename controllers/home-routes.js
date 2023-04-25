@@ -55,7 +55,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/login', async (req, res) => {
   res.render('login');
 });
-
+router.get('/finish', async (req, res) => {
+  res.render('finish');
+});
+router.get('/decks', async (req, res) => {
+  res.render('decks');
+});
 
 
 
