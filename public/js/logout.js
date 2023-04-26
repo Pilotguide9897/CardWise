@@ -1,12 +1,12 @@
 // Client side logic for processing logout.
 const logoutHandler = async () => {
-  const response = await fetch('/logout', {
+  const response = await fetch('/api/users/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
-    document.location.replace('/dashboard');
+    document.location.replace('/login');
   } else {
     alert(response.statusText);
   }
