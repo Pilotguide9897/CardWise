@@ -1,11 +1,11 @@
-// This is not so easy...
-document.getElementById('add-cue-card').addEventListener('click', addCueCard);
+// Client side logic for card creation
+const addCardButton = document.getElementById('add-cue-card');
+const createButton = document.getElementById('create');
+const cueCardContainer = document.getElementById('cue-card-container');
 
-const newDeck = function () {
+let cueCardCount = 5;
 
-let cueCardCount = 0;
-
-const addCueCard = () => {
+function addCard() {
   cueCardCount++;
   const cueCardForm = document.createElement('form');
   cueCardForm.setAttribute('id', `cue-card-form-${cueCardCount}`);
@@ -17,36 +17,45 @@ const addCueCard = () => {
     <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
     <label for="deck-id-${cueCardCount}">Deck ID:</label>
     <input type="number" id="deck-id-${cueCardCount}" name="deck-id-${cueCardCount}">
-    <button type="submit">Save Cue Card ${cueCardCount}</button>
   `;
 
-  cueCardForm.addEventListener('submit', (event) =>
-    handleSubmit(event, cueCardCount)
-  );
-  document.getElementById('cue-card-container').appendChild(cueCardForm);
-};
+  cueCardContainer.appendChild(cueCardForm);
+}
 
-const handleSubmit = async (event, formId) => {
-  event.preventDefault();
+async function createCueCards() {
+  const cueCardData = [];
 
-  const front = document.querySelector(`#front-${formId}`).value.trim();
-  const back = document.querySelector(`#back-${formId}`).value.trim();
-  const deckId = document.querySelector(`#deck-id-${formId}`).value.trim();
+  for (let i = 1; i <= cueCardCount; i++) {
+    const front = document.querySelector(`#front-${i}`).value.trim();
+    const back = document.querySelector(`#back-${i}`).value.trim();
+    const deckId = document.querySelector(`#deck-id-${i}`).value.trim();
 
-  if (front && back && deckId) {
-    const response = await fetch('/api/cuecards', {
-      method: 'POST',
-      body: JSON.stringify({ front, back, deckId }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      alert('Cue card saved successfully!');
+    if (front && back && deckId) {
+      cueCardData.push({ front, back, deckId });
     } else {
-      alert(response.statusText);
+      alert(`Please fill in all fields for cue card ${i}.`);
+      return;
     }
-  } else {
-    alert('Please fill in all fields.');
   }
-};
+
+  const response = await fetch('/api/decks/cuecards', { // We may need to modify the last parameter of the route to make it reflect the actual route that we will be using for creating a new deck.
+    method: 'POST',
+    body: JSON.stringify(cueCardData),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    alert('New deck successfully saved!');
+  } else {
+    alert(response.statusText);
+  }
+}
+
+addCardButton.addEventListener('click', addCard);
+createButton.addEventListener('click', createCueCards);
+
+// Create initial cue cards
+const initialCueCardCount = cueCardCount;
+for (let i = 0; i < initialCueCardCount; i++) {
+  addCard();
 }
