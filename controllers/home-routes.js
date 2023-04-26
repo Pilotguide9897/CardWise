@@ -61,6 +61,9 @@ router.get('/finish', async (req, res) => {
 router.get('/decks', async (req, res) => {
   res.render('decks');
 });
+router.get('/createdeck', async(req, res) => {
+  res.render('createdeck');
+});
 
 
 

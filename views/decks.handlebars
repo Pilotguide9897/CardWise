@@ -1,0 +1,58 @@
+<section id="deckCont">
+
+<div class="pure-g">
+    <!--Welcome part -->
+    <div id="welcomeDiv" class="pure-u-1">
+       
+        <h2> Welcome Username!</h2>
+      <h2>Todays Deck:</h2>
+      <button id="todaysDeck">Start</button>
+</div>
+<!--Each part -->
+  <div id="deckDesc" class="pure-u-1">
+        <div class="leftDeck">
+        <h3>Title</h3>
+        <h4>Description</h4>
+    </div>
+    <div class="rightDeck">
+       <button id="deleteBtn">Edit</button>
+       <button id="editBtn">Delete</button>
+    </div>
+    </div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1">
+        <button>Create a deck</button>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+    
+   
+
+
+   
+
+
+  {{#each ___ as |deck|}}
+   {{> singledeck}}
+   {{/each}}

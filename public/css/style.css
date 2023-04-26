@@ -87,8 +87,39 @@ main h2{
     margin-bottom: 1em;
 }
 /* Decks Homepage */
-
-
+#deckCont{
+    margin: 1em;
+}
+#deckDesc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 3px solid var(--lightBlue);
+    border-radius: var(--borderRadius);
+    margin: 1em;
+    padding: 1em;
+    width: 55%;
+    height: 40%;
+    text-align: left;
+}
+.leftDeck h3{
+    padding-block: 0.2em;
+}
+#welcomeDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--lightBlue);
+    border-radius: var(--borderRadius);
+    width: 35%;
+    padding: 1em;
+    margin: 1em;
+   
+}
+#welcomeDiv h2{
+    font-size: 1em;
+}
 /* Create a deck */
 
 
