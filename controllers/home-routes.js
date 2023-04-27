@@ -4,6 +4,9 @@ const { withAuth, checkAuth } = require('../utils/helpers');
 
 
 //DELETE ME - Victoria
+router.get('/', async (req, res) => {
+  res.render('homepage');
+});
 router.get('/login', async (req, res) => {
   res.render('login');
 });
