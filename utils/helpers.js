@@ -6,4 +6,8 @@ module.exports = {
       next();
     }
   },
+  checkAuth: (req, res, next) => {
+    req.isAuthenticated = (req.session.logged_in);
+    next();
+  }
 };
