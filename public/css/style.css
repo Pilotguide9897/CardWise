@@ -149,6 +149,11 @@ main h2{
     border: 2px solid var(--lightBlue);
     padding: 0.5em;
 }
+#bottomButtons{
+  display: flex;
+ justify-content: space-between;
+ margin: 2em;
+}
 
 /* Deck Single Card */
 
