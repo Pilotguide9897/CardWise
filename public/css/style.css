@@ -2,6 +2,7 @@
 
 :root{
     --black: #4D3E3E;
+    --grey: #484747;
     --white: #f8f8f8;
     --blue: #87BED6;
     --lightBlue: #9ecee4;
@@ -121,9 +122,35 @@ main h2{
     font-size: 1em;
 }
 /* Create a deck */
+#topInput{
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between;
+    align-items: center;
+}
+#topInput textarea{
+    border-radius: var(--borderRadius);
+    margin-bottom: 1em;
+}
+#topInput input{
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--grey);
+}
+#single{
+    margin: 1em;
+    padding: 2em;
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--grey);
+}
+#single input{
+    border-radius: var(--borderRadius);
+    border: 2px solid var(--lightBlue);
+    padding: 0.5em;
+}
 
-
-/* Deck Single Card 8?
+/* Deck Single Card */
 
 
 
