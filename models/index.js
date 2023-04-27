@@ -6,8 +6,13 @@ User.hasMany(Deck);
 
 Deck.belongsTo(User);
 
-Deck.hasMany(Card);
+Deck.hasMany(Card, {
+  foreignKey: 'deck_id',
+  onDelete: 'CASCADE',
+});
 
-Card.belongsTo(Deck);
+Card.belongsTo(Deck, {
+  foreignKey: 'deck_id',
+});
 
 module.exports = { User, Deck, Card };
