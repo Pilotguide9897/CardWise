@@ -12,5 +12,5 @@ const logoutHandler = async () => {
   }
 };
 
-const logoutForm = document.getElementById('logoutButtonId'); //need to add correct id.
+const logoutForm = document.getElementById('#logout');
 logoutForm.addEventListener('click', logoutHandler);

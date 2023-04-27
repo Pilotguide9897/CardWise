@@ -42,7 +42,7 @@ const signUpHandler = async (event) => {
 };
 
 const loginForm = document.getElementById('#loginForm');
-loginForm.addEventListener('submit', loginHandler);
+loginForm.addEventListener('click', loginHandler);
 
 const signUpForm = document.getElementById('#signupForm');
-signUpForm.addEventListener('submit', signUpHandler);
+signUpForm.addEventListener('click', signUpHandler);
