@@ -146,6 +146,20 @@ nav button{
 }
 
 /* Dashboard */
+#dashboardCont{
+    margin: 1em;
+}
+#welcomeDiv{
+    padding: 1em;
+    border: 0.1px solid var(--darkGrey);
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
+}
+#decksDiv{
+    border: 0.1px solid var(--darkGrey);
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox)
+}
 
 /* Create a deck */
 #topInput{
