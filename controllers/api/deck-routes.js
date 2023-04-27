@@ -80,6 +80,7 @@ router.put('/:id', async (req, res) => {
       {
         user_id: req.body.user_id,
         name: req.body.name,
+        description: req.body.description,
         new_cards_per_day: req.body.new_cards_per_day,
       },
       {
@@ -164,6 +165,7 @@ router.post('/', async (req, res) => {
     const deckData = await Deck.create({
       user_id: req.body.user_id,
       name: req.body.name,
+      description: req.body.description,
       new_cards_per_day: req.body.new_cards_per_day,
     });
 
