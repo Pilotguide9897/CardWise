@@ -61,12 +61,52 @@ nav button{
     border-radius: var(--borderButton);
 }
 /* Main Page */
-main{
-    text-align: center;
+#mainContent{
+    min-height: 500px;
+    width: 100%;
+    background-image: url('/photos/joanna-kosinska-RE-8WswW95o-unsplash.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    overflow: hidden;
 }
-main h2{
+#titleDiv{
+    padding: 1em;
+    text-align: right;
+    margin-top: 5em;
+    box-shadow: var(--boxShadow); 
+    float: right;
+}
+#titleDiv h2{
     font-size: var(--headerSize);
-    padding-bottom: 1em;  
+    padding-bottom: 2em;
+}
+#titleDiv p{
+    font-size: var(--mainSize);
+}
+.mainCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2em;
+}
+.mainPhoto{
+    box-shadow: var(--boxShadow);
+    overflow: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: var(--borderBox);
+}
+.mainPhoto img{
+    height: 350px;
+    width: 100%;
+}
+.mainP{
+    padding-left: 1em;
+    font-size: var(--mainSize);
 }
 /* Login / SignUp Forms */
 #credsDiv {
