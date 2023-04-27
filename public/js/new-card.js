@@ -1,7 +1,7 @@
 // Client side logic for card creation
-const addCardButton = document.getElementById('add-cue-card');
-const createButton = document.getElementById('create');
-const cueCardContainer = document.getElementById('cue-card-container');
+const addCardButton = document.getElementById('add-cue-card'); //
+const createButton = document.getElementById('create'); //
+const cueCardContainer = document.getElementById('cue-card-container'); //
 
 let cueCardCount = 5;
 

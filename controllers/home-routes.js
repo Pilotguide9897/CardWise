@@ -2,6 +2,22 @@ const router = require('express').Router();
 const { Deck, User, Card } = require('../models');
 const { withAuth, checkAuth } = require('../utils/helpers');
 
+
+//DELETE ME - Victoria
+router.get('/login', async (req, res) => {
+  res.render('login');
+});
+router.get('/finish', async (req, res) => {
+  res.render('finish');
+});
+router.get('/decks', async (req, res) => {
+  res.render('decks');
+});
+router.get('/createdeck', async(req, res) => {
+  res.render('createdeck');
+});
+
+
 // GET Home page
 router.get('/', async (req, res) => {
   try {
@@ -17,7 +33,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET Dashboard
+// GET Dashboard //
 router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
@@ -165,16 +181,4 @@ module.exports = router;
 //     res.render('homepage');
 //   }
 // });
-//DELETE ME - Victoria
-router.get('/login', async (req, res) => {
-  res.render('login');
-});
-router.get('/finish', async (req, res) => {
-  res.render('finish');
-});
-router.get('/decks', async (req, res) => {
-  res.render('decks');
-});
-router.get('/createdeck', async(req, res) => {
-  res.render('createdeck');
-});
+
