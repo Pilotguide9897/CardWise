@@ -144,7 +144,6 @@ nav button{
 #loginForm button, #signupForm button{
     margin-top: 0.5em;
 }
-
 /* Dashboard */
 #dashboardCont{
     margin: 1em;
@@ -154,12 +153,38 @@ nav button{
     border: 0.1px solid var(--darkGrey);
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 250px;
 }
-#decksDiv{
+#todayDeck{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--smallSize);
+}
+#createDeck{
+    margin-top: 2em;
+    font-size: var(--smallSize);
+    align-items: center;
+}
+
+#deckDesc{
+    padding: 1em;
+    margin-bottom: 1em;
+    margin-inline: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     border: 0.1px solid var(--darkGrey);
     box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox)
+    border-radius: var(--borderBox);
+    
 }
+
+
 
 /* Create a deck */
 #topInput{
