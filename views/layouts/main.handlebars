@@ -12,8 +12,10 @@
         <h1 id="title">CardWise</h1>
     <nav>
       <a href='/'>Home</a>
+      <!--Add the dashboard to under the if once ready-->
       <a href="/dashboard">Decks</a>
       {{#if loggedIn}}
+      
         <button id='logout'>Logout</button>
       {{else}}
        <button id="login"><a href='/login'>Login</a></button> 

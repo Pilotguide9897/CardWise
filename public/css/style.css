@@ -2,15 +2,19 @@
 
 :root{
     --black: #4D3E3E;
-    --grey: #484747;
+    --grey: #a09f9f;
+    --darkGrey: #484747;
     --white: #f8f8f8;
+    --superWhite: #ffffff;
     --blue: #87BED6;
     --lightBlue: #9ecee4;
-    --borderRadius: 35px;
-    --headerSize: 2em;
-    --mainSize: 1.2em;
-    --smallSize: 0.7em;
+    --borderBox: 15px;
+    --borderButton: 35px;
+    --headerSize: 1.8em;
+    --mainSize: 1.1em;
+    --smallSize: 0.8em;
     --fontFamily: 'Comfortaa', cursive;
+    --boxShadow: 5px 10px 18px var(--grey);
 }
 *{
     margin: 0;
@@ -27,8 +31,8 @@ button{
     padding: 1em 1.5em;
     background-color: var(--lightBlue);
     border: none;
-    border-radius: var(--borderRadius);
-    
+    border-radius: var(--borderButton);
+    width: 150px;
 }
 /* Header/Nav */
 header{
@@ -50,6 +54,12 @@ nav a {
 nav a:hover{
     color: var(--black);
 }
+nav button{
+    padding: 1em 1.5em;
+    background-color: var(--lightBlue);
+    border: none;
+    border-radius: var(--borderButton);
+}
 /* Main Page */
 main{
     text-align: center;
@@ -65,28 +75,30 @@ main h2{
     padding: 2em;
     flex-wrap: nowrap;
     gap: 2em;
-    margin-block: 3em;
+    margin-block: 2em;
 }
-#credsDiv h2{
-    padding-inline: 1em;
-}
-
 #loginDiv, #signupDiv{
-    border: 3px solid var(--lightBlue);
-    border-radius: var(--borderRadius); 
+    border: 0.1px solid var(--grey);
+    border-radius: var(--borderBox); 
     padding: 1em;
+    box-shadow:var(--boxShadow);
 }
 #loginForm, #signupForm{
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
+}
+#loginForm label, #signupForm label{
+    text-align: left;
+    padding-left: 0.8em;
 }
 #loginForm input, #signupForm input{
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderBox);
     border: 1px solid var(--lightBlue);
     padding: 1em;
     margin: 0.5em;
     margin-bottom: 1em;
 }
+
 /* Decks Homepage */
 #deckCont{
     margin: 1em;
