@@ -8,7 +8,7 @@
     --superWhite: #ffffff;
     --blue: #87BED6;
     --lightBlue: #9ecee4;
-    --borderBox: 15px;
+    --borderBox: 10px;
     --borderButton: 35px;
     --headerSize: 1.8em;
     --mainSize: 1.1em;
@@ -83,6 +83,9 @@ main h2{
     padding: 1em;
     box-shadow:var(--boxShadow);
 }
+#loginDiv h2, #signupDiv h2{
+    padding-top: 0.7em;
+}
 #loginForm, #signupForm{
     display: flex;
     flex-direction: column;    
@@ -97,6 +100,9 @@ main h2{
     padding: 1em;
     margin: 0.5em;
     margin-bottom: 1em;
+}
+#loginForm button, #signupForm button{
+    margin-top: 0.5em;
 }
 
 /* Decks Homepage */
