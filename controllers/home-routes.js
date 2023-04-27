@@ -51,23 +51,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-//DELETE ME - Victoria
-router.get('/login', async (req, res) => {
-  res.render('login');
-});
-router.get('/finish', async (req, res) => {
-  res.render('finish');
-});
-router.get('/decks', async (req, res) => {
-  res.render('decks');
-});
-router.get('/createdeck', async(req, res) => {
-  res.render('createdeck');
-});
-
-
-
-
 
 // GET New deck page
 router.get('/decks/new', withAuth, async (req, res) => {
@@ -182,3 +165,16 @@ module.exports = router;
 //     res.render('homepage');
 //   }
 // });
+//DELETE ME - Victoria
+router.get('/login', async (req, res) => {
+  res.render('login');
+});
+router.get('/finish', async (req, res) => {
+  res.render('finish');
+});
+router.get('/decks', async (req, res) => {
+  res.render('decks');
+});
+router.get('/createdeck', async(req, res) => {
+  res.render('createdeck');
+});

@@ -41,8 +41,8 @@ const signUpHandler = async (event) => {
   }
 };
 
-const loginForm = document.getElementById('loginFormId'); //need to add correct id.
+const loginForm = document.getElementById('#loginForm');
 loginForm.addEventListener('submit', loginHandler);
 
-const signUpForm = document.getElementById('signUpFormID'); //need to add correct id.
+const signUpForm = document.getElementById('#signupForm');
 signUpForm.addEventListener('submit', signUpHandler);
