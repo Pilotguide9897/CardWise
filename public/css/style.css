@@ -92,6 +92,7 @@ nav button{
     justify-content: space-between;
     align-items: center;
     margin: 1em;
+    padding-block: 1em;
 }
 .mainPhoto{
     box-shadow: var(--boxShadow);
@@ -103,10 +104,15 @@ nav button{
 .mainPhoto img{
     height: 300px;
     width: 100%;
+   
 }
 .mainP{
     padding-left: 1em;
     font-size: var(--mainSize);
+    text-align: right;
+}
+.middleP{
+    text-align: left;
 }
 /* Login / SignUp Forms */
 #credsDiv {
@@ -298,7 +304,6 @@ nav button{
     .middle{
         display: flex;
         flex-direction: column-reverse;
-        
     }
   
    }
