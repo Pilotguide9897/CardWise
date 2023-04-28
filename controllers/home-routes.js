@@ -54,8 +54,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // GET New deck page
 router.get('/decks/new', withAuth, async (req, res) => {
   if (req.session.logged_in) {
-    try {
-      res.render('newDeck', {
+    try { //createdeck
+      res.render('createdeck', {
         logged_in: req.session.logged_in,
       });
     } catch (error) {
@@ -77,8 +77,8 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
         return;
-      }
-      res.render('updateDeck', {
+      } //updatedeck
+      res.render('updatedeck', {
         deckData: deckToUpdate,
         deck: deckToUpdate.Cards,
         logged_in: req.session.logged_in,
@@ -112,8 +112,8 @@ router.get('/decks/:id', withAuth, async (req, res) => {
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
         return;
-      }
-      res.render('reviewDeck', {
+      } //review
+      res.render('review', {
         deckData: deckToReview,
         deck: deckToReview.Cards,
         logged_in: req.session.logged_in,
