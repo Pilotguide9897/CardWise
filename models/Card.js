@@ -45,6 +45,10 @@ Card.init(
       allowNull: false,
       field: 'e_factor',
     },
+    dueDate: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   },
   {
     sequelize,

@@ -22,7 +22,7 @@ async function testCardUpdate() {
     console.log('Original card data:', flashcard.toJSON());
 
     // Set a grade for the practice (change this value to simulate different grades)
-    const grade = 5;
+    const grade = 3;
 
     // Update the card using the practice function
     const updatedFlashcardData = practice(flashcard, grade);
