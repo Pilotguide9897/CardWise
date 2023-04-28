@@ -30,7 +30,7 @@ async function testCardUpdate() {
     // Update the original Card instance with the updated data
     flashcard.interval = updatedFlashcardData.interval;
     flashcard.repetition = updatedFlashcardData.repetition;
-    flashcard.e_factor = updatedFlashcardData.e_factor;
+    flashcard.efactor = updatedFlashcardData.efactor;
     flashcard.dueDate = updatedFlashcardData.dueDate;
 
     // Save the updated card information to the database
