@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
+const { practice} = require('../../utils/helpers')
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -224,5 +225,19 @@ router.delete('/:id', async (req, res) => {
       .json({ message: 'There was an error deleting the Deck', error: err });
   }
 });
+
+// Need to add code to get the cards that are queued for review and review them.
+
+// Call the practice function with a flashcard and grade
+const updatedFlashcardData = practice(flashcard, grade);
+
+// Update the original Card instance with the updated data
+flashcard.interval = updatedFlashcardData.interval;
+flashcard.repetition = updatedFlashcardData.repetition;
+flashcard.efactor = updatedFlashcardData.efactor;
+flashcard.dueDate = updatedFlashcardData.dueDate;
+
+// Save the updated card information to the database
+await flashcard.save();
 
 module.exports = router;

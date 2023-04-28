@@ -40,9 +40,14 @@ Card.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    e_factor: {
+    efactor: {
       type: DataTypes.FLOAT,
       allowNull: false,
+      field: 'e_factor',
+    },
+    dueDate: {
+      type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   {
