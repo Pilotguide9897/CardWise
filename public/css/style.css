@@ -91,7 +91,7 @@ nav button{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 2em;
+    margin: 1em;
 }
 .mainPhoto{
     box-shadow: var(--boxShadow);
@@ -101,7 +101,7 @@ nav button{
     border-radius: var(--borderBox);
 }
 .mainPhoto img{
-    height: 350px;
+    height: 300px;
     width: 100%;
 }
 .mainP{
@@ -170,7 +170,6 @@ nav button{
     font-size: var(--smallSize);
     align-items: center;
 }
-
 #deckDesc{
     padding: 1em;
     margin-bottom: 1em;
@@ -178,10 +177,8 @@ nav button{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-   
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
-    
 }
 /* Create a deck */
 #topInput{
@@ -209,7 +206,6 @@ nav button{
     border-radius: var(--borderBox);
     padding: 0.5em;
 }
-
 #cue-card-container{
     display: flex;
     flex-direction: column;
@@ -241,6 +237,16 @@ nav button{
 
 }
 /* Deck Single Card */
+
+
+/* Finished the deck */
+#finishDiv{
+   margin: 2em;
+   text-align: center;
+}
+#finishDiv h1{
+   color: var(--blue);
+}
 
 
 
