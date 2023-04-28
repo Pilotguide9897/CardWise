@@ -3,26 +3,36 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>CardWise</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <link href="/css/style.css" rel="stylesheet"/>
+    <title>Card Wise</title>
   </head>
   <body>
     <header>
-      <h1>Welcome to CardWise!</h1>
-    </header>
-
+        <h1 id="title">CardWise</h1>
+      
     <nav>
       <a href='/'>Home</a>
+    
+      <a href="/dashboard">Decks</a>
       {{#if loggedIn}}
+       <!--Add the dashboard to under the if once ready-->
         <button id='logout'>Logout</button>
       {{else}}
-        <a href='/login'>Login</a>
+       <button id="login"><a href='/login'>Login</a></button> 
       {{/if}}
-    </nav>
+    </nav>  
+     </header>
     <main>
       {{{body}}}
     </main>
     {{#if loggedIn}}
-      <script src='/js/logout.js'></script>
+      <script src='/js/logout.js'></script> 
     {{/if}}
+  
   </body>
 </html>

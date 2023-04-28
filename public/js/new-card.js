@@ -1,25 +1,26 @@
 // Client side logic for card creation
-const addCardButton = document.getElementById('add-cue-card');
-const createButton = document.getElementById('create');
-const cueCardContainer = document.getElementById('cue-card-container');
+const addCardButton = document.getElementById('add-cue-card'); //
+const createButton = document.getElementById('create'); //
+const cueCardContainer = document.getElementById('cue-card-container'); //
 
 let cueCardCount = 5;
 
 function addCard() {
   cueCardCount++;
+  const cueDiv = document.createElement('div');
+  cueDiv.setAttribute('class', 'pure-g cardDiv');
   const cueCardForm = document.createElement('form');
   cueCardForm.setAttribute('id', `cue-card-form-${cueCardCount}`);
+  cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount}">Front:</label>
+    <label for="front-${cueCardCount}">Term: </label>
     <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
-    <label for="back-${cueCardCount}">Back:</label>
+    <label for="back-${cueCardCount}">Definition: </label>
     <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
-    <label for="deck-id-${cueCardCount}">Deck ID:</label>
-    <input type="number" id="deck-id-${cueCardCount}" name="deck-id-${cueCardCount}">
   `;
-
-  cueCardContainer.appendChild(cueCardForm);
+  cueDiv.appendChild(cueCardForm);
+  cueCardContainer.appendChild(cueDiv);
 }
 
 async function createCueCards() {
@@ -28,10 +29,9 @@ async function createCueCards() {
   for (let i = 1; i <= cueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
     const back = document.querySelector(`#back-${i}`).value.trim();
-    const deckId = document.querySelector(`#deck-id-${i}`).value.trim();
 
-    if (front && back && deckId) {
-      cueCardData.push({ front, back, deckId });
+    if (front && back) {
+      cueCardData.push({ front, back});
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;

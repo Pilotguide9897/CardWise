@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-const { practice} = require('../../utils/helpers')
+const { practice} = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -238,6 +238,6 @@ flashcard.efactor = updatedFlashcardData.efactor;
 flashcard.dueDate = updatedFlashcardData.dueDate;
 
 // Save the updated card information to the database
-await flashcard.save();
+flashcard.save();
 
 module.exports = router;

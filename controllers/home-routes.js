@@ -132,11 +132,9 @@ router.get('*', (req, res) => {
   res.redirect('/');
 });
 
+
+
 module.exports = router;
-
-
-
-
 
 
 
@@ -164,3 +162,4 @@ module.exports = router;
 //     res.render('homepage');
 //   }
 // });
+
