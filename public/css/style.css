@@ -188,6 +188,7 @@ nav button{
     display: flex;
     flex-direction: column;
     padding: 0.5em;
+    margin-inline: 1em;
 }
 #topInput h1{
     font-size: var(--headerSize);
@@ -209,15 +210,36 @@ nav button{
     padding: 0.5em;
 }
 
-
-
-
-#bottomButtons{
-  display: flex;
- justify-content: space-between;
- margin: 2em;
+#cue-card-container{
+    display: flex;
+    flex-direction: column;
+}
+.cardDiv{
+    border: none;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
+    margin: 1em;
+    padding: 1em;
+    background-color: var(--superWhite);
+}
+.cardForm{
+    padding: 0.5em;
 }
 
+.cardForm input{
+    border: 1px solid var(--lightBlue);
+    padding: 0.2em;
+    border-radius: var(--borderBox);
+}
+#bottomButtons{
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+#bottomButtons button{
+    font-size: var(--smallSize);
+
+}
 /* Deck Single Card */
 
 
@@ -232,5 +254,22 @@ nav button{
     }
     #credsDiv{
      flex-wrap: wrap;
+    }
+   
+   }
+   @media only screen and (max-width: 950px){
+    #topInput input{
+        width: 100%;
+    }
+    #topInput textarea{
+        width: 100%;
+    }
+    .cardForm{
+        padding: 0.5em;
+        display: flex;
+        flex-direction: column;
+    }
+    .cardForm input{
+        margin-block: 0.5em;
     }
    }
