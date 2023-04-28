@@ -19,6 +19,9 @@ router.get('/dashboard', async (req, res) => {
 router.get('/createdeck', async(req, res) => {
   res.render('createdeck');
 });
+router.get('/reviewdeck', async(req, res) => {
+  res.render('review');
+});
 
 
 
