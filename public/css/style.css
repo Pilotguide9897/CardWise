@@ -241,27 +241,43 @@ nav button{
 
 /* Finished the deck */
 #finishDiv{
-   margin: 2em;
+   margin: 10em;
    text-align: center;
 }
 #finishDiv h1{
    color: var(--blue);
+   font-size: 3em;
+}
+#finishDiv p{
+    font-size: var(--mainSize);
+   
 }
 
 
 
 /* Media screens */
 @media only screen and (max-width: 750px) {
-    nav{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        text-align: center;
-    }
+   header{
+    display: flex;
+    flex-direction: column;
+   
+   }
+   header h1{
+    text-align: center;
+   }
+   nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+   }
     #credsDiv{
      flex-wrap: wrap;
     }
-   
+    #finishDiv{
+        margin: 6em;
+    }
+
+  
    }
    @media only screen and (max-width: 950px){
     #topInput input{
@@ -279,3 +295,12 @@ nav button{
         margin-block: 0.5em;
     }
    }
+
+   
+
+
+
+   
+   
+   
+  

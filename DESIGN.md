@@ -7,5 +7,7 @@
 ## Wireframe:
 
 
-## Animation: -tada
+
+### Animation: Tada
 https://animate.style/
+
