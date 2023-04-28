@@ -7,19 +7,22 @@ let cueCardCount = 5;
 
 function addCard() {
   cueCardCount++;
+  const cueDiv = document.createElement('div');
+  cueDiv.setAttribute('class', 'pure-g cardDiv');
   const cueCardForm = document.createElement('form');
   cueCardForm.setAttribute('id', `cue-card-form-${cueCardCount}`);
+  cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount}">Front:</label>
+    <label for="front-${cueCardCount}">Term: </label>
     <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
-    <label for="back-${cueCardCount}">Back:</label>
+    <label for="back-${cueCardCount}">Definition: </label>
     <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
     <label for="deck-id-${cueCardCount}">Deck ID:</label>
     <input type="number" id="deck-id-${cueCardCount}" name="deck-id-${cueCardCount}">
   `;
-
-  cueCardContainer.appendChild(cueCardForm);
+  cueDiv.appendChild(cueCardForm);
+  cueCardContainer.appendChild(cueDiv);
 }
 
 async function createCueCards() {

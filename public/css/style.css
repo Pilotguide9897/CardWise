@@ -110,6 +110,7 @@ nav button{
 }
 /* Login / SignUp Forms */
 #credsDiv {
+    text-align: center;
     display: flex;
     flex-direction: row;
     padding: 2em;
@@ -118,7 +119,6 @@ nav button{
     margin-block: 2em;
 }
 #loginDiv, #signupDiv{
-    border: 0.1px solid var(--grey);
     border-radius: var(--borderBox); 
     padding: 1em;
     box-shadow:var(--boxShadow);
@@ -150,7 +150,7 @@ nav button{
 }
 #welcomeDiv{
     padding: 1em;
-    border: 0.1px solid var(--darkGrey);
+ 
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
     display: flex;
@@ -178,42 +178,40 @@ nav button{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 0.1px solid var(--darkGrey);
+   
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
     
 }
-
-
-
 /* Create a deck */
 #topInput{
     display: flex;
     flex-direction: column;
-   justify-content: space-between;
-    align-items: center;
+    padding: 0.5em;
 }
-#topInput textarea{
-    border-radius: var(--borderRadius);
-    margin-bottom: 1em;
+#topInput h1{
+    font-size: var(--headerSize);
+}
+#topInput label{
+    font-size: var(--mainSize);
+    padding-block: 0.5em;
 }
 #topInput input{
-    padding: 0.5em;
-    margin: 0.5em;
-    border-radius: var(--borderRadius);
-    border: 1px solid var(--grey);
-}
-#single{
-    margin: 1em;
-    padding: 2em;
-    border-radius: var(--borderRadius);
-    border: 1px solid var(--grey);
-}
-#single input{
-    border-radius: var(--borderRadius);
-    border: 2px solid var(--lightBlue);
+    width: 50%;
+    border: 1px solid var(--lightBlue);
+    border-radius: var(--borderBox);
     padding: 0.5em;
 }
+#topInput textarea{
+    width: 50%;
+    border: 1px solid var(--lightBlue);
+    border-radius: var(--borderBox);
+    padding: 0.5em;
+}
+
+
+
+
 #bottomButtons{
   display: flex;
  justify-content: space-between;
