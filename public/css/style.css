@@ -276,7 +276,30 @@ nav button{
     #finishDiv{
         margin: 6em;
     }
-
+    .mainCont{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .mainPhoto{
+        width: 60%;
+        margin-block: 1em;
+    }
+    .mainPhoto img{
+       height: 250px;   
+    }
+    .mainP{
+        font-size: var(--smallSize);
+        width: 100%;
+        text-align: center;
+        padding: 1em;
+    }
+    .middle{
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
   
    }
    @media only screen and (max-width: 950px){
