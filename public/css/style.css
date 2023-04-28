@@ -256,7 +256,11 @@ nav button{
 }
 #finishDiv p{
     font-size: var(--mainSize);
-   
+}
+#finishDiv a{
+    color: var(--lightBlue);
+    padding: 1em;
+
 }
 
 
