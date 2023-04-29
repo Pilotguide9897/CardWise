@@ -263,12 +263,10 @@ router.get('/card/:id', async (req, res) => {
 
   if (cards) {
     res.json(cards);
-    renderCardWithMathpix(cards);
   } else {
     res.status(404).json({ message: 'Card(s) not found' });
   }
 });
-
 
 // Need to add code to get the cards that are queued for review and review them.
 
