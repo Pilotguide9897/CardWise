@@ -38,6 +38,7 @@ async function createCueCards() {
 
     if (front && back) {
       cueCardData.push({ front, back });
+      console.log(cueCardData);
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;
