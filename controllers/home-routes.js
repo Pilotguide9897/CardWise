@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Deck, User, Card } = require('../models');
 const { withAuth } = require('../utils/helpers');
 
-
 // GET Home page
 router.get('/', async (req, res) => {
   try {
