@@ -1,6 +1,6 @@
 // A function created to take in an array of card ids taken from the queue of cards ready for review, as determined by the current date/due data and the is_queued attribute.
 
-const { renderCardWithMathpix } = require('../../utils/helpers');
+//const { renderCardWithMathpix } = require('../../utils/helpers');
 
 async function fetchCards(ids) {
   try {
@@ -14,7 +14,7 @@ async function fetchCards(ids) {
 
       if (response.ok) {
         const data = await response.json();
-        renderCardWithMathpix(data);
+        //renderCardWithMathpix(data);
         console.log(data);
       } else {
         console.error('Error fetching cards:', response.status);
