@@ -2,6 +2,8 @@
 const addCardButton = document.getElementById('add-cue-card');
 const createButton = document.getElementById('create');
 const cueCardContainer = document.getElementById('cue-card-container');
+const deckTitleForm = document.getElementById('title');
+const deckDescriptionForm = document.getElementById('description');
 
 let cueCardCount = 0;
 
