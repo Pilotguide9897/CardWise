@@ -1,0 +1,12 @@
+<section id="cue-card-container">
+    {{#each deck}}
+        <div class="pure-g">
+            <form id="cue-card-form-{{id}}" class="pure-u-1 cardForm" data-np-autofill-type="other" data-np-checked="1" data-np-watching="1">
+                <label for="front-{{id}}">Term: </label> 
+                <input type="text" id="front-{{id}}" name="front-{{id}}" value="{{front}}">
+                <label for="back-{{id}}">Definition: </label>
+                <input type="text" id="back-{{id}}" name="back-{{id}}" value="{{back}}">
+            </form>
+        </div>
+    {{/deck}}
+</section>

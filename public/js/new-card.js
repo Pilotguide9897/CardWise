@@ -50,7 +50,6 @@ async function createCueCards() {
   }
 
   const response = await fetch('/api/decks/', {
-    // We may need to modify the last parameter of the route to make it reflect the actual route that we will be using for creating a new deck.
     method: 'POST',
     body: JSON.stringify( {cards: cueCardData, name: newDeckTitle, description: newDeckDescription} ),
     headers: { 'Content-Type': 'application/json' },
@@ -58,6 +57,7 @@ async function createCueCards() {
 
   if (response.ok) {
     alert('New deck saved!');
+    window.location.replace('dashboard');
   } else {
     alert(response.statusText);
   }

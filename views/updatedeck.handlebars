@@ -1,0 +1,25 @@
+<!--Top / Title and Description -->
+<div class="pure-g">
+    <div id="topInput" class="pure-u-1">
+        <h1>Update your deck</h1>
+       
+        <label for="title">Title:</label>
+        <input type="text" id="newDeckTitle" name="title"> 
+        <label for="description">Description: </label>
+        <textarea id="description" name="description" row="4" cols="40"></textarea>
+        
+    </div>
+</div>
+<!-- The cards imported dynamically-->
+<section id="cue-card-container">
+        {{> singleform}}
+</section>
+
+<!--Buttons on the bottom -->
+<div class="pure-g">
+    <div id="bottomButtons"  class="pure-u-1">
+<button id="add-cue-card">Another Card</button>
+<button id="create">Update</button>
+     </div>
+</div>
+<script src="/js/new-card.js"></script>
