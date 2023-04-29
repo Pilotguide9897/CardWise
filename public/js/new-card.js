@@ -2,7 +2,7 @@
 const addCardButton = document.getElementById('add-cue-card');
 const createButton = document.getElementById('create');
 const cueCardContainer = document.getElementById('cue-card-container');
-const deckTitleForm = document.getElementById('title');
+const deckTitleForm = document.getElementById('newDeckTitle');
 const deckDescriptionForm = document.getElementById('description');
 
 let cueCardCount = 5;
@@ -32,7 +32,9 @@ async function createCueCards() {
 
   const cueCardData = [];
 
-  for (let i = 1; i <= cueCardCount; i++) {
+  const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
+
+  for (let i = 1; i <= actualCueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
     console.log(front);
     const back = document.querySelector(`#back-${i}`).value.trim();
@@ -40,6 +42,7 @@ async function createCueCards() {
 
     if (front && back) {
       cueCardData.push({ front, back });
+      console.log(cueCardData);
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;
@@ -54,7 +57,7 @@ async function createCueCards() {
   });
 
   if (response.ok) {
-    alert('New deck successfully saved!');
+    alert('New deck saved!');
   } else {
     alert(response.statusText);
   }
