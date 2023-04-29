@@ -225,7 +225,7 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-// Get a single card/array of cards by id (For getting the data to present to the front-ennd for the mathpix library).
+// Get a single card/array of cards by id (For getting the data to present to the front-end for the mathpix library).
 async function getCardData(req) {
   try {
     const idParam = req.params.id;
