@@ -2,7 +2,7 @@
 const Card = require('../models/Card');
 const dayjs = require('dayjs');
 const { supermemo } = require('supermemo');
-const getCardData = require('../controllers/api/deck-routes')
+const getCardData = require('../controllers/api/deck-routes');
 
 module.exports = {
   withAuth: (req, res, next) => {
@@ -28,11 +28,9 @@ module.exports = {
 
   // Helper function to implement the mathpix library.
   renderCardWithMathpix: async (cards) => {
-    const cardContent = await getCardData (cards);
-    const renderedHTML = renderMarkdown(cardContent);
+    const renderedHTML = renderMarkdown(cards); // May need to modify to only present the card body.
     // Replace the content of the card element with the rendered html
     const cardElement = document.getElementById('cardbody'); // Placeholder id
     cardElement.innerHTML = renderedHTML;
   },
-
 };
