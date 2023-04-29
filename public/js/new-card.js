@@ -62,6 +62,7 @@ async function createCueCards() {
 
   if (response.ok) {
     alert('New deck saved!');
+    window.location.replace('dashboard');
   } else {
     alert(response.statusText);
   }
