@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const { Deck, User, Card } = require('../models');
-const { withAuth, checkAuth } = require('../utils/helpers');
+const { withAuth } = require('../utils/helpers');
 
 // GET Home page
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage');
+    res.render('homepage', {
+      loggedIn: req.session.logged_in,
+    });
   } catch (error) {
     console.error('Error accessing homepage:', error);
     res
@@ -36,6 +38,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
       res.render('dashboard', {
         deckData: decks,
+        loggedIn: req.session.logged_in,
       });
     } catch (err) {
       console.error({
@@ -56,7 +59,7 @@ router.get('/decks/new', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       res.render('newDeck', {
-        logged_in: req.session.logged_in,
+        loggedIn: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
@@ -81,7 +84,7 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
       res.render('updateDeck', {
         deckData: deckToUpdate,
         deck: deckToUpdate.Cards,
-        logged_in: req.session.logged_in,
+        loggedIn: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
@@ -116,7 +119,7 @@ router.get('/decks/:id', withAuth, async (req, res) => {
       res.render('reviewDeck', {
         deckData: deckToReview,
         deck: deckToReview.Cards,
-        logged_in: req.session.logged_in,
+        loggedIn: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
@@ -132,34 +135,5 @@ router.get('*', (req, res) => {
   res.redirect('/');
 });
 
-
-
 module.exports = router;
-
-
-
-
-
-
-// I just had this written back when I thought we would make the homepage present all of our decks if we were logged in, rather than having the dashboard. I am leaving it in the code for now, but we can take it out when we know for certain that we will not need it!
-// router.get('/', checkAuth, async (req, res) => {
-//   if (req.session.logged_in) {
-//     try {
-//       const decks = await Deck.findAll({
-//         where: {
-//           user_id: req.session.user_id,
-//         },
-//       });
-//       res.render('homepage', {
-//         userDeckData: decks,
-//         logged_in: req.session.logged_in,
-//       });
-//     } catch (error) {
-//       console.error('Error fetching deck data:', error);
-//       res.status(500).send('Error fetching deck data');
-//     }
-//   } else {
-//     res.render('homepage');
-//   }
-// });
 

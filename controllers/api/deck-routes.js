@@ -270,16 +270,23 @@ router.get('/card/:id', async (req, res) => {
 
 // Need to add code to get the cards that are queued for review and review them.
 
-// Call the practice function with a flashcard and grade
-const updatedFlashcardData = practice(flashcard, grade) 
 
-// Update the original Card instance with the updated data
-flashcard.interval = updatedFlashcardData.interval;
-flashcard.repetition = updatedFlashcardData.repetition;
-flashcard.efactor = updatedFlashcardData.efactor;
-flashcard.dueDate = updatedFlashcardData.dueDate;
+// // Define the async function that updates the flashcard
+// async function updateFlashcard(flashcard, grade) {
+//   const updatedFlashcardData = practice(flashcard, grade);
 
-// Save the updated card information to the database
-flashcard.save();
+//   // Update the original Card instance with the updated data
+//   flashcard.interval = updatedFlashcardData.interval;
+//   flashcard.repetition = updatedFlashcardData.repetition;
+//   flashcard.efactor = updatedFlashcardData.efactor;
+//   flashcard.dueDate = updatedFlashcardData.dueDate;
+
+//   // Save the updated card information to the database
+//   await flashcard.save();
+// }
+
+// // Call the updateFlashcard function with a flashcard and grade
+// updateFlashcard(flashcard, grade);
+
 
 module.exports = router;

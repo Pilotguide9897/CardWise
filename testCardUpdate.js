@@ -1,7 +1,7 @@
 // Import required modules
-const Card = require('./models/Card'); // Adjust the path to your Card model
-const { practice } = require('./utils/helpers'); // Adjust the path to the module containing the practice function
-const sequelize = require('./config/connection'); // Adjust the path to your Sequelize connection configuration
+const Card = require('./models/Card');
+const { practice } = require('./utils/helpers');
+const sequelize = require('./config/connection');
 
 async function testCardUpdate() {
   try {

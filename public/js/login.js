@@ -27,16 +27,18 @@ const signUpHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (email && password) {
+  if (name && email && password) { // Check if name is not empty
     const response = await fetch('/api/users/new', {
       method: 'POST',
-      body: JSON.stringify({name, email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
+      alert("new user created");
       document.location.replace('/dashboard');
     } else {
+      console.log('Response:', response);
       alert(response.statusText);
     }
   }
