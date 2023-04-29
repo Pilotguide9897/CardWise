@@ -2,6 +2,8 @@
 const addCardButton = document.getElementById('add-cue-card');
 const createButton = document.getElementById('create');
 const cueCardContainer = document.getElementById('cue-card-container');
+const deckTitleForm = document.getElementById('title');
+const deckDescriptionForm = document.getElementById('description');
 
 let cueCardCount = 0;
 
@@ -26,6 +28,10 @@ function addCard() {
 addCard();
 
 async function createCueCards() {
+
+  const newDeckTitle = deckTitleForm.value.trim();
+  const newDeckDescription = deckDescriptionForm.value.trim();
+
   const cueCardData = [];
 
   for (let i = 1; i <= cueCardCount; i++) {
