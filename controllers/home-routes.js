@@ -56,10 +56,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 // GET New deck page
-router.get('/decks/new', withAuth, async (req, res) => {
+router.get('/create', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      res.render('newDeck', {
+      res.render('createdeck', {
         loggedIn: req.session.logged_in,
       });
     } catch (error) {

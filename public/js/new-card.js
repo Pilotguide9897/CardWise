@@ -1,7 +1,7 @@
 // Client side logic for card creation
-const addCardButton = document.getElementById('add-cue-card'); //
-const createButton = document.getElementById('create'); //
-const cueCardContainer = document.getElementById('cue-card-container'); //
+const addCardButton = document.getElementById('add-cue-card');
+const createButton = document.getElementById('create');
+const cueCardContainer = document.getElementById('cue-card-container');
 
 let cueCardCount = 5;
 
@@ -14,10 +14,10 @@ function addCard() {
   cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount}">Term: </label>
-    <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
-    <label for="back-${cueCardCount}">Definition: </label>
-    <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
+    <label for="front-${cueCardCount-5}">Term: </label>
+    <input type="text" id="front-${cueCardCount-5}" name="front-${cueCardCount-5}">
+    <label for="back-${cueCardCount-5}">Definition: </label>
+    <input type="text" id="back-${cueCardCount-5}" name="back-${cueCardCount-5}">
   `;
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
@@ -28,17 +28,20 @@ async function createCueCards() {
 
   for (let i = 1; i <= cueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
+    console.log(front);
     const back = document.querySelector(`#back-${i}`).value.trim();
+    console.log(back);
 
     if (front && back) {
-      cueCardData.push({ front, back});
+      cueCardData.push({ front, back });
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;
     }
   }
 
-  const response = await fetch('/api/decks/cuecards', { // We may need to modify the last parameter of the route to make it reflect the actual route that we will be using for creating a new deck.
+  const response = await fetch('/api/decks/cuecards', {
+    // We may need to modify the last parameter of the route to make it reflect the actual route that we will be using for creating a new deck.
     method: 'POST',
     body: JSON.stringify(cueCardData),
     headers: { 'Content-Type': 'application/json' },
@@ -51,8 +54,13 @@ async function createCueCards() {
   }
 }
 
-addCardButton.addEventListener('click', addCard);
-createButton.addEventListener('click', createCueCards);
+if (addCardButton) {
+  addCardButton.addEventListener('click', addCard);
+}
+
+if (createButton) {
+  createButton.addEventListener('click', createCueCards);
+}
 
 // Create initial cue cards
 const initialCueCardCount = cueCardCount;
