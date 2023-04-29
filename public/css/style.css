@@ -156,7 +156,6 @@ nav button{
 }
 #welcomeDiv{
     padding: 1em;
- 
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
     display: flex;
@@ -215,6 +214,7 @@ nav button{
 #cue-card-container{
     display: flex;
     flex-direction: column;
+   
 }
 .cardDiv{
     border: none;
@@ -232,6 +232,8 @@ nav button{
     border: 1px solid var(--lightBlue);
     padding: 0.2em;
     border-radius: var(--borderBox);
+    width: 40%;
+    margin-inline: 0.5em;
 }
 #bottomButtons{
   display: flex;
@@ -360,6 +362,7 @@ nav button{
     #radioCont{
         width: 60%;
     }
+   
   
    }
    @media only screen and (max-width: 950px){
@@ -376,7 +379,9 @@ nav button{
     }
     .cardForm input{
         margin-block: 0.5em;
+        width: 100%;
     }
+   
    }
 
    

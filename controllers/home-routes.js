@@ -22,7 +22,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckData = await Deck.findAll({
-        include: { model: Card },
+        include:[{model: User}, { model: Card }],
       });
 
       if (!deckData) {

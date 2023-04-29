@@ -79,7 +79,7 @@ router.put('/:id', async (req, res) => {
     // update deck properties.
     const deckData = await Deck.update(
       {
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         name: req.body.name,
         description: req.body.description,
         new_cards_per_day: req.body.new_cards_per_day,
@@ -164,7 +164,7 @@ router.put('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const deckData = await Deck.create({
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
       name: req.body.name,
       description: req.body.description,
       new_cards_per_day: req.body.new_cards_per_day,
