@@ -24,6 +24,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckData = await Deck.findAll({
+        where: { user_id: req.session.user_id },
         include: { model: Card },
       });
 
