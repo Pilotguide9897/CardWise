@@ -2,7 +2,7 @@
 const Card = require('../models/Card');
 const dayjs = require('dayjs');
 const { supermemo } = require('supermemo');
-const getCardData = require('../controllers/api/deck-routes')
+const getCardData = require('../controllers/api/deck-routes');
 
 module.exports = {
   withAuth: (req, res, next) => {
