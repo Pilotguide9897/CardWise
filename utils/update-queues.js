@@ -31,13 +31,13 @@ const randomlyChooseCardsToQueue = (
 };
 
 const updateDeckQueues = async () => {
+  console.log('🤝 STARTING DECK QUEUE UPDATE.');
   let queue = [];
   // get all cards that are not queued.
   const deckData = await Deck.findAll({
     include: [
       {
         model: Card,
-        // attributes: ['id', 'is_queued', 'updatedAt', 'interval', 'deck_id'],
         where: { is_queued: false },
       },
     ],
@@ -73,8 +73,9 @@ const updateDeckQueues = async () => {
     individualHooks: true,
     returning: true,
   });
-
+  console.log('✅ UPDATE COMPLETE.');
   // process.exit(0);
 };
 
-updateDeckQueues();
+// updateDeckQueues();
+module.exports = updateDeckQueues;
