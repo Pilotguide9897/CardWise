@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-const { practice} = require('../../utils/helpers');
+const { practice } = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
             'is_queued',
             'interval',
             'repetition',
-            'e_factor',
+            'efactor',
             'createdAt',
             'updatedAt',
             'deckId',
@@ -131,19 +131,13 @@ router.put('/:id', async (req, res) => {
           deck_id: req.params.id,
           interval: 0,
           repetition: 0,
-          e_factor: 2.5,
+          efactor: 2.5,
         });
       }
     });
 
     await Card.bulkCreate(cardQueue, {
-      updateOnDuplicate: [
-        'front',
-        'back',
-        'interval',
-        'repetition',
-        'e_factor',
-      ],
+      updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
       individualHooks: true,
       returning: true,
     });
@@ -176,7 +170,7 @@ router.post('/', async (req, res) => {
         deck_id: deckData.id,
         interval: 0,
         repetition: 0,
-        e_factor: 2.5,
+        efactor: 2.5,
       };
     });
 
