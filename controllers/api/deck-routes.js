@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
     const decks = deckData.map((deck) => {
       return deck.get({ plain: true });
     });
-
     res.json(decks);
   } catch (err) {
     console.error({
