@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
             'is_queued',
             'interval',
             'repetition',
-            'e_factor',
+            'efactor',
             'createdAt',
             'updatedAt',
             'deckId',
@@ -131,7 +131,7 @@ router.put('/:id', async (req, res) => {
           deck_id: req.params.id,
           interval: 0,
           repetition: 0,
-          e_factor: 2.5,
+          efactor: 2.5,
         });
       }
     });
@@ -142,7 +142,7 @@ router.put('/:id', async (req, res) => {
         'back',
         'interval',
         'repetition',
-        'e_factor',
+        'efactor',
       ],
       individualHooks: true,
       returning: true,
@@ -176,7 +176,7 @@ router.post('/', async (req, res) => {
         deck_id: deckData.id,
         interval: 0,
         repetition: 0,
-        e_factor: 2.5,
+        efactor: 2.5,
       };
     });
 
