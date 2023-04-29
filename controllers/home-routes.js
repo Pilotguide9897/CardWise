@@ -40,7 +40,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       console.log(decks);
       res.render('dashboard', {
         deckData: decks,
-        logged_in: req.session.logged_in,
+        loggedIn: req.session.logged_in,
       });
     } catch (err) {
       console.error({
@@ -60,8 +60,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/create', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      res.render('createdeck', {
-        logged_in: req.session.logged_in,
+      res.render('newDeck', {
+        loggedIn: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
