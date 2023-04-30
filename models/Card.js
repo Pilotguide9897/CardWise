@@ -43,6 +43,7 @@ Card.init(
     efactor: {
       type: DataTypes.FLOAT,
       allowNull: false,
+      defaultValue: 2.5,
       field: 'e_factor',
     },
     dueDate: {

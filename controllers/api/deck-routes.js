@@ -159,7 +159,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// New Deck
+// New Deck -working Victoria
 router.post('/', async (req, res) => {
   try {
     const deckData = await Deck.create({
@@ -169,7 +169,7 @@ router.post('/', async (req, res) => {
       new_cards_per_day: req.body.new_cards_per_day,
     });
 
-    const newCardData = req.body.cards.map((card) => {
+    const newCardData = req.body.cueCardData.map((card) => {
       return {
         ...card,
         deck_id: deckData.id,
@@ -196,7 +196,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// deleting a deck
+// deleting a deck - works Victoria
 router.delete('/:id', async (req, res) => {
   try {
     const deckData = await Deck.destroy({
