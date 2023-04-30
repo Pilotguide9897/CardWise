@@ -62,7 +62,8 @@ router.get('/:id', async (req, res) => {
       return;
     }
     const deck = deckData.get({ plain: true });
-
+    console.log('----DEEECCCCKKKK');
+    console.log(deck);
     res.json(deck);
   } catch (err) {
     console.error({
