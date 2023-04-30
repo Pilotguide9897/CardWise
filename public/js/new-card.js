@@ -3,7 +3,6 @@ const addCardButton = document.getElementById('add-cue-card');
 const createButton = document.getElementById('create');
 const cueCardContainer = document.getElementById('cue-card-container');
 
-
 let cueCardCount = 0;
 
 function addCard() {
@@ -28,7 +27,6 @@ addCard();
 
 async function createCueCards() {
   const cueCardData = [];
-  console.log(cueCardData);
 
   for (let i = 1; i <= cueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
@@ -45,11 +43,7 @@ async function createCueCards() {
   const description = document.querySelector('#description').value;
   const new_cards_per_day = document.querySelector('#cardsPerDay').value;
 
-  console.log(name);
-  console.log(description);
-  console.log(new_cards_per_day);
-
-  const response = await fetch('/api/decks', { // We may need to modify the last parameter of the route to make it reflect the actual route that we will be using for creating a new deck.
+  const response = await fetch('/api/decks', {
     method: 'POST',
     body: JSON.stringify({name, description, new_cards_per_day, cueCardData}),
     headers: { 'Content-Type': 'application/json' },

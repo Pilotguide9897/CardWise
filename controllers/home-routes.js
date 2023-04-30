@@ -22,16 +22,20 @@ router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckData = await Deck.findAll({
-        include:[{model: User, attributes: ['name']}],
+        where: {
+          user_id: req.session.user_id,
+        }
+      },{
+        include: [{model: User}]
       });
       if (!deckData) {
         res.status(400).json({ message: 'Unable to locate decks.' });
         return;
       }
-      const decks = deckData.map((deck) => {
+      const decks = deckData.map(deck => {
         return deck.get({ plain: true });
       });
-      //console.log(decks);
+      console.log(decks);
       res.render('dashboard', {
         deckData: decks,
         logged_in: req.session.logged_in,
@@ -71,7 +75,10 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckToUpdate = await Deck.findByPk(req.params.id, {
-        include: [{model: Card}],
+        include: [{model: Card, attributes: [
+          'front',
+          'back',
+        ]}],
       });
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
@@ -79,7 +86,7 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
       }
       const deckData = deckToUpdate.get({plain: true});
       console.log('----DEEEECCCCCKKKSS');
-      console.log(deckToUpdate);
+      console.log(deckData);
       res.render('updatedeck', {
         deckData: deckData,
         deck: deckToUpdate.Cards,
