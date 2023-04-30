@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-const { practice} = require('../../utils/helpers');
+const { practice } = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
