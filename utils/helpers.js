@@ -17,18 +17,17 @@ module.exports = {
   },
 
   // Helper function to implement the supermemo library.
-  practice: (flashcard, grade) => {
-    const { interval, repetition, efactor } = supermemo(flashcard, grade);
-    const dueDate = dayjs(Date.now()).add(interval, 'day').toISOString();
+  updateSupermemoInfo: (card, grade) => {
+    const { interval, repetition, efactor } = supermemo(card, grade);
 
-    return { ...flashcard, interval, repetition, efactor, dueDate };
+    return { ...card, interval, repetition, efactor, dueDate };
   },
 
-  // Helper function to implement the mathpix library.
-  renderCardWithMathpix: async (cards) => {
-    const renderedHTML = renderMarkdown(cards); // May need to modify to only present the card body.
-    // Replace the content of the card element with the rendered html
-    const cardElement = document.getElementById('cardbody'); // Placeholder id
-    cardElement.innerHTML = renderedHTML;
-  },
+  // // Helper function to implement the mathpix library.
+  // renderCardWithMathpix: async (cards) => {
+  //   const renderedHTML = renderMarkdown(cards); // May need to modify to only present the card body.
+  //   // Replace the content of the card element with the rendered html
+  //   const cardElement = document.getElementById('cardbody'); // Placeholder id
+  //   cardElement.innerHTML = renderedHTML;
+  // },
 };

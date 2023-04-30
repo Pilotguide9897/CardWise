@@ -1,73 +1,59 @@
-// Relocate to the review view
-const reviewTraveller = async (deckId, data) => {
-  const response = await fetch(`/review/${deckId}`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
+const { updateSupermemoInfo } = require("../../utils/helpers");
+
+  let isFrontSideDisplayed = true;
+
+  const frontSide = document.getElementById('frontSide');
+  const backSide = document.getElementById('backSide');
+  const answerBtn = document.getElementById('answerBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  const cardsUpForReview = {{{cardsUpForReview}}}; // Use server data
+
+  let currentCardIndex = 0;
+  frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
+  backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
+
+  answerBtn.addEventListener('click', () => {
+    isFrontSideDisplayed = !isFrontSideDisplayed;
+    frontSide.style.display = isFrontSideDisplayed ? 'block' : 'none';
+    backSide.style.display = isFrontSideDisplayed ? 'none' : 'block';
   });
 
-  if (response.ok) {
-    document.location.replace('/review');
-  } else {
-    alert(response.statusText);
-  }
-};
+  nextBtn.addEventListener('click', () => {
+    const grade = document.querySelector('input[name="supermemo"]:checked').value;
+    let card = cardsUpForReview[currentCardIndex];
+    isFrontSideDisplayed = true;
+    frontSide.style.display = 'block';
+    backSide.style.display = 'none';
+    const updatedCard = updateSupermemoInfo(card, grade);
+    await updateCard(updatedCard);
 
-// Get the queued cards and their data.
-const queuedCards = async (deckId) => {
-  const response = await fetch(`/api/decks/${deckId}/queued`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  if (response.ok) {
-    const data = await response.json();
-    console.log('Data found:', data);
-    cards = data;
-    updateFlashCard(cards[currentCardIndex]);
-    reviewTraveller(deckId);
-  } else {
-    alert(response.statusText);
-  }
-};
-
-// Render the card's front side
-function updateFlashCard(card) {
-  const flashCard = document.getElementById('flashCard');
-  flashCard.innerHTML = `<h1>${card.front}</h1>`;
-}
-
-// Update to display the back of the card
-function handleAnswer() {
-  const flashCard = document.getElementById('flashCard');
-  const card = cards[currentCardIndex];
-  flashCard.innerHTML = `<h1>${card.back}</h1>`;
-}
-
-// Navigate to the next card and save the user's grade
-let currentCardIndex = 0;
-let cards = [];
-
-async function handleNext(deckId) {
-  const grade = document.querySelector('input[name="supermemo"]:checked').value;
-
-  // Save the user's grade for the current card
-  const card = cards[currentCardIndex];
-  await saveGrade(card, grade);
-
-  // Move to the next card
-  currentCardIndex++;
-
-  if (currentCardIndex < cards.length) {
-    updateFlashCard(cards[currentCardIndex]);
-  } else {
-    alert('You have finished reviewing the cards');
-    // Redirect to another page, e.g., the dashboard
+    if (currentCardIndex >= cardsUpForReview.length) {
+    alert('You have finished reviewing all the cards for toady');
     document.location.replace('/dashboard');
   }
-}
 
-// Event listeners for the buttons:
-document.getElementById('answerBtn').addEventListener('click', handleAnswer);
-document
-  .getElementById('nextBtn')
-  .addEventListener('click', () => handleNext(deckId));
+    frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
+    backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
+  });
+
+// Send the data to the db to update supermemo information
+  async function updateCard(updatedCard) {
+  try {
+    const response = await fetch(`/api/cards/${card.id}`, { // I need to get the correct route...
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(card),
+    });
+
+    if (response.ok) {
+      console.log('Card updated successfully');
+    } else {
+      console.error('Error updating card');
+    }
+  } catch (error) {
+    console.error('Error updating card:', error);
+  }
+}
