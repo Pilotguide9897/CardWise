@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-// const { practice } = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -20,7 +19,6 @@ router.get('/', async (req, res) => {
     const decks = deckData.map((deck) => {
       return deck.get({ plain: true });
     });
-
     res.json(decks);
   } catch (err) {
     console.error({
@@ -77,7 +75,7 @@ router.put('/:id', async (req, res) => {
     // update deck properties.
     const deckData = await Deck.update(
       {
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         name: req.body.name,
         description: req.body.description,
         new_cards_per_day: req.body.new_cards_per_day,
@@ -152,17 +150,17 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// New Deck
+// New Deck -working Victoria
 router.post('/', async (req, res) => {
   try {
     const deckData = await Deck.create({
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
       name: req.body.name,
       description: req.body.description,
       new_cards_per_day: req.body.new_cards_per_day,
     });
 
-    const newCardData = req.body.cards.map((card) => {
+    const newCardData = req.body.cueCardData.map((card) => {
       return {
         ...card,
         deck_id: deckData.id,
@@ -189,7 +187,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// deleting a deck
+// deleting a deck - works Victoria
 router.delete('/:id', async (req, res) => {
   try {
     const deckData = await Deck.destroy({
@@ -217,19 +215,5 @@ router.delete('/:id', async (req, res) => {
       .json({ message: 'There was an error deleting the Deck', error: err });
   }
 });
-
-// Need to add code to get the cards that are queued for review and review them.
-
-// Call the practice function with a flashcard and grade
-// const updatedFlashcardData = practice(flashcard, grade);
-
-// // Update the original Card instance with the updated data
-// flashcard.interval = updatedFlashcardData.interval;
-// flashcard.repetition = updatedFlashcardData.repetition;
-// flashcard.efactor = updatedFlashcardData.efactor;
-// flashcard.dueDate = updatedFlashcardData.dueDate;
-
-// // Save the updated card information to the database
-// flashcard.save();
 
 module.exports = router;

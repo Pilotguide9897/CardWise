@@ -11,14 +11,6 @@ Deck.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,6 +23,14 @@ Deck.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 10,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
   },
   {

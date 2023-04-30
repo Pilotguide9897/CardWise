@@ -156,7 +156,6 @@ nav button{
 }
 #welcomeDiv{
     padding: 1em;
- 
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
     display: flex;
@@ -215,6 +214,7 @@ nav button{
 #cue-card-container{
     display: flex;
     flex-direction: column;
+   
 }
 .cardDiv{
     border: none;
@@ -232,6 +232,8 @@ nav button{
     border: 1px solid var(--lightBlue);
     padding: 0.2em;
     border-radius: var(--borderBox);
+    width: 40%;
+    margin-inline: 0.5em;
 }
 #bottomButtons{
   display: flex;
@@ -276,7 +278,57 @@ nav button{
     color: var(--blue);
   
 }
+/* Update cards page */
+#updateDiv{
+    margin: 1em;
+}
+#updateDiv h2{
+    margin-block: 0.5em;
+}
+#updateDiv form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#updateDiv input{
+    width: 50%;
+    margin-block: 1em;
+    padding: 0.5em;
+    border-radius: var(--borderBox);
+    border: 1px solid var(--lightBlue);
+}
+#updateCardsDiv{
+    margin: 1em;
+}
+.updatePartial{
+    margin-block: 1em;
+    border: none;
+    border-radius: var(--borderBox);
+    box-shadow: var(--boxShadow);
+    padding: 1.5em;
+}
+.updatePartial form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.updatePartial input{
+  border: 1px solid var(--lightBlue);
+padding: 0.5em;
+  border-radius: var(--borderBox);
+}
 
+#updateBtnDiv{
+    margin-block: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#updateBtnDiv button{
+    font-size: var(--smallSize);
+}
 
 /* Finished the deck */
 #finishDiv{
@@ -296,6 +348,12 @@ nav button{
 
 }
 
+
+/* Needed for all links */
+a{
+    text-decoration: none;
+    color: var(--black);
+}
 
 
 /* Media screens */
@@ -360,6 +418,7 @@ nav button{
     #radioCont{
         width: 60%;
     }
+   
   
    }
    @media only screen and (max-width: 950px){
@@ -376,7 +435,15 @@ nav button{
     }
     .cardForm input{
         margin-block: 0.5em;
+        width: 100%;
     }
+   
+    .updatePartial form{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+   
    }
 
    
