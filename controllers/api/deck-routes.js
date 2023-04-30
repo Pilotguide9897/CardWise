@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-const { practice } = require('../../utils/helpers');
+// const { practice } = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -38,20 +38,18 @@ router.get('/:id', async (req, res) => {
   try {
     const deckData = await Deck.findByPk(req.params.id, {
       attributes: {
-        exclude: ['user_id', 'userId', 'createdAt', 'updatedAt'],
+        exclude: ['user_id', 'createdAt', 'updatedAt'],
       },
       include: {
         model: Card,
         attributes: {
           exclude: [
             'deck_id',
-            'is_queued',
             'interval',
             'repetition',
             'efactor',
             'createdAt',
             'updatedAt',
-            'deckId',
           ],
         },
       },
@@ -223,15 +221,15 @@ router.delete('/:id', async (req, res) => {
 // Need to add code to get the cards that are queued for review and review them.
 
 // Call the practice function with a flashcard and grade
-const updatedFlashcardData = practice(flashcard, grade);
+// const updatedFlashcardData = practice(flashcard, grade);
 
-// Update the original Card instance with the updated data
-flashcard.interval = updatedFlashcardData.interval;
-flashcard.repetition = updatedFlashcardData.repetition;
-flashcard.efactor = updatedFlashcardData.efactor;
-flashcard.dueDate = updatedFlashcardData.dueDate;
+// // Update the original Card instance with the updated data
+// flashcard.interval = updatedFlashcardData.interval;
+// flashcard.repetition = updatedFlashcardData.repetition;
+// flashcard.efactor = updatedFlashcardData.efactor;
+// flashcard.dueDate = updatedFlashcardData.dueDate;
 
-// Save the updated card information to the database
-flashcard.save();
+// // Save the updated card information to the database
+// flashcard.save();
 
 module.exports = router;
