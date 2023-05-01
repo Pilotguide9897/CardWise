@@ -61,21 +61,15 @@ async function displayCards(deckId) {
   });
 
   nextBtn.addEventListener('click', () => {
-    const selectedInput = document.querySelector(
+    const grade = document.querySelector(
       'input[name="supermemo"]:checked'
-    );
-    const grade = selectedInput ? selectedInput.value : null;
-
-    if (grade) {
-      let card = cardsUpForReview[currentCardIndex];
-      isFrontSideDisplayed = true;
-      frontSide.style.display = 'block';
-      backSide.style.display = 'none';
-      updateCard(card, grade);
-      currentCardIndex++;
-    } else {
-      alert('Please select a grade before proceeding!');
-    }
+    ).value;
+    let card = cardsUpForReview[currentCardIndex];
+    isFrontSideDisplayed = true;
+    frontSide.style.display = 'block';
+    backSide.style.display = 'none';
+    updateCard(card, grade);
+    currentCardIndex++;
 
     if (currentCardIndex < cardsUpForReview.length) {
       frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
@@ -84,7 +78,7 @@ async function displayCards(deckId) {
       document.location.replace('/finish');
     }
   });
-} 
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   const reviewPageMarker = document.getElementById('review-page-marker');
@@ -92,18 +86,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const deckId = urlPath.split('/')[2];
 
   if (reviewPageMarker) {
-    await displayCards(deckId);
-  }
-});
-
-document.addEventListener('DOMContentLoaded', async () => {
-  const reviewPageMarker = document.getElementById('review-page-marker');
-  const urlPath = window.location.pathname;
-  const deckId = urlPath.split('/')[2];
-
-  if (reviewPageMarker) {
-    // const cardsUpForReview = fetchCardsUpForReview(deckId);
-    // return cardsUpForReview;
     await displayCards(deckId);
   }
 });

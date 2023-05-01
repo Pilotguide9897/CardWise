@@ -248,6 +248,8 @@ router.get('/review/:id', async (req, res) => {
 router.put('/review/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     const {card, grade } = req.body;
+    console.log(card);
+    console.log(grade);
     await updateSupermemoInfo(card, grade);
     try {
       const updateWithSequelize = await Card.update({
