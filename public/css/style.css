@@ -2,7 +2,7 @@
 
 :root{
     --black: #4D3E3E;
-    --grey: #a09f9f;
+    --grey: #b5b5b5;
     --darkGrey: #484747;
     --white: #f8f8f8;
     --superWhite: #ffffff;
@@ -14,7 +14,7 @@
     --mainSize: 1.1em;
     --smallSize: 0.8em;
     --fontFamily: 'Comfortaa', cursive;
-    --boxShadow: 5px 10px 18px var(--grey);
+    --boxShadow: 5px 10px 13px var(--grey);
 }
 *{
     margin: 0;
@@ -33,6 +33,7 @@ button{
     border: none;
     border-radius: var(--borderButton);
     width: 150px;
+    cursor: pointer;  
 }
 /* Header/Nav */
 header{
@@ -446,7 +447,58 @@ a{
    
    }
 
-   
+   @media only screen and (max-width: 1030px){
+    #topInput{
+        display: flex;
+        flex-direction: column;
+        padding: 0.5em;
+        margin-inline: 1em;
+    }
+    #topInput h1{
+        font-size: var(--headerSize);
+    }
+    #topInput label{
+        font-size: var(--mainSize);
+        padding-block: 0.5em;
+    }
+    #topInput input{
+        width: 50%;
+        border: 1px solid var(--lightBlue);
+        border-radius: var(--borderBox);
+        padding: 0.5em;
+    }
+    #topInput textarea{
+        width: 50%;
+        border: 1px solid var(--lightBlue);
+        border-radius: var(--borderBox);
+        padding: 0.5em;
+    }
+  
+    
+    .cardDiv{
+ 
+        margin: 1em;
+        padding: 1em;
+        background-color: var(--superWhite);
+    }
+    .cardForm{
+        padding: 0.5em;
+    }
+    
+    .cardForm input{
+        width: 100%;
+
+    }
+    #bottomButtons{
+      display: flex;
+      justify-content: space-between;
+      margin: 2em;
+    }
+    #bottomButtons button{
+        font-size: var(--smallSize);
+    
+    }
+   }
 
 
 
