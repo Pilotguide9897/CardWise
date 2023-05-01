@@ -1,11 +1,12 @@
-<div id="deckDesc" class="pure-u-1">
+  <div id="deckDesc" class="pure-u-1">
         <div class="leftDeck">
+
+         <!-- Working -->
         <h3>{{name}}</h3>
         <h4>{{description}}</h4>
     </div>
     <div class="rightDeck">
-       <button id="editBtn-{{id}}">Edit</button>
-       <button id="deleteBtn-{{id}}">Delete</button>
+      <button id="reviewBtn"><a href="/review">Review</a></button>
+       <button id="deleteBtn"><a href='/updateDeck/{{id}}'>Edit</a></button>
     </div>
     </div>
-</div>

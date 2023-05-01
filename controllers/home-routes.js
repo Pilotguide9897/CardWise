@@ -24,22 +24,23 @@ router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckData = await Deck.findAll({
-        where: { user_id: req.session.user_id },
-        include: { model: Card },
+        where: {
+          user_id: req.session.user_id,
+        }
+      },{
+        include: [{model: User}]
       });
-
       if (!deckData) {
         res.status(400).json({ message: 'Unable to locate decks.' });
         return;
       }
-
-      const decks = deckData.map((deck) => {
+      const decks = deckData.map(deck => {
         return deck.get({ plain: true });
       });
-
+      console.log(decks);
       res.render('dashboard', {
         deckData: decks,
-        loggedIn: req.session.logged_in,
+        logged_in: req.session.logged_in,
       });
     } catch (err) {
       console.error({
@@ -60,7 +61,7 @@ router.get('/create', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       res.render('createdeck', {
-        loggedIn: req.session.logged_in,
+        logged_in: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
@@ -76,14 +77,20 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckToUpdate = await Deck.findByPk(req.params.id, {
-        include: [Card],
+        include: [{model: Card, attributes: [
+          'front',
+          'back',
+        ]}],
       });
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
         return;
       }
-      res.render('updateDeck', {
-        deckData: deckToUpdate,
+      const deckData = deckToUpdate.get({plain: true});
+      console.log('----DEEEECCCCCKKKSS');
+      console.log(deckData);
+      res.render('updatedeck', {
+        deckData: deckData,
         deck: deckToUpdate.Cards,
         loggedIn: req.session.logged_in,
       });
@@ -116,8 +123,8 @@ router.get('/decks/:id', withAuth, async (req, res) => {
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
         return;
-      }
-      res.render('reviewDeck', {
+      } //review
+      res.render('review', {
         deckData: deckToReview,
         deck: deckToReview.Cards,
         loggedIn: req.session.logged_in,

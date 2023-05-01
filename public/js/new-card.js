@@ -2,13 +2,12 @@
 const addCardButton = document.getElementById('add-cue-card');
 const createButton = document.getElementById('create');
 const cueCardContainer = document.getElementById('cue-card-container');
-const deckTitleForm = document.getElementById('newDeckTitle');
-const deckDescriptionForm = document.getElementById('description');
 
-let cueCardCount = 5;
+let cueCardCount = 0;
 
 function addCard() {
   cueCardCount++;
+  console.log('Cure card' + cueCardCount);
   const cueDiv = document.createElement('div');
   cueDiv.setAttribute('class', 'pure-g cardDiv');
   const cueCardForm = document.createElement('form');
@@ -24,6 +23,7 @@ function addCard() {
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
 }
+addCard();
 
 async function createCueCards() {
 
@@ -48,10 +48,13 @@ async function createCueCards() {
       return;
     }
   }
+  const name = document.querySelector('#name').value;
+  const description = document.querySelector('#description').value;
+  const new_cards_per_day = document.querySelector('#cardsPerDay').value;
 
-  const response = await fetch('/api/decks/', {
+  const response = await fetch('/api/decks', {
     method: 'POST',
-    body: JSON.stringify( {cards: cueCardData, name: newDeckTitle, description: newDeckDescription} ),
+    body: JSON.stringify({name, description, new_cards_per_day, cueCardData}),
     headers: { 'Content-Type': 'application/json' },
   });
 
@@ -72,7 +75,7 @@ if (createButton) {
 }
 
 // Create initial cue cards
-const initialCueCardCount = cueCardCount;
+const initialCueCardCount = 4;
 for (let i = 0; i < initialCueCardCount; i++) {
   addCard();
 }

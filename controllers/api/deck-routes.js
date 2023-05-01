@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-// const { practice} = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -20,7 +19,6 @@ router.get('/', async (req, res) => {
     const decks = deckData.map((deck) => {
       return deck.get({ plain: true });
     });
-
     res.json(decks);
   } catch (err) {
     console.error({
@@ -38,20 +36,18 @@ router.get('/:id', async (req, res) => {
   try {
     const deckData = await Deck.findByPk(req.params.id, {
       attributes: {
-        exclude: ['user_id', 'userId', 'createdAt', 'updatedAt'],
+        exclude: ['user_id', 'createdAt', 'updatedAt'],
       },
       include: {
         model: Card,
         attributes: {
           exclude: [
             'deck_id',
-            'is_queued',
             'interval',
             'repetition',
             'efactor',
             'createdAt',
             'updatedAt',
-            'deckId',
           ],
         },
       },
@@ -79,7 +75,7 @@ router.put('/:id', async (req, res) => {
     // update deck properties.
     const deckData = await Deck.update(
       {
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         name: req.body.name,
         description: req.body.description,
         new_cards_per_day: req.body.new_cards_per_day,
@@ -137,13 +133,8 @@ router.put('/:id', async (req, res) => {
     });
 
     await Card.bulkCreate(cardQueue, {
-      updateOnDuplicate: [
-        'front',
-        'back',
-        'interval',
-        'repetition',
-        'efactor',
-      ],
+      updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
+
       individualHooks: true,
       returning: true,
     });
@@ -160,7 +151,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// New Deck
+// New Deck -working Victoria
 router.post('/', async (req, res) => {
   try {
     const deckData = await Deck.create({
@@ -170,7 +161,7 @@ router.post('/', async (req, res) => {
       new_cards_per_day: req.body.new_cards_per_day,
     });
 
-    const newCardData = req.body.cards.map((card) => {
+    const newCardData = req.body.cueCardData.map((card) => {
       return {
         ...card,
         deck_id: deckData.id,
@@ -197,7 +188,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// deleting a deck
+// deleting a deck - works Victoria
 router.delete('/:id', async (req, res) => {
   try {
     const deckData = await Deck.destroy({

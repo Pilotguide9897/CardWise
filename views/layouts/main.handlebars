@@ -19,14 +19,13 @@
       <a href='/'>Home</a>
     
       <a href="/dashboard">Decks</a>
-      {{#if loggedIn}}
-       <!--Add the dashboard to under the if once ready-->
+      {{#if logged_in}}
         <button id='logout'>Logout</button>
       {{else}}
        <button id="login"><a href='/login'>Login</a></button> 
       {{/if}}
     </nav>  
-     </header>
+    </header>
     <main>
       {{{body}}}
     </main>
