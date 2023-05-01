@@ -16,10 +16,14 @@ module.exports = {
   },
 
   // Helper function to implement the supermemo library.
-  updateSupermemoInfo: (card, grade) => {
-    const { interval, repetition, efactor } = supermemo(card, grade);
-
-    return { ...card, interval, repetition, efactor };
+  updateSupermemoInfo: (flashcard, grade) => {
+    console.log ('message:', flashcard);
+    const { interval, repetition, efactor } = supermemo(flashcard, grade);
+    console.log('interval:', interval);
+    console.log('repetition:', repetition);
+    console.log('efactor:', efactor);
+    console.log('Update supermemo activated');
+    return { ...flashcard, interval, repetition, efactor };
   },
 
   // // Helper function to implement the mathpix library.
