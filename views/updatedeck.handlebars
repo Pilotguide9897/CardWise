@@ -17,15 +17,16 @@
      
          {{#each deckData.cards as |card|}}
          <div class="pure-g updatePartial">
-         <div class="pure-u-1">
-          <form>
-         <label for="front">Term: </label>
-          <input type="text" id="front" name="front" value="{{card.front}}">
-          <label for="back">Definition: </label>
-          <input type="text" id="back" name="back" value="{{card.back}}">
-          <button id="delCard">Delete</button>
-          </form>
-          </div>
+       <div class="pure-u-1">
+   <form class="editCard">
+      <h5 class="cardId">{{card.id}}</h5>
+    <label for="front">Term: </label>
+    <input type="text" id="front" name="front" value="{{card.front}}">
+    <label for="back">Definition: </label>
+    <input type="text" id="back" name="back" value="{{card.back}}">
+    <button id="delCard">Delete</button>
+    </form>
+    </div>
          </div>
          {{/each}}
   
@@ -36,5 +37,5 @@
     </div>
 </div>
 
-
+<script src="/js/update.js"></script>
 <script src="/js/delete.js"></script>
