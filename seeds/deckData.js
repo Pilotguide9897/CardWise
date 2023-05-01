@@ -15,7 +15,7 @@ const deckData = [
     user_id: 3,
     name: 'English',
     description: 'This is a placeholder description. 🦖',
-    new_cards_per_day: 1,
+    new_cards_per_day: 5,
   },
   {
     user_id: 4,

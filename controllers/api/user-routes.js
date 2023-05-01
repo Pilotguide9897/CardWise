@@ -41,7 +41,7 @@ router.post('/new', async (req, res) => {
       res.status(200).json(newUser);
     });
   } catch (err) {
-    console.log('Error:', err); // Log the error
+    console.log('Error:', err);
     res.status(400).json(err);
   }
 });

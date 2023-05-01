@@ -216,35 +216,32 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Get queued cards for a single deck (A am making this because I do not want to mess with your route above, but I need to be able to access the updated at property to know which cards, have been in the queue the longest. Just in case case users have missed a few days of review and their queue is longer than the number of cards per day that they have set to review).
-router.get('/:id/queued', async (req, res) => {
-  try {
-    const deckData = await Deck.findByPk(req.params.id, {
-      attributes: ['new_cards_per_day'],
-    });
+router.get('/review/:id', async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      const studyDeck = await Deck.findByPk(req.params.id);
+      const newCardsPerDay = studyDeck.new_cards_per_day;
 
-    if (!deckData) {
-      res.status(400).json({ message: 'A deck with that id does not exist' });
-      return;
+      const cardsUpForReview = await Card.findAll({
+        where: {
+          deck_id: req.params.id,
+          is_queued: true,
+        },
+        order: [['updatedAt', 'ASC']],
+        limit: newCardsPerDay,
+      });
+
+      const plainCardsUpForReview = cardsUpForReview.map((card) =>
+        card.get({ plain: true })
+      );
+
+      res.json(plainCardsUpForReview);
+    } catch (error) {
+      console.error('Error fetching cards up for review:', error);
+      res.status(500).json({ message: 'Error fetching cards up for review' });
     }
-
-    const newCardsPerDay = deckData.new_cards_per_day;
-
-    const queuedCards = await Card.findAll({
-      where: {
-        deck_id: req.params.id,
-        is_queued: true,
-      },
-      order: [['updatedAt', 'ASC']],
-      limit: newCardsPerDay,
-    });
-
-    res.json(queuedCards);
-  } catch (err) {
-    console.error({
-      message: 'There was a problem finding the queued cards',
-      error: err,
-    });
-    res.status(500).json({ message: 'There was a problem finding the queued cards' });
+  } else {
+    res.status(401).json({ message: 'Not logged in' });
   }
 });
 
