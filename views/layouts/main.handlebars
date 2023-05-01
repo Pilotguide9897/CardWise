@@ -16,11 +16,13 @@
         <h1 id="title">CardWise</h1>
       
     <nav>
-       <a href='/'>Home</a>
+      
        {{#if logged_in}}
+       
       <a href="/dashboard">Decks</a>
         <button id='logout'>Logout</button>
       {{else}}
+       <a href='/'>Home</a>
        <button id="login"><a href='/login'>Login</a></button> 
       {{/if}}
     </nav>  
