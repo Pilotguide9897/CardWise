@@ -17,6 +17,9 @@ const updateDeck = async(event) => {
     let back = cards[i][1].value;
     cardData.push({front, back});
   }
+  console.log(name);
+  console.log(description);
+  console.log(new_cards_per_day);
   console.log(cardData);
 
   const response = await fetch(`/api/decks/${id}`, {
@@ -26,7 +29,7 @@ const updateDeck = async(event) => {
       'Content-Type': 'application/json',
     } });
   if(response.ok){
-    doucment.location.replace('/dashboard');
+    window.location.replace('/dashboard');
   } else {
     alert('Couldnt update the deck');
   }

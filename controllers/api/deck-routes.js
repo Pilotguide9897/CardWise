@@ -100,7 +100,7 @@ router.put('/:id', async (req, res) => {
     // Make a list of cards that exist in currentCards that
     // but are missing from req.body.cards.
     const cardsToDelete = currentCards.filter(
-      (card) => !req.body.cards.some((newCard) => newCard.id === card.id)
+      (card) => !req.body.cardData.some((newCard) => newCard.id === card.id)
     );
     // create a list of the card ids to be used for bulk destoy.
     const cardsToDeleteIds = cardsToDelete.map((card) => card.id);
@@ -109,7 +109,7 @@ router.put('/:id', async (req, res) => {
     }
 
     let cardQueue = [];
-    req.body.cards.forEach((newCard) => {
+    req.body.cardData.forEach((newCard) => {
       // find card in both arrays with same id.
       let result = currentCards.find(
         (currentCard) => currentCard.id === newCard.id
@@ -124,7 +124,6 @@ router.put('/:id', async (req, res) => {
         // if there is no result, it's because this card is brand new.
         cardToProcess = newCard;
       }
-
       if (cardToProcess) {
         cardQueue.push({
           ...cardToProcess,
