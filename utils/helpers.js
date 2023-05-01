@@ -17,12 +17,8 @@ module.exports = {
 
   // Helper function to implement the supermemo library.
   updateSupermemoInfo: (flashcard, grade) => {
-    console.log ('message:', flashcard);
     const { interval, repetition, efactor } = supermemo(flashcard, grade);
-    console.log('interval:', interval);
-    console.log('repetition:', repetition);
-    console.log('efactor:', efactor);
-    console.log('Update supermemo activated');
+
     return { ...flashcard, interval, repetition, efactor };
   },
 
