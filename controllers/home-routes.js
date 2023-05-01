@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Deck, User, Card } = require('../models');
 const { withAuth } = require('../utils/helpers');
 
+
 // GET Home page
 router.get('/', async (req, res) => {
   try {
@@ -37,10 +38,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
       const decks = deckData.map(deck => {
         return deck.get({ plain: true });
       });
-      console.log(decks);
       res.render('dashboard', {
         deckData: decks,
-        logged_in: req.session.logged_in,
+        loggedIn: req.session.logged_in,
       });
     } catch (err) {
       console.error({
@@ -61,11 +61,11 @@ router.get('/create', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       res.render('createdeck', {
-        logged_in: req.session.logged_in,
+        loggedIn: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
-      res.status(500).json({ message: 'Error fetching /decks/new' });
+      res.status(500).json({ message: 'Error fetching /create' });
     }
   } else {
     res.render('homepage');
@@ -87,8 +87,6 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
         return;
       }
       const deckData = deckToUpdate.get({plain: true});
-      console.log('----DEEEECCCCCKKKSS');
-      console.log(deckData);
       res.render('updatedeck', {
         deckData: deckData,
         deck: deckToUpdate.Cards,
@@ -135,6 +133,36 @@ router.get('/decks/:id', withAuth, async (req, res) => {
     }
   } else {
     res.render('homepage');
+  }
+});
+
+// Get review page
+router.get('/review/:id', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      res.render('review', {
+        loggedIn: req.session.logged_in,
+      });
+    } catch (error) {
+      console.error('Error rendering your page:', error);
+      res.status(500).json({ message: 'Error rendering /review/:id' });
+    }
+  } else {
+    res.render('homepage');
+  }
+});
+
+// Get the finish page
+router.get('/finish', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      res.render('finish', {
+        loggedIn: req.session.logged_in,
+      });
+    } catch (error) {
+      console.error('Error rendering your page:', error);
+      res.status(500).json({ message: 'Error rendering /finish' });
+    }
   }
 });
 

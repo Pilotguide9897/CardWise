@@ -27,7 +27,7 @@ const signUpHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (name && email && password) {
+  if (name && email && password) { // Check if name is not empty
     const response = await fetch('/api/users/new', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
@@ -38,14 +38,18 @@ const signUpHandler = async (event) => {
       alert("new user created");
       document.location.replace('/dashboard');
     } else {
-      console.log('Response:', response);
       alert(response.statusText);
     }
   }
 };
 
 const loginForm = document.getElementById('loginForm');
-loginForm.addEventListener('submit', loginHandler);
+if (loginForm) {
+  loginForm.addEventListener('submit', loginHandler);
+}
 
 const signUpForm = document.getElementById('signupForm');
-signUpForm.addEventListener('submit', signUpHandler);
+if (signUpForm) {
+  signUpForm.addEventListener('submit', signUpHandler);
+}
+

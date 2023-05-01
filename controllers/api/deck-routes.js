@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
+const { updateSupermemoInfo, withAuth } = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -197,8 +198,6 @@ router.delete('/:id', async (req, res) => {
       },
     });
 
-    console.log(deckData);
-
     if (!deckData) {
       res.status(400).json({ message: 'No Deck found with that id.' });
       return;
@@ -213,6 +212,70 @@ router.delete('/:id', async (req, res) => {
     res
       .status(500)
       .json({ message: 'There was an error deleting the Deck', error: err });
+  }
+});
+
+// Get queued cards for a single deck (A am making this because I do not want to mess with your route above, but I need to be able to access the updated at property to know which cards, have been in the queue the longest. Just in case case users have missed a few days of review and their queue is longer than the number of cards per day that they have set to review).
+router.get('/review/:id', async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      const studyDeck = await Deck.findByPk(req.params.id);
+      const newCardsPerDay = studyDeck.new_cards_per_day;
+
+      const cardsUpForReview = await Card.findAll({
+        where: {
+          deck_id: req.params.id,
+          is_queued: true,
+        },
+        order: [['updatedAt', 'ASC']],
+        limit: newCardsPerDay,
+      });
+
+      const plainCardsUpForReview = cardsUpForReview.map((card) =>
+        card.get({ plain: true })
+      );
+
+      res.json(plainCardsUpForReview);
+    } catch (error) {
+      console.error('Error fetching cards up for review:', error);
+      res.status(500).json({ message: 'Error fetching cards up for review' });
+    }
+  } else {
+    res.status(401).json({ message: 'Not logged in' });
+  }
+});
+
+router.put('/review/:id', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    const {card, grade } = req.body;
+    await updateSupermemoInfo(card, grade);
+    try {
+      const updateWithSequelize = await Card.update({
+        is_queued: false,
+        interval: req.body.interval,
+        repetition: req.body.repetition,
+        efactor: req.body.efactor,
+      },
+      {
+        where: { id: req.params.id },
+      }
+      );
+
+      if (updateWithSequelize[0] > 0) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
+
+    } catch (err) {
+      console.error({
+        message: 'there was a problem updating the card',
+        error: err,
+      });
+      res.sendStatus(500);
+    }
+  } else {
+    res.status(403);
   }
 });
 

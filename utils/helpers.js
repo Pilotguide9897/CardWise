@@ -1,5 +1,4 @@
 // Import the required libraries and modules
-const dayjs = require('dayjs');
 const { supermemo } = require('supermemo');
 
 module.exports = {
@@ -17,18 +16,17 @@ module.exports = {
   },
 
   // Helper function to implement the supermemo library.
-  practice: (flashcard, grade) => {
+  updateSupermemoInfo: (flashcard, grade) => {
     const { interval, repetition, efactor } = supermemo(flashcard, grade);
-    const dueDate = dayjs(Date.now()).add(interval, 'day').toISOString();
 
-    return { ...flashcard, interval, repetition, efactor, dueDate };
+    return { ...flashcard, interval, repetition, efactor };
   },
 
-  // Helper function to implement the mathpix library.
-  renderCardWithMathpix: async (cards) => {
-    const renderedHTML = renderMarkdown(cards); // May need to modify to only present the card body.
-    // Replace the content of the card element with the rendered html
-    const cardElement = document.getElementById('cardbody'); // Placeholder id
-    cardElement.innerHTML = renderedHTML;
-  },
+  // // Helper function to implement the mathpix library.
+  // renderCardWithMathpix: async (cards) => {
+  //   const renderedHTML = renderMarkdown(cards); // May need to modify to only present the card body.
+  //   // Replace the content of the card element with the rendered html
+  //   const cardElement = document.getElementById('cardbody'); // Placeholder id
+  //   cardElement.innerHTML = renderedHTML;
+  // },
 };

@@ -7,7 +7,6 @@ let cueCardCount = 0;
 
 function addCard() {
   cueCardCount++;
-  console.log('Cure card' + cueCardCount);
   const cueDiv = document.createElement('div');
   cueDiv.setAttribute('class', 'pure-g cardDiv');
   const cueCardForm = document.createElement('form');
@@ -15,10 +14,10 @@ function addCard() {
   cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount-5}">Term: </label>
-    <input type="text" id="front-${cueCardCount-5}" name="front-${cueCardCount-5}">
-    <label for="back-${cueCardCount-5}">Definition: </label>
-    <input type="text" id="back-${cueCardCount-5}" name="back-${cueCardCount-5}">
+    <label for="front-${cueCardCount}">Term: </label>
+    <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
+    <label for="back-${cueCardCount}">Definition: </label>
+    <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
   `;
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
@@ -27,22 +26,16 @@ addCard();
 
 async function createCueCards() {
 
-  const newDeckTitle = deckTitleForm.value.trim();
-  const newDeckDescription = deckDescriptionForm.value.trim();
-
   const cueCardData = [];
 
   const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
 
   for (let i = 1; i <= actualCueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
-    console.log(front);
     const back = document.querySelector(`#back-${i}`).value.trim();
-    console.log(back);
 
     if (front && back) {
       cueCardData.push({ front, back });
-      console.log(cueCardData);
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;

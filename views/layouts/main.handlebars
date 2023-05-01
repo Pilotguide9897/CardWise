@@ -19,7 +19,7 @@
       <a href='/'>Home</a>
     
       <a href="/dashboard">Decks</a>
-      {{#if logged_in}}
+      {{#if loggedIn}}
         <button id='logout'>Logout</button>
       {{else}}
        <button id="login"><a href='/login'>Login</a></button> 
@@ -40,7 +40,7 @@
       document.head.append(script); script.onload = function() { const isLoaded
       = window.loadMathJax(); if (isLoaded) { console.log('Styles loaded!'); } }
     </script>
-    <script src="/js/relocate.js"></script>
+    <script src="/js/review.js"></script>
 
   </body>
 </html>
