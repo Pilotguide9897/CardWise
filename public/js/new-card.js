@@ -27,9 +27,6 @@ addCard();
 
 async function createCueCards() {
 
-  const newDeckTitle = deckTitleForm.value.trim();
-  const newDeckDescription = deckDescriptionForm.value.trim();
-
   const cueCardData = [];
 
   const actualCueCardCount = document.querySelectorAll('.cardDiv').length;

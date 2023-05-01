@@ -2,7 +2,7 @@
 
 :root{
     --black: #4D3E3E;
-    --grey: #b5b5b5;
+    --grey: #d7d7d7;
     --darkGrey: #484747;
     --white: #f8f8f8;
     --superWhite: #ffffff;
@@ -14,7 +14,7 @@
     --mainSize: 1.1em;
     --smallSize: 0.8em;
     --fontFamily: 'Comfortaa', cursive;
-    --boxShadow: 5px 10px 13px var(--grey);
+    --boxShadow: 5px 10px 15px 4px var(--grey);
 }
 *{
     margin: 0;
@@ -165,6 +165,7 @@ nav button{
     gap: 1em;
     height: 250px;
 }
+
 #todayDeck{
    
 }
@@ -275,7 +276,6 @@ nav button{
 }
 #radioCont input{
     color: var(--blue);
-  
 }
 /* Update cards page */
 #updateDiv{
@@ -304,29 +304,30 @@ nav button{
     border: none;
     border-radius: var(--borderBox);
     box-shadow: var(--boxShadow);
-    padding: 1.5em;
+    padding: 1em;
 }
 .updatePartial form{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-   
+  
 }
 .updatePartial input{
   border: 1px solid var(--lightBlue);
-padding: 0.5em;
+  padding: 0.5em;
+  width: 30%;
   border-radius: var(--borderBox);
 }
-
 #updateBtnDiv{
-    margin-block: 1em;
+    margin-block: 2em;
+    margin-inline: 1em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 #updateBtnDiv button{
-    font-size: var(--smallSize);
+   width: 20%;
 }
 
 /* Finished the deck */
@@ -352,119 +353,31 @@ a{
     color: var(--black);
 }
 
-@media only screen and (min-width: 375px){
- 
-}
-@media screen and (max-width: 650px){
-  
-}
 
-/* Media screens */
-@media only screen and (max-width: 750px) {
-   header{
+  @media only screen and (max-width: 900px){
+   /* Update cards page */
+#updateDiv h2{
+    text-align: center;
+    margin: 1em;
+    font-size: var(--headerSize);
+}
+#updateDiv form{
+    justify-content: center;
+    align-items: center;
+    font-size: var(--mainSize);
+}
+.updatePartial form{
     display: flex;
     flex-direction: column;
-   
-   }
-   header h1{
-    text-align: center;
-   }
-   nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-   }
-    #credsDiv{
-     flex-wrap: wrap;
-    }
-    #finishDiv{
-        margin: 6em;
-    }
-    .mainCont{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    .mainPhoto{
-        width: 60%;
-        margin-block: 1em;
-    }
-    .mainPhoto img{
-       height: 250px;   
-    }
-    .mainP{
-        font-size: var(--smallSize);
-        width: 100%;
-        text-align: center;
-        padding: 1em;
-    }
-    .middle{
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    #flashCard{
-        margin: 3em;
-        padding: 4em;
-    }
-    #flashCard h1{
-        font-size: var(--mainSize);
-    }
-    #flashCardBtn{
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: center;
-        gap: 1em;
-        font-size: var(--smallSize);
-    }
-    #radioCont{
-        width: 60%;
-    }
-   }
+    align-items: center;
+    font-size: var(--mainSize);
+}
+.updatePartial input{
+    width: 80%;
+    margin-block: 1em;
+  }
 
-
-   @media only screen and (max-width: 950px){
-    #topInput input{
-        width: 100%;
-    }
-    #topInput textarea{
-        width: 100%;
-    }
-    .cardForm{
-        padding: 0.5em;
-        display: flex;
-        flex-direction: column;
-    }
-    .cardForm input{
-        margin-block: 0.5em;
-        width: 100%;
-    }
-   
-    .updatePartial form{
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
- 
-   }
-
-   @media only screen and (max-width: 1030px){
-    .cardForm input{
-        width: 100%;
-
-    }
-    #bottomButtons{
-      display: flex;
-      justify-content: space-evenly;
-      margin: 1em;
-    }
-  
-   }
-
-
-
-   
-   
-   
-  
+#updateBtnDiv button{
+    width: 25%;
+}
+  }

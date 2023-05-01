@@ -4,7 +4,7 @@ const updateDeck = async(event) => {
 
   const id = window.location.toString().split('/')[window.location.toString().split('/').length -1];
 
-  const name = document.getElementById('name').value;
+  const name = document.getElementById('name').value.trim();
 
   const description = document.getElementById('description').value.trim();
 
@@ -17,10 +17,7 @@ const updateDeck = async(event) => {
     let back = cards[i][1].value;
     cardData.push({front, back});
   }
-  console.log(name);
-  console.log(description);
-  console.log(new_cards_per_day);
-  console.log(cardData);
+
 
   const response = await fetch(`/api/decks/${id}`, {
     method: 'PUT',
@@ -35,3 +32,4 @@ const updateDeck = async(event) => {
   }
 };
 document.querySelector('#updateDeck').addEventListener('click', updateDeck);
+
