@@ -30,13 +30,15 @@ const signUpHandler = async (event) => {
   if (name && email && password) {
     const response = await fetch('/api/users/new', {
       method: 'POST',
-      body: JSON.stringify({name, email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
+      alert("new user created");
       document.location.replace('/dashboard');
     } else {
+      console.log('Response:', response);
       alert(response.statusText);
     }
   }

@@ -1,7 +1,6 @@
 // Import the required libraries and modules
-const Card = require('../models/Card');
 const dayjs = require('dayjs');
-const { supermemo } = require('supermemo'); // I guess that I 
+const { supermemo } = require('supermemo');
 
 module.exports = {
   withAuth: (req, res, next) => {
@@ -23,5 +22,13 @@ module.exports = {
     const dueDate = dayjs(Date.now()).add(interval, 'day').toISOString();
 
     return { ...flashcard, interval, repetition, efactor, dueDate };
+  },
+
+  // Helper function to implement the mathpix library.
+  renderCardWithMathpix: async (cards) => {
+    const renderedHTML = renderMarkdown(cards); // May need to modify to only present the card body.
+    // Replace the content of the card element with the rendered html
+    const cardElement = document.getElementById('cardbody'); // Placeholder id
+    cardElement.innerHTML = renderedHTML;
   },
 };

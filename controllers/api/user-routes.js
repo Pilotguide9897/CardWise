@@ -25,9 +25,11 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 // POST Create New User
 router.post('/new', async (req, res) => {
   try {
+
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
@@ -39,6 +41,7 @@ router.post('/new', async (req, res) => {
       res.status(200).json(newUser);
     });
   } catch (err) {
+    console.log('Error:', err); // Log the error
     res.status(400).json(err);
   }
 });

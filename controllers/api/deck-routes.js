@@ -134,6 +134,7 @@ router.put('/:id', async (req, res) => {
 
     await Card.bulkCreate(cardQueue, {
       updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
+
       individualHooks: true,
       returning: true,
     });
@@ -193,7 +194,6 @@ router.delete('/:id', async (req, res) => {
     const deckData = await Deck.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
       },
     });
 
