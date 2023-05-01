@@ -3,8 +3,6 @@ async function fetchCardsUpForReview(deckId) {
     method: 'GET',
   });
 
-  console.log('responde:', response);
-
   if (response.ok) {
     const cardsUpForReview = await response.json();
     return cardsUpForReview;
@@ -53,7 +51,6 @@ async function displayCards(deckId) {
     }, 7000);
   }
 
-  console.log(cardsUpForReview[0].front);
   frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
   backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
 
@@ -73,8 +70,6 @@ async function displayCards(deckId) {
     backSide.style.display = 'none';
     updateCard(card, grade);
     currentCardIndex++;
-    console.log(currentCardIndex);
-    console.log(card);
 
     if (currentCardIndex < cardsUpForReview.length) {
       frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;

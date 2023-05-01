@@ -38,7 +38,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
       const decks = deckData.map(deck => {
         return deck.get({ plain: true });
       });
-      console.log(decks);
       res.render('dashboard', {
         deckData: decks,
         loggedIn: req.session.logged_in,
@@ -88,8 +87,6 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
         return;
       }
       const deckData = deckToUpdate.get({plain: true});
-      console.log('----DEEEECCCCCKKKSS');
-      console.log(deckData);
       res.render('updatedeck', {
         deckData: deckData,
         deck: deckToUpdate.Cards,
