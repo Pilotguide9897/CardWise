@@ -32,7 +32,8 @@ button{
     background-color: var(--lightBlue);
     border: none;
     border-radius: var(--borderButton);
-    width: 150px;
+    text-align: center;
+    width: 125px;
     cursor: pointer;  
 }
 /* Header/Nav */
@@ -352,9 +353,67 @@ a{
     text-decoration: none;
     color: var(--black);
 }
+@media only screen and (max-width: 600px){
+    /* Header/Nav */
+header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+nav button{
+    padding: 1em 1.5em;
+    background-color: var(--lightBlue);
+    border: none;
+    border-radius: var(--borderButton);
+}
+/* Update Page */
+    #updateBtnDiv{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    #updateBtnDiv{
+       border: 1px solid red;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 1em;
+    }
+    #updateBtnDiv button{
+    
+    }
+}
 
 
-  @media only screen and (max-width: 900px){
+@media only screen and (max-width: 750px){
+    /* Main Page */
+    .mainCont{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .mainPhoto{
+        width: 80%;
+        margin-block: 1em;
+    }
+    .mainPhoto img{
+       height: 250px;   
+    }
+    .mainP{
+        font-size: 0.8em;
+        text-align: center;
+        width: 100%;
+        padding-block: 1em;
+    }
+    .middle{
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+
+    }
+}
+
+@media only screen and (max-width: 900px){
    /* Update cards page */
 #updateDiv h2{
     text-align: center;
