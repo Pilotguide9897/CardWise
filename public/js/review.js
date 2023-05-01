@@ -1,5 +1,3 @@
-//const { updateSupermemoInfo } = require('../../utils/helpers');
-
 async function fetchCardsUpForReview(deckId) {
   // Can now access the cards up for review data.
   console.log('bar');
@@ -19,12 +17,12 @@ async function fetchCardsUpForReview(deckId) {
 }
 
 // Send the data to the db to update supermemo information
-async function updateCard(updatedCard) {
+async function updateCard(card, grade) {
   try {
-    const response = await fetch(`/api/cards/${card.id}`, {
+    const response = await fetch(`/api/decks/review/${card.id}`, {
       // I need to get the correct route...
       method: 'PUT',
-      body: JSON.stringify({ updatedCard }),
+      body: JSON.stringify({ card, grade }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -68,8 +66,8 @@ async function displayCards(deckId) {
     isFrontSideDisplayed = true;
     frontSide.style.display = 'block';
     backSide.style.display = 'none';
-    const updatedCard = updateSupermemoInfo(card, grade);
-    updateCard(updatedCard);
+    updateCard(card, grade);
+    currentCardIndex++;
   });
 
   if (currentCardIndex >= cardsUpForReview.length) {

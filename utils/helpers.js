@@ -19,7 +19,7 @@ module.exports = {
   updateSupermemoInfo: (card, grade) => {
     const { interval, repetition, efactor } = supermemo(card, grade);
 
-    return { ...card, interval, repetition, efactor, dueDate };
+    return { ...card, interval, repetition, efactor };
   },
 
   // // Helper function to implement the mathpix library.
