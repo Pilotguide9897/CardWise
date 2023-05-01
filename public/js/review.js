@@ -61,9 +61,10 @@ async function displayCards(deckId) {
   });
 
   nextBtn.addEventListener('click', () => {
-    const grade = document.querySelector(
+    const selectedInput = document.querySelector(
       'input[name="supermemo"]:checked'
-    ).value;
+    );
+    const grade = selectedInput ? selectedInput.value : null;
 
     if (grade) {
       let card = cardsUpForReview[currentCardIndex];
@@ -83,7 +84,17 @@ async function displayCards(deckId) {
       document.location.replace('/finish');
     }
   });
-}
+} 
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const reviewPageMarker = document.getElementById('review-page-marker');
+  const urlPath = window.location.pathname;
+  const deckId = urlPath.split('/')[2];
+
+  if (reviewPageMarker) {
+    await displayCards(deckId);
+  }
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
   const reviewPageMarker = document.getElementById('review-page-marker');
