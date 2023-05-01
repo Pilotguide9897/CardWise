@@ -44,7 +44,12 @@ const signUpHandler = async (event) => {
 };
 
 const loginForm = document.getElementById('loginForm');
-loginForm.addEventListener('submit', loginHandler);
+if (loginForm) {
+  loginForm.addEventListener('submit', loginHandler);
+}
 
 const signUpForm = document.getElementById('signupForm');
-signUpForm.addEventListener('submit', signUpHandler);
+if (signUpForm) {
+  signUpForm.addEventListener('submit', signUpHandler);
+}
+
