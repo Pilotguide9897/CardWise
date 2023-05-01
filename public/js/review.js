@@ -75,8 +75,7 @@ async function displayCards(deckId) {
       frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
       backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
     } else {
-      alert('You have finished reviewing all the cards for today!'); // Change to a modal.
-      document.location.replace('/dashboard');
+      document.location.replace('/finish');
     }
   });
 }

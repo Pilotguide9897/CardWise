@@ -155,6 +155,20 @@ router.get('/review/:id', withAuth, async (req, res) => {
   }
 });
 
+// Get the finish page
+router.get('/finish', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      res.render('finish', {
+        loggedIn: req.session.logged_in,
+      });
+    } catch (error) {
+      console.error('Error rendering your page:', error);
+      res.status(500).json({ message: 'Error rendering /finish' });
+    }
+  }
+});
+
 // Catch all route for redirecting request to incorrect endpoints.
 router.get('*', (req, res) => {
   res.redirect('/');
