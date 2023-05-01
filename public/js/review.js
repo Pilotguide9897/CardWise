@@ -1,6 +1,4 @@
 async function fetchCardsUpForReview(deckId) {
-  // Can now access the cards up for review data.
-  console.log('bar');
   const response = await fetch(`/api/decks/review/${deckId}`, {
     method: 'GET',
   });
@@ -9,7 +7,6 @@ async function fetchCardsUpForReview(deckId) {
 
   if (response.ok) {
     const cardsUpForReview = await response.json();
-    console.log(cardsUpForReview); // Working. Now to be able to present that data dynamically.
     return cardsUpForReview;
   } else {
     console.error('Error fetching cards up for review:', response.statusText);
@@ -48,6 +45,14 @@ async function displayCards(deckId) {
 
   let currentCardIndex = 0;
   const cardsUpForReview = await fetchCardsUpForReview(deckId);
+
+  if (cardsUpForReview.length === 0) {
+    frontSide.innerHTML = `Congratulations on keeping up with your studies! You currently have no cards up for review. You will be redirected back to your dashboard in 5 seconds.`;
+    setTimeout(() => {
+      document.location.replace('/dashboard');
+    }, 7000);
+  }
+
   console.log(cardsUpForReview[0].front);
   frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
   backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
@@ -79,50 +84,6 @@ async function displayCards(deckId) {
     }
   });
 }
-
-
-// async function displayCards(deckId) {
-//   let isFrontSideDisplayed = true;
-
-//   const frontSide = document.getElementById('frontSide');
-//   const backSide = document.getElementById('backSide');
-//   const answerBtn = document.getElementById('answerBtn');
-//   const nextBtn = document.getElementById('nextBtn');
-
-//   let currentCardIndex = 0;
-//   const cardsUpForReview = await fetchCardsUpForReview(deckId);
-//   console.log(cardsUpForReview[0].front); // This is what I want.
-//   frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
-//   backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
-
-//   answerBtn.addEventListener('click', () => {
-//     isFrontSideDisplayed = !isFrontSideDisplayed;
-//     frontSide.style.display = isFrontSideDisplayed ? 'block' : 'none';
-//     backSide.style.display = isFrontSideDisplayed ? 'none' : 'block';
-//   });
-
-//   nextBtn.addEventListener('click', () => {
-//     const grade = document.querySelector(
-//       'input[name="supermemo"]:checked'
-//     ).value;
-//     let card = cardsUpForReview[currentCardIndex];
-//     isFrontSideDisplayed = true;
-//     frontSide.style.display = 'block';
-//     backSide.style.display = 'none';
-//     updateCard(card, grade);
-//     currentCardIndex++;
-//     console.log(currentCardIndex);
-//     console.log(card);
-//   });
-
-//   if (currentCardIndex < cardsUpForReview.length) {
-//     frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
-//     backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
-//   } else {
-//     alert('You have finished reviewing all the cards for today!'); // Change to a modal.
-//     document.location.replace('/dashboard');
-//   }
-// }
 
 document.addEventListener('DOMContentLoaded', async () => {
   const reviewPageMarker = document.getElementById('review-page-marker');
