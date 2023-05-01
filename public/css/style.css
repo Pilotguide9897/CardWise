@@ -166,18 +166,15 @@ nav button{
     gap: 2em;
     height: 200px;
 }
-
 #todayDeck{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-   
 }
-
 #createDeck{
   float: right;
-  width: 30%;
+   width: 30%;
 }
 
 #deckDesc{
@@ -386,6 +383,35 @@ nav button{
     #updateBtnDiv button{
     
     }
+     /* Dashboard */
+#welcomeDiv{
+    font-size: 0.7em;
+}
+#todayDeck button{
+    padding: 0.5em 0.7em;
+    border: 1px solid red;
+}
+.leftDeck{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.rightDeck{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.rightDeck button{
+    padding: 0.3em 0.5em;
+}
+#createDeck{
+    padding: 0.3em 0.5em;
+  
+}
+#decksDiv{
+    width: 100%; 
+    margin-right: 0.5em;
+}
 }
 
 
@@ -415,6 +441,7 @@ nav button{
         text-align: center;
 
     }
+
 }
 
 @media only screen and (max-width: 900px){
@@ -484,40 +511,35 @@ padding: 0.3em;
 #bottomButtons button{
     font-size: var(--smallSize);
 }
-  /* Dashboard */
+/* Dashboard */
 #dashboardCont{
-    margin: 1em;
-    font-size: var(--mainSize);
-}
-#welcomeDiv{
-    padding: 1em;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    height: 250px;
-}
-
-#todayDeck{
+    font-size: 1em;
    
 }
-#todayDeck{
-}
-#createDeck{
-  
-}
-
-#deckDesc{
-    padding: 1em;
-    margin-bottom: 1em;
-    margin-inline: 1em;
+#welcomeDiv{
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
+    padding-inline: 2em;
+    gap: 2em;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 1em;
+    
 }
+#todayDeck{
+   gap: 1em;
+}
+#createDeck{
+  float: right;
+   width: 30%;
+}
+#decksDiv{
+    width: 100%; 
+    margin-right: 0.5em;
+}
+
 
 
 
