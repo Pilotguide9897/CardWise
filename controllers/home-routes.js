@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Deck, User, Card } = require('../models');
 const { withAuth } = require('../utils/helpers');
 
-
 // GET Home page
 router.get('/', async (req, res) => {
   try {
@@ -11,12 +10,10 @@ router.get('/', async (req, res) => {
     });
   } catch (error) {
     console.error('Error accessing homepage:', error);
-    res
-      .status(500)
-      .json({
-        message: 'There was an error reaching the homepage.',
-        error: err,
-      });
+    res.status(500).json({
+      message: 'There was an error reaching the homepage.',
+      error: err,
+    });
   }
 });
 
@@ -24,18 +21,21 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      const deckData = await Deck.findAll({
-        where: {
-          user_id: req.session.user_id,
+      const deckData = await Deck.findAll(
+        {
+          where: {
+            user_id: req.session.user_id,
+          },
+        },
+        {
+          include: [{ model: User }],
         }
-      },{
-        include: [{model: User}]
-      });
+      );
       if (!deckData) {
         res.status(400).json({ message: 'Unable to locate decks.' });
         return;
       }
-      const decks = deckData.map(deck => {
+      const decks = deckData.map((deck) => {
         return deck.get({ plain: true });
       });
       res.render('dashboard', {
@@ -77,16 +77,20 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckToUpdate = await Deck.findByPk(req.params.id, {
-        include: [{model: Card, attributes: [
-          'front',
-          'back',
-        ]}],
+        include: [{ model: Card, attributes: ['front', 'back'] }],
       });
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
         return;
       }
-      const deckData = deckToUpdate.get({plain: true});
+      const deckData = deckToUpdate.get({ plain: true });
+
+      if (deckData.user_id !== req.session.user_id) {
+        res.render('error', {
+          error: 'Restricted. This deck belongs to another user.',
+        });
+        return;
+      }
       res.render('updatedeck', {
         deckData: deckData,
         deck: deckToUpdate.Cards,
@@ -140,6 +144,21 @@ router.get('/decks/:id', withAuth, async (req, res) => {
 router.get('/review/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
+      const deckData = await Deck.findByPk(req.params.id, {
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      const deck = deckData.get({ plain: true });
+
+      if (deck.user_id !== req.session.user_id) {
+        res.render('error', {
+          error: 'Restricted. This deck belongs to another user.',
+        });
+        return;
+      }
+
       res.render('review', {
         loggedIn: req.session.logged_in,
       });
@@ -172,4 +191,3 @@ router.get('*', (req, res) => {
 });
 
 module.exports = router;
-
