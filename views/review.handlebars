@@ -1,10 +1,14 @@
 <div class='pure-g'>
   <div id='flashCard' class='pure-u-1'>
     <div id='frontSide'>
-      <h1>Front Side</h1>
+      <h1>
+        {{!-- Dynamically Render Content --}}
+      </h1>
     </div>
     <div id='backSide' style='display: none;'>
-      <h1>Back Side</h1>
+      <h1>
+        {{!-- Dynamically Render Content --}}
+      </h1>
     </div>
   </div>
 </div>
@@ -36,6 +40,10 @@
   </div>
 
 </div>
+
+{{!-- Div to indicate that the page has been loaded --}}
+<div id="review-page-marker"></div>
+
 
 <script>
   const cardsUpForReview = JSON.parse('{{{cardsUpForReview}}}');

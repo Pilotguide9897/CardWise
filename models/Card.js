@@ -29,7 +29,7 @@ Card.init(
     },
     is_queued: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      // defaultValue: false,
       allowNull: true,
     },
     interval: {
@@ -43,10 +43,6 @@ Card.init(
     efactor: {
       type: DataTypes.FLOAT,
       allowNull: false,
-    },
-    dueDate: {
-      type: DataTypes.DATE,
-      allowNull: true,
     },
   },
   {
