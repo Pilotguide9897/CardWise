@@ -84,6 +84,7 @@ nav button{
 #titleDiv h2{
     font-size: var(--headerSize);
     padding-bottom: 2em;
+    font-weight: bold;
 }
 #titleDiv p{
     font-size: var(--mainSize);
@@ -371,25 +372,32 @@ nav button{
     #updateBtnDiv{
         display: flex;
         flex-direction: column;
-        
     }
     #updateBtnDiv{
-       border: 1px solid red;
        display: flex;
-       flex-direction: column;
-       align-items: center;
+       flex-direction: row;
+       justify-content: space-between;
        gap: 1em;
+       font-size: 0.6em;
     }
-    #updateBtnDiv button{
-    
+    .delCard{
+        padding: 0.5em 1em;
     }
+   #deleteBtn, #updateDeck{
+    padding: 2em;
+   }
      /* Dashboard */
-#welcomeDiv{
-    font-size: 0.7em;
-}
+   
+    #welcomeDiv h2{
+        font-size: 1em;
+    }
+    #todayDeck{
+        gap: 0.2em;
+        font-size: 0.7em;
+    }
 #todayDeck button{
-    padding: 0.5em 0.7em;
-    border: 1px solid red;
+    padding: 0.6em 0.10em;
+    font-size: 0.9em;
 }
 .leftDeck{
     display: flex;
@@ -410,7 +418,12 @@ nav button{
 }
 #decksDiv{
     width: 100%; 
-    margin-right: 0.5em;
+
+   
+}
+#deckDesc{
+    margin: 0;
+    margin-bottom: 1em;
 }
 }
 
