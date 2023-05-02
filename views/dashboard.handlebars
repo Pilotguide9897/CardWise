@@ -4,7 +4,8 @@
     <h2> Welcome {{userData.name}}</h2>
     <div id="todayDeck">
       <h3>Today's Deck:</h3>
-      <button class="alldeckbutton" id="todaysDeck"><a href="/review/all">Review all Cards</a></button>
+      
+      <button id="todaysDeck" onclick="window.location = '/review/all'">Review all Cards</button>
     </div>
   </div>
   <!-- Loads each deck from the user from a partial -->

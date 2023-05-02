@@ -30,17 +30,6 @@ body {
   background-color: var(--white);
 }
 
-button#todaysDeck{
-  width: 150px;
-}
-
-button#login {
-  width: 140px;
-}
-
-button#logout {
-  width: 140px;
-
 button {
   padding: 1em 1.5em;
   background-color: var(--lightBlue);
