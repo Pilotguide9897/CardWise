@@ -4,8 +4,7 @@ const updateDeck = async(event) => {
 
   const id = window.location.toString().split('/')[window.location.toString().split('/').length -1];
 
-  const name = document.getElementById('name').value.trim();
-
+  const name = document.getElementById('title').value.trim();
   const description = document.getElementById('description').value.trim();
 
   const new_cards_per_day = document.getElementById('new_cards_per_day').value;
