@@ -36,6 +36,19 @@ button{
     width: 125px;
     cursor: pointer;  
 }
+
+button#login {
+  width: 140px;
+}
+
+button#logout {
+  width: 140px;
+}
+
+#logout:hover{
+  color: var(--white);
+}
+
 /* Header/Nav */
 header {
   display: flex;
