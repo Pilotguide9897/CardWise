@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      const deckData = await User.findByPk(req.session.user_id,{
+      const deckData = await User.findByPk(req.session.id,{
         include: [{model: Deck}]
       });
       if (!deckData) {
