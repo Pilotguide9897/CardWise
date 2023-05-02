@@ -39,6 +39,19 @@ button {
   cursor: pointer;
 }
 
+
+button#login {
+  width: 140px;
+}
+
+button#logout {
+  width: 140px;
+}
+
+#logout:hover{
+  color: var(--white);
+}
+
 /* Header/Nav */
 header {
   display: flex;
@@ -320,6 +333,16 @@ nav button {
   padding: 1em;
   border-radius: var(--borderBox);
   color: var(--blue);
+}
+
+#radioCont input{
+    color: var(--blue);
+}
+
+#frontSide, #backSide{
+  font-family: var(--fontFamily);
+  font-size: var(--mainSize);
+  text-align: center;
 }
 
 /* Update cards page */
