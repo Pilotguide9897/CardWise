@@ -7,7 +7,6 @@ let cueCardCount = 0;
 
 function addCard() {
   cueCardCount++;
-  console.log('Cue card' + cueCardCount);
   const cueDiv = document.createElement('div');
   cueDiv.setAttribute('class', 'pure-g cardDiv');
   const cueCardForm = document.createElement('form');
@@ -33,13 +32,10 @@ async function createCueCards() {
 
   for (let i = 1; i <= actualCueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
-    console.log(front);
     const back = document.querySelector(`#back-${i}`).value.trim();
-    console.log(back);
 
     if (front && back) {
       cueCardData.push({ front, back });
-      console.log(cueCardData);
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;

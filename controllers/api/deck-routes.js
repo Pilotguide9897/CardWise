@@ -197,8 +197,6 @@ router.delete('/:id', async (req, res) => {
       },
     });
 
-    console.log(deckData);
-
     if (!deckData) {
       res.status(400).json({ message: 'No Deck found with that id.' });
       return;

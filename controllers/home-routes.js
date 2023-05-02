@@ -32,11 +32,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.status(400).json({ message: 'Unable to locate decks.' });
         return;
       }
-      const decks = deckData.get({plain: true});
-      //const decks = deckData.map(deck => {
-      // return deck.get({ plain: true });
-      //});
-      console.log(decks);
+      const decks = deckData.map(deck => {
+        return deck.get({ plain: true });
+      });
       res.render('dashboard', {
         deckData: decks,
         loggedIn: req.session.logged_in,
@@ -88,8 +86,9 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
         res.status(404).json({ message: 'Deck not found' });
         return;
       }
-      res.render('updateDeck', {
-        deckData: deckToUpdate,
+      const deckData = deckToUpdate.get({plain: true});
+      res.render('updatedeck', {
+        deckData: deckData,
         deck: deckToUpdate.Cards,
         loggedIn: req.session.logged_in,
       });
