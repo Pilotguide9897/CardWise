@@ -268,6 +268,14 @@ nav button {
 #bottomButtons button{
     font-size: var(--mainSize);
 }
+#create{
+  width:20%;
+  border-radius: var(--borderBox);
+}
+#add-cue-card{
+  width:20%;
+  border-radius: var(--borderBox);
+}
 /* Review Deck Card */
 #flashCard {
   margin: 5em;
@@ -519,15 +527,6 @@ padding: 0.3em;
     flex-direction: column;
     gap: 1em;
     height: 250px;
-}
-
-#todayDeck{
-   
-}
-#todayDeck{
-}
-#createDeck{
-  
 }
 
 #deckDesc{
