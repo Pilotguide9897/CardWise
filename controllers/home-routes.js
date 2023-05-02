@@ -23,8 +23,9 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      const deckData = await User.findByPk(req.session.user_id,{
-        include: [{model: Deck}]
+      const deckData = await Deck.findAll({
+        where: { user_id: req.session.user_id },
+        include: { model: Card },
       });
       if (!deckData) {
         res.status(400).json({ message: 'Unable to locate decks.' });
