@@ -300,6 +300,15 @@ nav button {
   font-size: var(--mainSize);
 }
 
+#create{
+  width:20%;
+  border-radius: var(--borderBox);
+}
+#add-cue-card{
+  width:20%;
+  border-radius: var(--borderBox);
+}
+
 /* Review Deck Card */
 #flashCard {
   margin: 5em;
@@ -573,14 +582,8 @@ a {
     height: 250px;
   }
 
-  #todayDeck {
-  }
-  #todayDeck {
-  }
-  #createDeck {
-  }
 
-  #deckDesc {
+#deckDesc{
     padding: 1em;
     margin-bottom: 1em;
     margin-inline: 1em;

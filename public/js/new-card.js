@@ -4,24 +4,35 @@ const cueCardContainer = document.getElementById('cue-card-container');
 
 let cueCardCount = 0;
 
+function removeCard(event) {
+  // Find the closest parent element with the class 'cardDiv' and remove it
+  const cardDiv = event.target.closest('.cardDiv');
+  if (cardDiv) {
+    cardDiv.remove();
+  }
+}
+
 function addCard() {
   cueCardCount++;
   const cueDiv = document.createElement('div');
-  cueDiv.setAttribute('class', 'pure-g cardDiv');
+  cueDiv.setAttribute('class', 'pure-g cardDiv updatePartial');
   const cueCardForm = document.createElement('form');
   cueCardForm.setAttribute('id', `cue-card-form-${cueCardCount}`);
   cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount-5}">Term: </label>
-    <input type="text" id="front-${cueCardCount-5}" name="front-${cueCardCount-5}">
-    <label for="back-${cueCardCount-5}">Definition: </label>
-    <input type="text" id="back-${cueCardCount-5}" name="back-${cueCardCount-5}">
+    <label for="front-${cueCardCount}">Term: </label>
+    <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
+    <label for="back-${cueCardCount}">Definition: </label>
+    <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
+    <button class="delCard">Delete</button>
   `;
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
+
+  const delButton = cueCardForm.querySelector('.delCard');
+  delButton.addEventListener('click', removeCard);
 }
-// addCard();
 
 async function createCueCards() {
   const cueCardData = [];
@@ -30,15 +41,12 @@ async function createCueCards() {
 
   for (let i = 1; i <= actualCueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
-    console.log(front);
     const back = document.querySelector(`#back-${i}`).value.trim();
-    console.log(back);
 
     if (front && back) {
       cueCardData.push({ front, back });
-      console.log(cueCardData);
     } else {
-      alert(`Please fill in all fields for cue card ${i}.`);
+      alert(`Please fill in all fields for each of your cards.`);
       return;
     }
   }
@@ -69,7 +77,7 @@ if (createButton) {
 }
 
 // Create initial cue cards
-const initialCueCardCount = 4;
+const initialCueCardCount = 5;
 for (let i = 0; i < initialCueCardCount; i++) {
   addCard();
 }
