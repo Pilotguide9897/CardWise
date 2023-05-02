@@ -2,49 +2,31 @@
   <div id='flashCard' class='pure-u-1'>
     <div id='frontSide'>
       <h1>
-        {{!-- Dynamically Render Content --}}
+        {{! Dynamically Render Content }}
       </h1>
     </div>
     <div id='backSide' style='display: none;'>
       <h1>
-        {{!-- Dynamically Render Content --}}
+        {{! Dynamically Render Content }}
       </h1>
     </div>
   </div>
 </div>
 
-<div id='flashCardBtnsDiv' class='pure-g'>
-  <div id='flashCardBtn' class='pure-u-1-2'>
-    <button id='answerBtn'>Answer</button>
-    <div id='radioCont'>
+<div id='flashCardBtnsDiv'>
+  <button id='flipCardBtn'>Flip Card</button>
 
-      <!--One to five radio buttons -->
-      <!--These values will probably need to be changed depending on how supermemo works -->
-      <input type='radio' id='one' name='supermemo' value=1 />
-      <label for='one'>1</label>
-
-      <input type='radio' id='two' name='supermemo' value=2 />
-      <label for='two'>2</label>
-
-      <input type='radio' id='three' name='supermemo' value=3 />
-      <label for='three'>3</label>
-
-      <input type='radio' id='four' name='supermemo' value=4 />
-      <label for='four'>4</label>
-
-      <input type='radio' id='five' name='supermemo' value=5 />
-      <label for='five'>5</label>
-
-    </div>
-    <button id='nextBtn'>Next</button>
+  <div class='grades' id='grades'>
+    <button data-grade='0'>😭</button>
+    <button data-grade='1'>😢</button>
+    <button data-grade='2'>😔</button>
+    <button data-grade='3'>🙂</button>
+    <button data-grade='4'>😊</button>
+    <button data-grade='5'>😄</button>
   </div>
-
 </div>
 
-{{!-- Div to indicate that the page has been loaded --}}
-<div id="review-page-marker"></div>
+{{! Div to indicate that the page has been loaded }}
+<div id='review-page-marker'></div>
 
-
-<script>
-  const cardsUpForReview = JSON.parse('{{{cardsUpForReview}}}');
-</script>
+<script src='/js/review.js'></script>

@@ -209,10 +209,10 @@ nav button {
 }
 
 #todayDeck {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #createDeck {
@@ -322,6 +322,7 @@ nav button {
 }
 
 #flashCardBtnsDiv {
+  text-align: center;
   padding: 1em;
 }
 
@@ -332,20 +333,28 @@ nav button {
   justify-content: space-between;
 }
 
-#radioCont {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1em;
-  background: var(--lightBlue);
-  width: 40%;
-  padding: 1em;
-  border-radius: var(--borderBox);
-  color: var(--blue);
+.grades {
+  pointer-events: all;
+  margin-top: 1rem;
+  font-size: 0;
 }
 
-#radioCont input {
-  color: var(--blue);
+.grades button {
+  border-radius: 0;
+  font-size: clamp(1rem, 4vw, 2rem);
+  padding: 0.75em;
+}
+
+.grades button:first-child {
+  border-bottom-left-radius: var(--borderButton);
+  border-top-left-radius: var(--borderButton);
+  padding-left: 1em;
+}
+
+.grades button:last-child {
+  border-bottom-right-radius: var(--borderButton);
+  border-top-right-radius: var(--borderButton);
+  padding-right: 1em;
 }
 
 #frontSide,
@@ -449,17 +458,20 @@ a {
     flex-direction: column;
     text-align: center;
   }
+
   nav button {
     padding: 1em 1.5em;
     background-color: var(--lightBlue);
     border: none;
     border-radius: var(--borderButton);
   }
+
   /* Update Page */
   #updateBtnDiv {
     display: flex;
     flex-direction: column;
   }
+
   #updateBtnDiv {
     display: flex;
     flex-direction: row;
@@ -467,47 +479,52 @@ a {
     gap: 1em;
     font-size: 0.6em;
   }
+
   .delCard {
     padding: 0.5em 1em;
   }
- /* Dashboard */
- #dashboardCont{
-  margin: 0;
-  padding: 0;
- }
- #welcomeDiv {
-  gap: 0.2em;
-  height: 80px;
-  font-size: var(--smallSize);
-  box-shadow: none;
-}
-#createDeck {
-  font-size: var(--smallSize);
-}
-#deckDesc {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-width: 90%;
-font-size: var(--smallSize);
 
-}
-.leftDeck{
-  display: flex;
-  flex-direction:column;
-  width: 100%;
-  gap: 0.5em;
-  margin-bottom: 0.3em;
-}
-.rightDeck{
-  display: flex;
-  flex-direction: row;
-  font-size: var(--smallSize);
-  width: 100%;
-  gap: 0.5em;
-}
+  /* Dashboard */
+  #dashboardCont {
+    margin: 0;
+    padding: 0;
+  }
+
+  #welcomeDiv {
+    gap: 0.2em;
+    height: 80px;
+    font-size: var(--smallSize);
+    box-shadow: none;
+  }
+
+  #createDeck {
+    font-size: var(--smallSize);
+  }
+
+  #deckDesc {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    font-size: var(--smallSize);
+  }
+  .leftDeck {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5em;
+    margin-bottom: 0.3em;
+  }
+
+  .rightDeck {
+    display: flex;
+    flex-direction: row;
+    font-size: var(--smallSize);
+    width: 100%;
+    gap: 0.5em;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -517,19 +534,23 @@ font-size: var(--smallSize);
     flex-direction: column;
     flex-wrap: wrap;
   }
+
   .mainPhoto {
     width: 80%;
     margin-block: 1em;
   }
+
   .mainPhoto img {
     height: 250px;
   }
+
   .mainP {
     font-size: 0.8em;
     text-align: center;
     width: 100%;
     padding-block: 1em;
   }
+
   .middle {
     display: flex;
     flex-direction: column-reverse;
@@ -544,17 +565,20 @@ font-size: var(--smallSize);
     margin: 1em;
     font-size: var(--headerSize);
   }
+
   #updateDiv form {
     justify-content: center;
     align-items: center;
     font-size: var(--mainSize);
   }
+
   .updatePartial form {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: var(--mainSize);
   }
+
   .updatePartial input {
     width: 80%;
     margin-block: 1em;
@@ -563,6 +587,7 @@ font-size: var(--smallSize);
   #updateBtnDiv button {
     width: 25%;
   }
+
   /* Create a deck */
   #topInput {
     display: flex;
@@ -570,15 +595,19 @@ font-size: var(--smallSize);
     align-items: center;
     text-align: center;
   }
+
   #topInput h1 {
     font-size: 1.5em;
   }
+
   #topInput input {
     width: 80%;
   }
+
   #topInput textarea {
     width: 80%;
   }
+
   .cardForm {
     padding: 0.5em;
     display: flex;
@@ -639,135 +668,138 @@ font-size: var(--smallSize);
 
   .error-card-text > * {
     text-align: center;
-  }}
+  }
+}
 
-  /* Media screens */
-  @media only screen and (max-width: 750px) {
-    header {
-      display: flex;
-      flex-direction: column;
-    }
-
-    header h1 {
-      text-align: center;
-    }
-
-    nav {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-    }
-
-    #credsDiv {
-      flex-wrap: wrap;
-    }
-
-    #finishDiv {
-      margin: 6em;
-    }
-
-    .mainCont {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    .mainPhoto {
-      width: 60%;
-      margin-block: 1em;
-    }
-
-    .mainPhoto img {
-      height: 250px;
-    }
-
-    .mainP {
-      font-size: var(--smallSize);
-      width: 100%;
-      text-align: center;
-      padding: 1em;
-    }
-
-    .middle {
-      display: flex;
-      flex-direction: column-reverse;
-    }
-
-    #flashCard {
-      margin: 3em;
-      padding: 4em;
-    }
-
-    #flashCard h1 {
-      font-size: var(--mainSize);
-    }
-
-    #flashCardBtn {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      justify-content: center;
-      gap: 1em;
-      font-size: var(--smallSize);
-    }
-
-    #radioCont {
-      width: 60%;
-    }
+/* Media screens */
+@media only screen and (max-width: 750px) {
+  header {
+    display: flex;
+    flex-direction: column;
   }
 
-  @media only screen and (max-width: 950px) {
-    #topInput input {
-      width: 100%;
-    }
+  header h1 {
+    text-align: center;
+  }
 
-    #topInput textarea {
-      width: 100%;
-    }
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 
-    .cardForm {
-      padding: 0.5em;
-      display: flex;
-      flex-direction: column;
-    }
+  #credsDiv {
+    flex-wrap: wrap;
+  }
 
-    .cardForm input {
-      margin-block: 0.5em;
-      width: 100%;
-    }
+  #finishDiv {
+    margin: 6em;
+  }
 
-    .updatePartial form {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-    }
-    /* Dashboard */
-#dashboardCont {
- display: flex;
- flex-direction: column;
+  .mainCont {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .mainPhoto {
+    width: 60%;
+    margin-block: 1em;
+  }
+
+  .mainPhoto img {
+    height: 250px;
+  }
+
+  .mainP {
+    font-size: var(--smallSize);
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+  }
+
+  .middle {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #flashCard {
+    margin: 3em;
+    padding: 4em;
+  }
+
+  #flashCard h1 {
+    font-size: var(--mainSize);
+  }
+
+  #flashCardBtn {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    font-size: var(--smallSize);
+  }
+
+  #radioCont {
+    width: 60%;
+  }
 }
 
-#welcomeDiv {
-  width: 100%;
-  gap: 1em;
-  height: 150px;
-  box-shadow:  none;
-}
-#createDeck {
-  width: 30%;
-}
-#decksDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-block: 1em;
-  padding: 0;
-}
-#deckDesc {
-  display: flex;
-  flex-direction: row;
-}
-}
+@media only screen and (max-width: 950px) {
+  #topInput input {
+    width: 100%;
+  }
 
+  #topInput textarea {
+    width: 100%;
+  }
+
+  .cardForm {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardForm input {
+    margin-block: 0.5em;
+    width: 100%;
+  }
+
+  .updatePartial form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  /* Dashboard */
+  #dashboardCont {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #welcomeDiv {
+    width: 100%;
+    gap: 1em;
+    height: 150px;
+    box-shadow: none;
+  }
+
+  #createDeck {
+    width: 30%;
+  }
+
+  #decksDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-block: 1em;
+    padding: 0;
+  }
+
+  #deckDesc {
+    display: flex;
+    flex-direction: row;
+  }
+}
