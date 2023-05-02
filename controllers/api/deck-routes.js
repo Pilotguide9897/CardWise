@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
-const { practice } = require('../../utils/helpers');
+const { updateSupermemoInfo, withAuth } = require('../../utils/helpers');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -243,6 +243,40 @@ router.get('/review/:id', async (req, res) => {
     }
   } else {
     res.status(401).json({ message: 'Not logged in' });
+  }
+});
+
+router.put('/review/:id', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    const {card, grade } = req.body;
+    await updateSupermemoInfo(card, grade);
+    try {
+      const updateWithSequelize = await Card.update({
+        is_queued: false,
+        interval: req.body.interval,
+        repetition: req.body.repetition,
+        efactor: req.body.efactor,
+      },
+      {
+        where: { id: req.params.id },
+      }
+      );
+
+      if (updateWithSequelize[0] > 0) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
+
+    } catch (err) {
+      console.error({
+        message: 'there was a problem updating the card',
+        error: err,
+      });
+      res.sendStatus(500);
+    }
+  } else {
+    res.status(403);
   }
 });
 
