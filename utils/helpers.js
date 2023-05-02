@@ -1,5 +1,4 @@
 // Import the required libraries and modules
-const dayjs = require('dayjs');
 const { supermemo } = require('supermemo');
 
 module.exports = {
