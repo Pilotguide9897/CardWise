@@ -101,16 +101,10 @@ nav button {
   background-repeat: no-repeat;
   border-radius: var(--borderBox);
 }
-<<<<<<< HEAD
 .mainPhoto img{
     height: 250px;
     width: 100%;
     object-fit: cover;  
-=======
-.mainPhoto img {
-  height: 300px;
-  width: 100%;
->>>>>>> 5aa5c0f (Created error page and updated routes to check user when loading decks.)
 }
 .mainP {
   padding-left: 1em;

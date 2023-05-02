@@ -21,16 +21,13 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      const deckData = await Deck.findAll(
-        {
-          where: {
-            user_id: req.session.user_id,
-          },
-        },
-        {
-          include: [{ model: User }],
+      const deckData = await Deck.findAll({
+        where: {
+          user_id: req.session.user_id,
         }
-      );
+      },{
+        include: [{model: User}]
+      });
       if (!deckData) {
         res.status(400).json({ message: 'Unable to locate decks.' });
         return;
@@ -95,7 +92,7 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
       res.render('updatedeck', {
         deckData: deckData,
         deck: deckToUpdate.Cards,
-        loggedIn: req.session.logged_in,
+        logged_in: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
