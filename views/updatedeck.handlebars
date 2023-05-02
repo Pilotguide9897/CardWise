@@ -10,7 +10,7 @@
       row='4'
       cols='40'
     >{{deckData.description}}</textarea>
-    <label for='new_cards_per_day'>Cards each day:</label>
+    <label for='new_cards_per_day'>New cards per day:</label>
     <input
       type='number'
       id='new_cards_per_day'
@@ -25,9 +25,9 @@
     {{#each deckData.cards as |card|}}
       <div class='pure-g cardDiv'>
         <form id='cue-card-form' class='pure-u-1 cardForm editCard'>
-          <label for='front'>Term: </label>
+          <label for='front'>Front: </label>
           <input type='text' id='front' name='front' value='{{card.front}}' />
-          <label for='back'>Definition: </label>
+          <label for='back'>Back: </label>
           <input type='text' id='back' name='back' value='{{card.back}}' />
           <button class='delCard'>Delete</button>
         </form>
