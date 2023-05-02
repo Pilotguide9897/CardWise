@@ -4,8 +4,9 @@
     <h2> Welcome {{deckData.name}}</h2>
     <div id="todayDeck">
     <h3>Today's Deck:</h3>
+
     <button id="todaysDeck"><a href="/review/all">Review all Cards</a></button>
-</div>
+
 
 <!-- Loads each deck from the user from a partial -->
 <div id="decksDiv" class="pure-u-2-3">
@@ -19,7 +20,6 @@
     <div class="rightDeck">
       <button id="reviewBtn"><a href="/review">Review</a></button>
        <button id="editBtn"><a href='/updateDeck/{{id}}'>Edit</a></button>
-       <button id="deleteBtn"><a href='/updateDeck/{{id}}'>Edit</a></button>
     </div>
     </div>
     {{/each}}
