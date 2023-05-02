@@ -37,6 +37,10 @@ button{
     cursor: pointer;  
 }
 
+button#todaysDeck{
+  width: 150px;
+}
+
 button#login {
   width: 140px;
 }
@@ -193,7 +197,6 @@ nav button {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-   
 }
 
 #createDeck{
