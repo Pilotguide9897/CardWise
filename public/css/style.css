@@ -14,6 +14,7 @@
   --smallSize: 0.8em;
   --fontFamily: 'Comfortaa', cursive;
   --boxShadow: 5px 10px 15px 4px var(--grey);
+  --boxShadowDark: 5px 10px 15px 4px var(--darkGrey);
 }
 
 * {
@@ -32,24 +33,18 @@ body {
 button {
   padding: 1em 1.5em;
   background-color: var(--lightBlue);
-  border: none;
+  border: 1px solid var(--lightBlue);
   border-radius: var(--borderButton);
   text-align: center;
-  width: 125px;
+  width: fit-content;
   cursor: pointer;
+  color: var(--black);
+  transition: all 0.1s ease-in;
 }
 
-
-button#login {
-  width: 140px;
-}
-
-button#logout {
-  width: 140px;
-}
-
-#logout:hover{
-  color: var(--white);
+button:hover {
+  background-color: var(--grey);
+  border: 1px solid var(--blue);
 }
 
 /* Header/Nav */
@@ -70,6 +65,7 @@ nav a {
   text-decoration: none;
   padding: 1em;
   color: var(--white);
+  transition: color 0.1s ease-in;
 }
 
 nav a:hover {
@@ -79,7 +75,6 @@ nav a:hover {
 nav button {
   padding: 1em 1.5em;
   background-color: var(--lightBlue);
-  border: none;
   border-radius: var(--borderButton);
 }
 
@@ -100,8 +95,10 @@ nav button {
   padding: 1em;
   text-align: right;
   margin-top: 5em;
-  box-shadow: var(--boxShadow);
+  box-shadow: var(--boxShadowDark);
   float: right;
+  border-bottom-left-radius: var(--borderBox);
+  border-top-left-radius: var(--borderBox);
 }
 
 #titleDiv h2 {
@@ -300,12 +297,12 @@ nav button {
   font-size: var(--mainSize);
 }
 
-#create{
-  width:20%;
+#create {
+  width: 20%;
   border-radius: var(--borderBox);
 }
-#add-cue-card{
-  width:20%;
+#add-cue-card {
+  width: 20%;
   border-radius: var(--borderBox);
 }
 
@@ -344,11 +341,12 @@ nav button {
   color: var(--blue);
 }
 
-#radioCont input{
-    color: var(--blue);
+#radioCont input {
+  color: var(--blue);
 }
 
-#frontSide, #backSide{
+#frontSide,
+#backSide {
   font-family: var(--fontFamily);
   font-size: var(--mainSize);
   text-align: center;
@@ -582,8 +580,7 @@ a {
     height: 250px;
   }
 
-
-#deckDesc{
+  #deckDesc {
     padding: 1em;
     margin-bottom: 1em;
     margin-inline: 1em;
