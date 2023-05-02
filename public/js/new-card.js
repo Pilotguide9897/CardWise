@@ -24,14 +24,17 @@ function addCard() {
 addCard();
 
 async function createCueCards() {
+
   const cueCardData = [];
 
-  for (let i = 1; i <= cueCardCount; i++) {
+  const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
+
+  for (let i = 1; i <= actualCueCardCount; i++) {
     const front = document.querySelector(`#front-${i}`).value.trim();
     const back = document.querySelector(`#back-${i}`).value.trim();
 
     if (front && back) {
-      cueCardData.push({ front, back});
+      cueCardData.push({ front, back });
     } else {
       alert(`Please fill in all fields for cue card ${i}.`);
       return;
@@ -48,14 +51,20 @@ async function createCueCards() {
   });
 
   if (response.ok) {
-    alert('New deck successfully saved!');
+    alert('New deck saved!');
+    window.location.replace('dashboard');
   } else {
     alert(response.statusText);
   }
 }
 
-addCardButton.addEventListener('click', addCard);
-createButton.addEventListener('click', createCueCards);
+if (addCardButton) {
+  addCardButton.addEventListener('click', addCard);
+}
+
+if (createButton) {
+  createButton.addEventListener('click', createCueCards);
+}
 
 // Create initial cue cards
 const initialCueCardCount = 4;

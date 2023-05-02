@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
-
 :root{
     --black: #4D3E3E;
     --grey: #d7d7d7;
@@ -15,6 +14,7 @@
     --smallSize: 0.8em;
     --fontFamily: 'Comfortaa', cursive;
     --boxShadow: 5px 10px 15px 4px var(--grey);
+
 }
 * {
   margin: 0;
@@ -108,6 +108,7 @@ nav button {
     height: 250px;
     width: 100%;
     object-fit: cover;  
+
 }
 .mainP {
   padding-left: 1em;
@@ -253,7 +254,6 @@ nav button {
 }
 #bottomButtons button{
     font-size: var(--mainSize);
-
 }
 /* Review Deck Card */
 #flashCard {
@@ -283,7 +283,6 @@ nav button {
   width: 40%;
   padding: 1em;
   border-radius: var(--borderBox);
-}
 #radioCont input{
     color: var(--blue);
 }
@@ -299,16 +298,17 @@ nav button {
   flex-direction: column;
   justify-content: center;
 }
-#updateDiv input{
-    width: 50%;
-    margin-block: 1em;
-    padding: 0.5em;
-    border-radius: var(--borderBox);
-    border: 1px solid var(--lightBlue);
+#updateDiv input {
+  width: 50%;
+  margin-block: 1em;
+  padding: 0.5em;
+  border-radius: var(--borderBox);
+  border: 1px solid var(--lightBlue);
 }
-#updateCardsDiv{
-    margin: 1em;
+#updateCardsDiv {
+  margin: 1em;
 }
+
 .updatePartial{
     margin-block: 1em;
     border: none;
@@ -323,7 +323,7 @@ nav button {
     align-items: center;
   
 }
-.updatePartial input{
+.updatePartial input {
   border: 1px solid var(--lightBlue);
   padding: 0.5em;
   width: 30%;
@@ -338,8 +338,8 @@ nav button {
 }
 #updateBtnDiv button{
    width: 20%;
+  border-radius: var(--borderBox);
 }
-
 /* Finished the deck */
 #finishDiv {
   margin: 10em;
@@ -390,8 +390,6 @@ nav button{
         padding: 0.5em 1em;
     }
 }
-
-
 @media only screen and (max-width: 750px){
     /* Main Page */
     .mainCont{
@@ -522,4 +520,127 @@ padding: 0.3em;
     border-radius: var(--borderBox);
 }
 
+=======
+}
+#finishDiv a {
+  color: var(--lightBlue);
+  padding: 1em;
+}
+
+/* Needed for all links */
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+/* Error page */
+.error-card-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-card {
+  width: 45rem;
+  max-width: 100%;
+}
+
+.error-card-photo {
+  min-width: 340px;
+}
+
+.error-card-photo > img {
+  object-fit: cover;
+}
+
+.error-card-text > * {
+  text-align: center;
+}
+
+/* Media screens */
+@media only screen and (max-width: 750px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+  header h1 {
+    text-align: center;
+  }
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  #credsDiv {
+    flex-wrap: wrap;
+  }
+  #finishDiv {
+    margin: 6em;
+  }
+  .mainCont {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .mainPhoto {
+    width: 60%;
+    margin-block: 1em;
+  }
+  .mainPhoto img {
+    height: 250px;
+  }
+  .mainP {
+    font-size: var(--smallSize);
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+  }
+  .middle {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #flashCard {
+    margin: 3em;
+    padding: 4em;
+  }
+  #flashCard h1 {
+    font-size: var(--mainSize);
+  }
+  #flashCardBtn {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    font-size: var(--smallSize);
+  }
+  #radioCont {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 950px) {
+  #topInput input {
+    width: 100%;
+  }
+  #topInput textarea {
+    width: 100%;
+  }
+  .cardForm {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+  .cardForm input {
+    margin-block: 0.5em;
+    width: 100%;
+  }
+
+  .updatePartial form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
 }

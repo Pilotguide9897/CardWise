@@ -213,7 +213,7 @@ router.delete('/:id', async (req, res) => {
       .json({ message: 'There was an error deleting the Deck', error: err });
   }
 });
-
+//OPTION 1: IDK WHAT WORKS - VICTORIA
 // Get queued cards for a single deck (A am making this because I do not want to mess with your route above, but I need to be able to access the updated at property to know which cards, have been in the queue the longest. Just in case case users have missed a few days of review and their queue is longer than the number of cards per day that they have set to review).
 router.get('/review/:id', async (req, res) => {
   if (req.session.logged_in) {
@@ -228,6 +228,55 @@ router.get('/review/:id', async (req, res) => {
         });
 
         const decks = allDecks.map((deck) => deck.get({ plain: true }));
+
+
+        decks.forEach((deck) => {
+          deck.cards.forEach((card) => {
+            if (card.is_queued) {
+              plainCardsUpForReview.push(card);
+            }
+          });
+        });
+      } else {
+        const cardsUpForReview = await Card.findAll({
+          where: {
+            deck_id: req.params.id,
+            is_queued: true,
+          },
+        });
+
+        plainCardsUpForReview = cardsUpForReview.map((card) =>
+          card.get({ plain: true })
+        );
+      }
+
+      res.json(plainCardsUpForReview);
+    } catch (error) {
+      console.error('Error fetching cards up for review:', error);
+      res.status(500).json({ message: 'Error fetching cards up for review' });
+    }
+  } else {
+    res.status(401).json({ message: 'Not logged in' });
+  }
+});
+//OPTION 2: HERES THE 2nd OPTION
+//router.put('/review/:id', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    const { card, grade } = req.body;
+    await updateSupermemoInfo(card, grade);
+    try {
+      const updateWithSequelize = await Card.update(
+        {
+          is_queued: false,
+          interval: req.body.interval,
+          repetition: req.body.repetition,
+          efactor: req.body.efactor,
+        },
+        {
+          where: { id: req.params.id },
+        }
+      );
+
 
         decks.forEach((deck) => {
           deck.cards.forEach((card) => {

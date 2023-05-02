@@ -31,16 +31,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
       const decks = deckData.map((deck) => {
         return deck.get({ plain: true });
       });
-      //const decks = deckData.get({plain: true});
-      //const decks = deckData.map(deck => {
-      // return deck.get({ plain: true });
-      //});
-      console.log(decks);
       res.render('dashboard', {
         deckData: decks,
-        user_id: req.session.user_id,
-        logged_in: req.session.logged_in,
-
+        loggedIn: req.session.logged_in,
       });
     } catch (err) {
       console.error({
@@ -78,12 +71,8 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckToUpdate = await Deck.findByPk(req.params.id, {
-        include: [{model: Card, attributes: [
-          'front',
-          'back',
-          'id',
-          'deck_id'
-        ]}],
+        include: [{ model: Card, attributes: ['front', 'back'] }],
+
       });
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
@@ -99,8 +88,8 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
       }
       res.render('updatedeck', {
         deckData: deckData,
-        deck: deckToUpdate.Card,
-        logged_in: req.session.logged_in,
+        deck: deckToUpdate.Cards,
+        loggedIn: req.session.logged_in,
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
