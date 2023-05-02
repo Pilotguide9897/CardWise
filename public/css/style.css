@@ -163,29 +163,33 @@ nav button {
     margin: 1em;
     font-size: var(--mainSize);
 }
-#welcomeDiv {
-  padding: 1em;
-  box-shadow: var(--boxShadow);
-  border-radius: var(--borderBox);
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  height: 250px;
+#welcomeDiv{
+    padding: 1em;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    height: 200px;
 }
 
 #todayDeck{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
    
 }
-#todayDeck{
-}
+
 #createDeck{
-  
+  float: right;
+  width: 30%;
 }
 
 #deckDesc{
     padding: 1em;
     margin-bottom: 1em;
-    margin-inline: 1em;
+    margin-left: 0.5em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -483,7 +487,40 @@ padding: 0.3em;
 #bottomButtons button{
     font-size: var(--smallSize);
 }
+  /* Dashboard */
+#dashboardCont{
+    margin: 1em;
+    font-size: var(--mainSize);
+}
+#welcomeDiv{
+    padding: 1em;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 250px;
+}
+
+#todayDeck{
+   
+}
+#todayDeck{
+}
+#createDeck{
   
+}
+
+#deckDesc{
+    padding: 1em;
+    margin-bottom: 1em;
+    margin-inline: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
+}
 
 
 

@@ -15,14 +15,8 @@
     <header>
         <h1 id="title">CardWise</h1>
     <nav>
-      
        {{#if logged_in}}
-       
       <a href="/dashboard">Decks</a>
-<<<<<<< HEAD
-      {{#if loggedIn}}
-=======
->>>>>>> 9d259be (Got the data from the cards for edit)
         <button id='logout'>Logout</button>
       {{else}}
        <a href='/'>Home</a>
@@ -36,15 +30,5 @@
     {{#if loggedIn}}
       <script src='/js/logout.js'></script> 
     {{/if}}
-    
-    {{!-- Mathpix Markdown Script for use in browser (--}}
-    <script>
-      let script = document.createElement('script'); script.src =
-      "https://cdn.jsdelivr.net/npm/mathpix-markdown-it@1.0.40/es5/bundle.js";
-      document.head.append(script); script.onload = function() { const isLoaded
-      = window.loadMathJax(); if (isLoaded) { console.log('Styles loaded!'); } }
-    </script>
-    <script src="/js/review.js"></script>
-
   </body>
 </html>
