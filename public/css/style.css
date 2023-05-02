@@ -65,6 +65,7 @@ nav a {
   text-decoration: none;
   padding: 1em;
   color: var(--white);
+  transition: color 0.1s ease-in;
 }
 
 nav a:hover {
