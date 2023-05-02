@@ -15,7 +15,6 @@ async function fetchCardsUpForReview(deckId) {
 async function updateCard(card, grade) {
   try {
     const response = await fetch(`/api/decks/review/${card.id}`, {
-      // I need to get the correct route...
       method: 'PUT',
       body: JSON.stringify({ card, grade }),
       headers: {
@@ -38,8 +37,8 @@ async function displayCards(deckId) {
 
   const frontSide = document.getElementById('frontSide');
   const backSide = document.getElementById('backSide');
-  const answerBtn = document.getElementById('answerBtn');
-  const nextBtn = document.getElementById('nextBtn');
+  const flipCardBtn = document.getElementById('flipCardBtn');
+  const grades = document.getElementById('grades');
 
   let currentCardIndex = 0;
   const cardsUpForReview = await fetchCardsUpForReview(deckId);
@@ -54,29 +53,30 @@ async function displayCards(deckId) {
   frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
   backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
 
-  answerBtn.addEventListener('click', () => {
+  grades.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON') {
+      let card = cardsUpForReview[currentCardIndex];
+      isFrontSideDisplayed = true;
+      frontSide.style.display = 'block';
+      backSide.style.display = 'none';
+
+      updateCard(card, event.target.dataset.grade);
+
+      currentCardIndex++;
+
+      if (currentCardIndex < cardsUpForReview.length) {
+        frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
+        backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
+      } else {
+        document.location.replace('/finish');
+      }
+    }
+  });
+
+  flipCardBtn.addEventListener('click', () => {
     isFrontSideDisplayed = !isFrontSideDisplayed;
     frontSide.style.display = isFrontSideDisplayed ? 'block' : 'none';
     backSide.style.display = isFrontSideDisplayed ? 'none' : 'block';
-  });
-
-  nextBtn.addEventListener('click', () => {
-    const grade = document.querySelector(
-      'input[name="supermemo"]:checked'
-    ).value;
-    let card = cardsUpForReview[currentCardIndex];
-    isFrontSideDisplayed = true;
-    frontSide.style.display = 'block';
-    backSide.style.display = 'none';
-    updateCard(card, grade);
-    currentCardIndex++;
-
-    if (currentCardIndex < cardsUpForReview.length) {
-      frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
-      backSide.innerHTML = cardsUpForReview[currentCardIndex].back;
-    } else {
-      document.location.replace('/finish');
-    }
   });
 }
 

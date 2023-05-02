@@ -29,20 +29,23 @@ Card.init(
     },
     is_queued: {
       type: DataTypes.BOOLEAN,
-      // defaultValue: false,
+      defaultValue: false,
       allowNull: true,
     },
     interval: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'sm_interval',
     },
     repetition: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'sm_repetition',
     },
     efactor: {
       type: DataTypes.FLOAT,
       allowNull: false,
+      field: 'sm_efactor',
     },
   },
   {
