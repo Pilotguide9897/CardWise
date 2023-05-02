@@ -134,17 +134,7 @@ router.put('/:id', async (req, res) => {
     });
 
     await Card.bulkCreate(cardQueue, {
-<<<<<<< HEAD
-      updateOnDuplicate: [
-        'front',
-        'back',
-        'interval',
-        'repetition',
-        'efactor',
-      ],
-=======
       updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
->>>>>>> 6aefef5 (updated e_factor to efactor throughout code base)
       individualHooks: true,
       returning: true,
     });

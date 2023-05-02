@@ -59,7 +59,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/create', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      res.render('createdeck', {
+      res.render('newDeck', {
         loggedIn: req.session.logged_in,
       });
     } catch (error) {
