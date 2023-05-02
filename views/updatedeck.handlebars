@@ -15,16 +15,15 @@
 <div id="updateCardsDiv" class="pure-g">
     <div class="pure-u-1">
      
-         {{#each deckData.cards as |card|}}
-         <div class="pure-g updatePartial">
-       <div class="pure-u-1">
+ {{#each deckData.cards as |card|}}
+<div class="pure-g updatePartial">
+ <div class="pure-u-1">
    <form class="editCard">
-      <h5 class="cardId">{{card.id}}</h5>
     <label for="front">Term: </label>
     <input type="text" id="front" name="front" value="{{card.front}}">
     <label for="back">Definition: </label>
     <input type="text" id="back" name="back" value="{{card.back}}">
-    <button id="delCard">Delete</button>
+    <button class="delCard">Delete</button>
     </form>
     </div>
          </div>
