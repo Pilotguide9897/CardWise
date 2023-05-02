@@ -4,7 +4,6 @@
     <h2> Welcome {{userData.name}}</h2>
     <div id="todayDeck">
       <h3>Today's Deck:</h3>
-      
       <button class="alldeckbutton" id="todaysDeck"><a href="/review/all">Review all Cards</a></button>
     </div>
   </div>
@@ -14,7 +13,7 @@
     {{>dashboardDeckCard}}
     {{/each}}
 
-    <button id="createDeck"><a href="/create">Create Deck</a></button>
+    <button id="createDeck" onclick="window.location = '/create'">Create Deck</button>
   </div>
 </div>
 

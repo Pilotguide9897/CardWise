@@ -19,16 +19,19 @@
   </head>
   <body>
     <header>
-      <h1 id="title">CardWise</h1>
+      <h1 id='title'>CardWise</h1>
       <nav>
         <a href='/'>Home</a>
         {{#if loggedIn}}
-          <a href="/dashboard">Decks</a>
+          <a href='/dashboard'>Decks</a>
           <button id='logout'>Logout</button>
         {{else}}
-          <button id="login"><a href='/login'>Login</a></button> 
+          <button
+            id='login'
+            onclick="window.location.replace('/login')"
+          >Login</button>
         {{/if}}
-      </nav>  
+      </nav>
     </header>
     <main>
       {{{body}}}
