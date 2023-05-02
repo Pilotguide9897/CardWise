@@ -137,6 +137,42 @@ router.get('/decks/:id', withAuth, async (req, res) => {
   }
 });
 
+// Get review page
+router.get('/review/:id', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      const studyDeck = await Deck.findByPk(req.params.id);
+      const newCardsPerDay = studyDeck.new_cards_per_day;
+
+      const cardsUpForReview = await Card.findAll({
+        where: {
+          deck_id: req.params.id,
+          is_queued: true,
+        },
+        order: [['updatedAt', 'ASC']],
+        limit: newCardsPerDay,
+      });
+
+      if (!cardsUpForReview) {
+        res.status(404).json({ message: 'No cards in need of review' });
+        return;
+      }
+
+      console.log(cardsUpForReview);
+
+      res.render('review', {
+        cardsUpForReview: JSON.stringify(cardsUpForReview),
+        loggedIn: req.session.logged_in,
+      });
+    } catch (error) {
+      console.error('Error rendering your page:', error);
+      res.status(500).json({ message: 'Error rendering /decks/:id' });
+    }
+  } else {
+    res.render('homepage');
+  }
+});
+
 // Catch all route for redirecting request to incorrect endpoints.
 router.get('*', (req, res) => {
   res.redirect('/');
