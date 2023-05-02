@@ -208,7 +208,7 @@ nav button {
   height: 200px;
 }
 
-#todayDeck{
+#todayDeck {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
