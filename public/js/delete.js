@@ -29,14 +29,16 @@ document.querySelector('#deleteBtn').addEventListener('click', deleteDeck);
 
 function removeCard(event) {
   // Show a confirmation dialog
-  const userConfirmed = confirm('Are you sure you want to delete this deck?');
+  const userConfirmed = confirm('Are you sure you want to delete this card?');
 
   // If the user clicks 'OK', remove the card
   if (userConfirmed) {
     // Find the closest parent element with the class 'cardDiv' and remove it
-    const cardDiv = event.target.closest('.cardDiv');
+    const cardDiv = event.target.closest('.pure-g');
     if (cardDiv) {
       cardDiv.remove();
     }
   }
 }
+
+document.querySelector('.delCard').addEventListener('click', removeCard);
