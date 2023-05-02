@@ -225,6 +225,50 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Get a single card/array of cards by id (For getting the data to present to the front-ennd for the mathpix library).
+async function getCardData(req) {
+  try {
+    const idParam = req.params.id;
+    let cardData;
+
+    if (idParam.includes(',')) {
+      const ids = idParam.split(',').map(Number);
+      cardData = await Card.findAll({
+        where: {
+          id: ids,
+        },
+      });
+    } else {
+      let id = Number(idParam);
+      cardData = await Card.findByPk(id);
+    }
+
+    if (cardData) {
+      const cards = cardData.map((card) => {
+        return card.get({ plain: true });
+      });
+      return cards;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching card data:', error);
+    return null;
+  }
+}
+
+router.get('/card/:id', async (req, res) => {
+  const cards = await getCardData(req);
+
+  if (cards) {
+    res.json(cards);
+    renderCardWithMathpix(cards);
+  } else {
+    res.status(404).json({ message: 'Card(s) not found' });
+  }
+});
+
+
 // Need to add code to get the cards that are queued for review and review them.
 
 // Call the practice function with a flashcard and grade
