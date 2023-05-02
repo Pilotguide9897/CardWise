@@ -389,51 +389,6 @@ nav button{
     .delCard{
         padding: 0.5em 1em;
     }
-<<<<<<< HEAD
-=======
-   #deleteBtn, #updateDeck{
-    padding: 2em;
-   }
-     /* Dashboard */
-   
-    #welcomeDiv h2{
-        font-size: 1em;
-    }
-    #todayDeck{
-        gap: 0.2em;
-        font-size: 0.7em;
-    }
-#todayDeck button{
-    padding: 0.6em 0.10em;
-    font-size: 0.9em;
-}
-.leftDeck{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.rightDeck{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-}
-.rightDeck button{
-    padding: 0.3em 0.5em;
-}
-#createDeck{
-    padding: 0.3em 0.5em;
-  
-}
-#decksDiv{
-    width: 100%; 
-
-   
-}
-#deckDesc{
-    margin: 0;
-    margin-bottom: 1em;
-}
->>>>>>> 98d1d16 (Seriously why is it all css)
 }
 
 
@@ -566,7 +521,5 @@ padding: 0.3em;
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
 }
-
-
 
 }
