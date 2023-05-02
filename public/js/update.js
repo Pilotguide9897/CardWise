@@ -6,6 +6,19 @@ const updateDeck = async(event) => {
 
   const name = document.getElementById('title').value.trim();
   const description = document.getElementById('description').value.trim();
+<<<<<<< HEAD
+=======
+  const front = document.getElementById('front').value.trim();
+  const back = document.getElementById('back').value.trim();
+
+  const response = await fetch(`/api/decks/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({name, description, front, back}),
+
+  const name = document.getElementById('name').value;
+
+  const description = document.getElementById('description').value.trim();
+>>>>>>> 6b9f5a7 (More done)
 
   const new_cards_per_day = document.getElementById('new_cards_per_day').value;
 
@@ -16,7 +29,11 @@ const updateDeck = async(event) => {
     let back = cards[i][1].value;
     cardData.push({front, back});
   }
+<<<<<<< HEAD
 
+=======
+  console.log(cardData);
+>>>>>>> 6b9f5a7 (More done)
 
   const response = await fetch(`/api/decks/${id}`, {
     method: 'PUT',
