@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
+<<<<<<< HEAD
 // const { practice} = require('../../utils/helpers');
+=======
+const { practice } = require('../../utils/helpers');
+>>>>>>> 6aefef5 (updated e_factor to efactor throughout code base)
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -136,6 +140,7 @@ router.put('/:id', async (req, res) => {
     });
 
     await Card.bulkCreate(cardQueue, {
+<<<<<<< HEAD
       updateOnDuplicate: [
         'front',
         'back',
@@ -143,6 +148,9 @@ router.put('/:id', async (req, res) => {
         'repetition',
         'efactor',
       ],
+=======
+      updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
+>>>>>>> 6aefef5 (updated e_factor to efactor throughout code base)
       individualHooks: true,
       returning: true,
     });
@@ -223,5 +231,19 @@ router.delete('/:id', async (req, res) => {
       .json({ message: 'There was an error deleting the Deck', error: err });
   }
 });
+
+// Need to add code to get the cards that are queued for review and review them.
+
+// Call the practice function with a flashcard and grade
+const updatedFlashcardData = practice(flashcard, grade);
+
+// Update the original Card instance with the updated data
+flashcard.interval = updatedFlashcardData.interval;
+flashcard.repetition = updatedFlashcardData.repetition;
+flashcard.efactor = updatedFlashcardData.efactor;
+flashcard.dueDate = updatedFlashcardData.dueDate;
+
+// Save the updated card information to the database
+flashcard.save();
 
 module.exports = router;
