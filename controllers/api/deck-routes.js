@@ -283,11 +283,6 @@ router.put('/review/:id', withAuth, async (req, res) => {
         res.sendStatus(400);
       }
 
-      if (updateWithSequelize[0] > 0) {
-        res.sendStatus(200);
-      } else {
-        res.sendStatus(400);
-      }
     } catch (err) {
       console.error({
         message: 'there was a problem updating the card',

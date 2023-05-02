@@ -283,8 +283,16 @@ nav button {
   width: 40%;
   padding: 1em;
   border-radius: var(--borderBox);
+}
+
 #radioCont input{
     color: var(--blue);
+}
+
+#frontSide, #backSide{
+  font-family: var(--fontFamily);
+  font-size: var(--mainSize);
+  text-align: center;
 }
 /* Update cards page */
 #updateDiv {
