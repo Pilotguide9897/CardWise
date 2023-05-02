@@ -229,7 +229,6 @@ router.get('/review/:id', async (req, res) => {
 
         const decks = allDecks.map((deck) => deck.get({ plain: true }));
 
-
         decks.forEach((deck) => {
           deck.cards.forEach((card) => {
             if (card.is_queued) {
@@ -263,49 +262,15 @@ router.get('/review/:id', async (req, res) => {
 router.put('/review/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     const { card, grade } = req.body;
-    await updateSupermemoInfo(card, grade);
+    const newCardData = await updateSupermemoInfo(card, grade);
+
     try {
       const updateWithSequelize = await Card.update(
         {
           is_queued: false,
-          interval: req.body.interval,
-          repetition: req.body.repetition,
-          efactor: req.body.efactor,
-        },
-        {
-          where: { id: req.params.id },
-        }
-      );
-
-      if (updateWithSequelize[0] > 0) {
-        res.sendStatus(200);
-      } else {
-        res.sendStatus(400);
-      }
-
-    } catch (err) {
-      console.error({
-        message: 'there was a problem updating the card',
-        error: err,
-      });
-      res.sendStatus(500);
-    }
-  } else {
-    res.status(403);
-  }
-});
-
-router.put('/review/:id', withAuth, async (req, res) => {
-  if (req.session.logged_in) {
-    const { card, grade } = req.body;
-    await updateSupermemoInfo(card, grade);
-    try {
-      const updateWithSequelize = await Card.update(
-        {
-          is_queued: false,
-          interval: req.body.interval,
-          repetition: req.body.repetition,
-          efactor: req.body.efactor,
+          interval: newCardData.interval,
+          repetition: newCardData.repetition,
+          efactor: newCardData.efactor,
         },
         {
           where: { id: req.params.id },
