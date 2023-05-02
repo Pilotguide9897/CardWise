@@ -393,121 +393,158 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-  }
-  #credsDiv {
-    flex-wrap: wrap;
-  }
-  #finishDiv {
-    margin: 6em;
-  }
-  .mainCont {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .mainPhoto {
-    width: 60%;
-    margin-block: 1em;
-  }
-  .mainPhoto img {
-    height: 250px;
-  }
-  .mainP {
-    font-size: var(--smallSize);
-    width: 100%;
-    text-align: center;
-    padding: 1em;
-  }
-  .middle {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  #flashCard {
-    margin: 3em;
-    padding: 4em;
-  }
-  #flashCard h1 {
-    font-size: var(--mainSize);
-  }
-  #flashCardBtn {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-    font-size: var(--smallSize);
-  }
-  #radioCont {
-    width: 60%;
-  }
-}
-@media only screen and (max-width: 950px) {
-  #topInput input {
-    width: 100%;
-  }
-  #topInput textarea {
-    width: 100%;
-  }
-  .cardForm {
-    padding: 0.5em;
-    display: flex;
-    flex-direction: column;
-  }
-  .cardForm input {
-    margin-block: 0.5em;
-    width: 100%;
-  }
-
-   @media only screen and (max-width: 1030px){
-    #topInput{
+   }
+    #credsDiv{
+     flex-wrap: wrap;
+    }
+    #finishDiv{
+        margin: 6em;
+    }
+    .mainCont{
         display: flex;
         flex-direction: column;
-        padding: 0.5em;
-        margin-inline: 1em;
+        flex-wrap: wrap;
+        width: 100%;
     }
-    #topInput h1{
-        font-size: var(--headerSize);
+    .mainPhoto{
+        width: 60%;
+        margin-block: 1em;
     }
-    #topInput label{
+    .mainPhoto img{
+       height: 250px;   
+    }
+    .mainP{
+        font-size: var(--smallSize);
+        width: 100%;
+        text-align: center;
+        padding: 1em;
+    }
+    .middle{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #flashCard{
+        margin: 3em;
+        padding: 4em;
+    }
+    #flashCard h1{
         font-size: var(--mainSize);
-        padding-block: 0.5em;
     }
-    #topInput input{
-        width: 50%;
-        border: 1px solid var(--lightBlue);
+    #flashCardBtn{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        font-size: var(--smallSize);
+    }
+    #radioCont{
+        width: 60%;
+    }
+    /* Dashboard */
+    #dashboardCont{
+        margin: 1em;
+    }
+    #welcomeDiv{
+        padding: 1em;
+        box-shadow: var(--boxShadow);
         border-radius: var(--borderBox);
-        padding: 0.5em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        height: 250px;
+    }
+    #todayDeck{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        font-size: var(--smallSize);
+    }
+    #createDeck{
+        margin-top: 2em;
+        font-size: var(--smallSize);
+        align-items: center;
+    }
+    #deckDesc{
+        padding: 1em;
+        margin-bottom: 1em;
+        margin-inline: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        box-shadow: var(--boxShadow);
+        border-radius: var(--borderBox);
+    }
+   
+  
+   }
+   @media only screen and (max-width: 950px){
+    #topInput input{
+        width: 100%;
     }
     #topInput textarea{
-        width: 50%;
-        border: 1px solid var(--lightBlue);
-        border-radius: var(--borderBox);
-        padding: 0.5em;
-    }
-  
-    
-    .cardDiv{
- 
-        margin: 1em;
-        padding: 1em;
-        background-color: var(--superWhite);
+        width: 100%;
     }
     .cardForm{
         padding: 0.5em;
+        display: flex;
+        flex-direction: column;
     }
-    
+    .cardForm input{
+        margin-block: 0.5em;
+        width: 100%;
+    }
+   
+    .updatePartial form{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+    /* Dashboard */
+    #dashboardCont{
+        display: flex;
+        flex-direction: column;
+    }
+    #welcomeDiv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+    }
+    #todayDeck button{
+        margin-left: 1em;
+    }
+    #createDeck{
+        margin-bottom: 2em;
+    }
+    #decksDiv{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5em;
+    }
+   }
+
+   @media only screen and (max-width: 1030px){
     .cardForm input{
         width: 100%;
 
     }
     #bottomButtons{
       display: flex;
-      justify-content: space-between;
-      margin: 2em;
+      justify-content: space-evenly;
+      margin: 1em;
     }
-    #bottomButtons button{
-        font-size: var(--smallSize);
-    
-    }
+  
    }
+
+
+
+   
+   
+   
+  
