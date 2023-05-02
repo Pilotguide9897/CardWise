@@ -576,14 +576,12 @@ font-size: var(--smallSize);
   #topInput textarea {
     width: 80%;
   }
-
   .cardForm {
     padding: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5em;
   }
 
   .cardForm input {
@@ -592,15 +590,15 @@ font-size: var(--smallSize);
     align-items: center;
     justify-content: center;
     width: 80%;
-    padding: 0.3em;
+    padding: 0.2em;
   }
   #bottomButtons {
     display: flex;
     justify-content: space-between;
-    margin: 2em;
   }
   #bottomButtons button {
     font-size: var(--smallSize);
+    width: 30%;
   }
   #finishDiv a {
     color: var(--lightBlue);
