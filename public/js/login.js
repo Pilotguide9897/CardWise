@@ -38,6 +38,7 @@ const signUpHandler = async (event) => {
       alert("new user created");
       document.location.replace('/dashboard');
     } else {
+      console.log('Response:', response);
       alert(response.statusText);
     }
   }
