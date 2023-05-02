@@ -64,7 +64,7 @@ router.get('/create', withAuth, async (req, res) => {
       });
     } catch (error) {
       console.error('Error rendering your page:', error);
-      res.status(500).json({ message: 'Error fetching /decks/new' });
+      res.status(500).json({ message: 'Error fetching /create' });
     }
   } else {
     res.render('homepage');
