@@ -21,9 +21,9 @@ function addCard() {
   cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount}">Term: </label>
+    <label for="front-${cueCardCount}">Front: </label>
     <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
-    <label for="back-${cueCardCount}">Definition: </label>
+    <label for="back-${cueCardCount}">Back: </label>
     <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
     <button class="delCard">Delete</button>
   `;
