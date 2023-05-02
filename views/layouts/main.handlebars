@@ -17,6 +17,7 @@
     <nav>
        {{#if logged_in}}
       <a href="/dashboard">Decks</a>
+      {{#if loggedIn}}
         <button id='logout'>Logout</button>
       {{else}}
        <a href='/'>Home</a>

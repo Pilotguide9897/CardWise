@@ -64,12 +64,17 @@ async function displayCards(deckId) {
     const grade = document.querySelector(
       'input[name="supermemo"]:checked'
     ).value;
-    let card = cardsUpForReview[currentCardIndex];
-    isFrontSideDisplayed = true;
-    frontSide.style.display = 'block';
-    backSide.style.display = 'none';
-    updateCard(card, grade);
-    currentCardIndex++;
+
+    if (grade) {
+      let card = cardsUpForReview[currentCardIndex];
+      isFrontSideDisplayed = true;
+      frontSide.style.display = 'block';
+      backSide.style.display = 'none';
+      updateCard(card, grade);
+      currentCardIndex++;
+    } else {
+      alert('Please select a grade before proceeding!');
+    }
 
     if (currentCardIndex < cardsUpForReview.length) {
       frontSide.innerHTML = cardsUpForReview[currentCardIndex].front;
