@@ -60,7 +60,8 @@ router.get('/:id', async (req, res) => {
       return;
     }
     const deck = deckData.get({ plain: true });
-
+    console.log('----DEEECCCCKKKK');
+    console.log(deck);
     res.json(deck);
   } catch (err) {
     console.error({
@@ -97,7 +98,7 @@ router.put('/:id', async (req, res) => {
     // Make a list of cards that exist in currentCards that
     // but are missing from req.body.cards.
     const cardsToDelete = currentCards.filter(
-      (card) => !req.body.cards.some((newCard) => newCard.id === card.id)
+      (card) => !req.body.cardData.some((newCard) => newCard.id === card.id)
     );
     // create a list of the card ids to be used for bulk destoy.
     const cardsToDeleteIds = cardsToDelete.map((card) => card.id);
@@ -106,7 +107,7 @@ router.put('/:id', async (req, res) => {
     }
 
     let cardQueue = [];
-    req.body.cards.forEach((newCard) => {
+    req.body.cardData.forEach((newCard) => {
       // find card in both arrays with same id.
       let result = currentCards.find(
         (currentCard) => currentCard.id === newCard.id
@@ -121,7 +122,6 @@ router.put('/:id', async (req, res) => {
         // if there is no result, it's because this card is brand new.
         cardToProcess = newCard;
       }
-
       if (cardToProcess) {
         cardQueue.push({
           ...cardToProcess,
@@ -135,7 +135,6 @@ router.put('/:id', async (req, res) => {
 
     await Card.bulkCreate(cardQueue, {
       updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
-
       individualHooks: true,
       returning: true,
     });
@@ -218,22 +217,38 @@ router.delete('/:id', async (req, res) => {
 // Get queued cards for a single deck (A am making this because I do not want to mess with your route above, but I need to be able to access the updated at property to know which cards, have been in the queue the longest. Just in case case users have missed a few days of review and their queue is longer than the number of cards per day that they have set to review).
 router.get('/review/:id', async (req, res) => {
   if (req.session.logged_in) {
+    let plainCardsUpForReview = [];
     try {
-      const studyDeck = await Deck.findByPk(req.params.id);
-      const newCardsPerDay = studyDeck.new_cards_per_day;
+      if (req.params.id.toLowerCase() === 'all') {
+        const allDecks = await Deck.findAll({
+          include: [{ model: Card }],
+          where: {
+            user_id: req.session.user_id,
+          },
+        });
 
-      const cardsUpForReview = await Card.findAll({
-        where: {
-          deck_id: req.params.id,
-          is_queued: true,
-        },
-        order: [['updatedAt', 'ASC']],
-        limit: newCardsPerDay,
-      });
+        const decks = allDecks.map((deck) => deck.get({ plain: true }));
 
-      const plainCardsUpForReview = cardsUpForReview.map((card) =>
-        card.get({ plain: true })
-      );
+
+        decks.forEach((deck) => {
+          deck.cards.forEach((card) => {
+            if (card.is_queued) {
+              plainCardsUpForReview.push(card);
+            }
+          });
+        });
+      } else {
+        const cardsUpForReview = await Card.findAll({
+          where: {
+            deck_id: req.params.id,
+            is_queued: true,
+          },
+        });
+
+        plainCardsUpForReview = cardsUpForReview.map((card) =>
+          card.get({ plain: true })
+        );
+      }
 
       res.json(plainCardsUpForReview);
     } catch (error) {
@@ -247,18 +262,19 @@ router.get('/review/:id', async (req, res) => {
 
 router.put('/review/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
-    const {card, grade } = req.body;
+    const { card, grade } = req.body;
     await updateSupermemoInfo(card, grade);
     try {
-      const updateWithSequelize = await Card.update({
-        is_queued: false,
-        interval: req.body.interval,
-        repetition: req.body.repetition,
-        efactor: req.body.efactor,
-      },
-      {
-        where: { id: req.params.id },
-      }
+      const updateWithSequelize = await Card.update(
+        {
+          is_queued: false,
+          interval: req.body.interval,
+          repetition: req.body.repetition,
+          efactor: req.body.efactor,
+        },
+        {
+          where: { id: req.params.id },
+        }
       );
 
       if (updateWithSequelize[0] > 0) {
@@ -267,6 +283,45 @@ router.put('/review/:id', withAuth, async (req, res) => {
         res.sendStatus(400);
       }
 
+      if (updateWithSequelize[0] > 0) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
+    } catch (err) {
+      console.error({
+        message: 'there was a problem updating the card',
+        error: err,
+      });
+      res.sendStatus(500);
+    }
+  } else {
+    res.status(403);
+  }
+});
+
+router.put('/review/:id', withAuth, async (req, res) => {
+  if (req.session.logged_in) {
+    const { card, grade } = req.body;
+    await updateSupermemoInfo(card, grade);
+    try {
+      const updateWithSequelize = await Card.update(
+        {
+          is_queued: false,
+          interval: req.body.interval,
+          repetition: req.body.repetition,
+          efactor: req.body.efactor,
+        },
+        {
+          where: { id: req.params.id },
+        }
+      );
+
+      if (updateWithSequelize[0] > 0) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
     } catch (err) {
       console.error({
         message: 'there was a problem updating the card',

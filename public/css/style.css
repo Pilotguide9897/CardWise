@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
-
 :root{
     --black: #4D3E3E;
-    --grey: #a09f9f;
+    --grey: #d7d7d7;
     --darkGrey: #484747;
     --white: #f8f8f8;
     --superWhite: #ffffff;
@@ -14,45 +13,360 @@
     --mainSize: 1.1em;
     --smallSize: 0.8em;
     --fontFamily: 'Comfortaa', cursive;
-    --boxShadow: 5px 10px 18px var(--grey);
+    --boxShadow: 5px 10px 15px 4px var(--grey);
+
 }
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    font-family: var(--fontFamily);
-    font-size: var(--mainSize);
-    color: var(--black);
-    background-color: var(--white);
+body {
+  font-family: var(--fontFamily);
+  font-size: var(--mainSize);
+  color: var(--black);
+  background-color: var(--white);
 }
 button{
     padding: 1em 1.5em;
     background-color: var(--lightBlue);
     border: none;
     border-radius: var(--borderButton);
-    width: 150px;
+    text-align: center;
+    width: 125px;
+    cursor: pointer;  
 }
 /* Header/Nav */
-header{
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--blue);
+  color: var(--white);
+  padding-left: 1em;
+}
+nav {
+  margin: 1em;
+}
+nav a {
+  text-decoration: none;
+  padding: 1em;
+  color: var(--white);
+}
+nav a:hover {
+  color: var(--black);
+}
+nav button {
+  padding: 1em 1.5em;
+  background-color: var(--lightBlue);
+  border: none;
+  border-radius: var(--borderButton);
+}
+/* Main Page */
+#mainContent {
+  min-height: 500px;
+  width: 100%;
+  background-image: url('/photos/joanna-kosinska-RE-8WswW95o-unsplash.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  overflow: hidden;
+}
+#titleDiv {
+  padding: 1em;
+  text-align: right;
+  margin-top: 5em;
+  box-shadow: var(--boxShadow);
+  float: right;
+}
+#titleDiv h2{
+    font-size: var(--headerSize);
+    padding-bottom: 2em;
+    font-weight: bold;
+}
+#titleDiv p {
+  font-size: var(--mainSize);
+}
+.mainCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+  padding-block: 1em;
+}
+.mainPhoto {
+  box-shadow: var(--boxShadow);
+  overflow: hidden;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: var(--borderBox);
+}
+.mainPhoto img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;  
+
+}
+.mainP {
+  padding-left: 1em;
+  font-size: var(--mainSize);
+  text-align: right;
+}
+.middleP {
+  text-align: left;
+}
+/* Login / SignUp Forms */
+#credsDiv {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 2em;
+  flex-wrap: nowrap;
+  gap: 2em;
+  margin-block: 2em;
+}
+#loginDiv,
+#signupDiv {
+  border-radius: var(--borderBox);
+  padding: 1em;
+  box-shadow: var(--boxShadow);
+}
+#loginDiv h2,
+#signupDiv h2 {
+  padding-top: 0.7em;
+}
+#loginForm,
+#signupForm {
+  display: flex;
+  flex-direction: column;
+}
+#loginForm label,
+#signupForm label {
+  text-align: left;
+  padding-left: 0.8em;
+}
+#loginForm input,
+#signupForm input {
+  border-radius: var(--borderBox);
+  border: 1px solid var(--lightBlue);
+  padding: 1em;
+  margin: 0.5em;
+  margin-bottom: 1em;
+}
+#loginForm button,
+#signupForm button {
+  margin-top: 0.5em;
+}
+/* Dashboard */
+#dashboardCont{
+    margin: 1em;
+    font-size: var(--mainSize);
+}
+#welcomeDiv{
+    padding: 1em;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    height: 200px;
+}
+
+#todayDeck{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--blue);
-    color: var(--white);
-    padding-left: 1em;
+    align-items: center;
+   
 }
-nav{
-    margin: 1em;
+
+#createDeck{
+  float: right;
+  width: 30%;
 }
-nav a {
-    text-decoration: none;
+
+#deckDesc{
     padding: 1em;
-    color: var(--white);
+    margin-bottom: 1em;
+    margin-left: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderBox);
 }
-nav a:hover{
-    color: var(--black);
+/* Create a deck */
+#topInput {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  margin-inline: 1em;
+}
+#topInput h1 {
+  font-size: var(--headerSize);
+}
+#topInput label {
+  font-size: var(--mainSize);
+  padding-block: 0.5em;
+}
+#topInput input {
+  width: 50%;
+  border: 1px solid var(--lightBlue);
+  border-radius: var(--borderBox);
+  padding: 0.5em;
+}
+#topInput textarea {
+  width: 50%;
+  border: 1px solid var(--lightBlue);
+  border-radius: var(--borderBox);
+  padding: 0.5em;
+}
+#cue-card-container {
+  display: flex;
+  flex-direction: column;
+}
+.cardDiv {
+  border: none;
+  box-shadow: var(--boxShadow);
+  border-radius: var(--borderBox);
+  margin: 1em;
+  padding: 1em;
+  background-color: var(--superWhite);
+}
+.cardForm {
+  padding: 0.5em;
+}
+
+.cardForm input {
+  border: 1px solid var(--lightBlue);
+  padding: 0.2em;
+  border-radius: var(--borderBox);
+  width: 40%;
+  margin-inline: 0.5em;
+}
+#bottomButtons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+#bottomButtons button{
+    font-size: var(--mainSize);
+}
+/* Review Deck Card */
+#flashCard {
+  margin: 5em;
+  padding: 7em;
+  border-radius: var(--borderBox);
+  box-shadow: var(--boxShadow);
+}
+#flashCard h1 {
+  text-align: center;
+}
+#flashCardBtnsDiv {
+  padding: 1em;
+}
+#flashCardBtn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#radioCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  background: var(--lightBlue);
+  width: 40%;
+  padding: 1em;
+  border-radius: var(--borderBox);
+#radioCont input{
+    color: var(--blue);
+}
+/* Update cards page */
+#updateDiv {
+  margin: 1em;
+}
+#updateDiv h2 {
+  margin-block: 0.5em;
+}
+#updateDiv form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#updateDiv input {
+  width: 50%;
+  margin-block: 1em;
+  padding: 0.5em;
+  border-radius: var(--borderBox);
+  border: 1px solid var(--lightBlue);
+}
+#updateCardsDiv {
+  margin: 1em;
+}
+
+.updatePartial{
+    margin-block: 1em;
+    border: none;
+    border-radius: var(--borderBox);
+    box-shadow: var(--boxShadow);
+    padding: 1em;
+}
+.updatePartial form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+.updatePartial input {
+  border: 1px solid var(--lightBlue);
+  padding: 0.5em;
+  width: 30%;
+  border-radius: var(--borderBox);
+}
+#updateBtnDiv{
+    margin-block: 2em;
+    margin-inline: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#updateBtnDiv button{
+   width: 20%;
+  border-radius: var(--borderBox);
+}
+/* Finished the deck */
+#finishDiv {
+  margin: 10em;
+  text-align: center;
+}
+#finishDiv h1 {
+  color: var(--blue);
+  font-size: 3em;
+}
+#finishDiv p {
+  font-size: var(--mainSize);
+}
+#finishDiv a {
+  color: var(--lightBlue);
+  padding: 1em;
+}
+/* Needed for all links */
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+@media only screen and (max-width: 600px){
+    /* Header/Nav */
+header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 nav button{
     padding: 1em 1.5em;
@@ -60,99 +374,121 @@ nav button{
     border: none;
     border-radius: var(--borderButton);
 }
-/* Main Page */
-#mainContent{
-    min-height: 500px;
-    width: 100%;
-    background-image: url('/photos/joanna-kosinska-RE-8WswW95o-unsplash.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    margin: 0;
-    overflow: hidden;
+/* Update Page */
+    #updateBtnDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    #updateBtnDiv{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       gap: 1em;
+       font-size: 0.6em;
+    }
+    .delCard{
+        padding: 0.5em 1em;
+    }
 }
-#titleDiv{
-    padding: 1em;
-    text-align: right;
-    margin-top: 5em;
-    box-shadow: var(--boxShadow); 
-    float: right;
+@media only screen and (max-width: 750px){
+    /* Main Page */
+    .mainCont{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .mainPhoto{
+        width: 80%;
+        margin-block: 1em;
+    }
+    .mainPhoto img{
+       height: 250px;   
+    }
+    .mainP{
+        font-size: 0.8em;
+        text-align: center;
+        width: 100%;
+        padding-block: 1em;
+    }
+    .middle{
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+
+    }
 }
-#titleDiv h2{
-    font-size: var(--headerSize);
-    padding-bottom: 2em;
-}
-#titleDiv p{
-    font-size: var(--mainSize);
-}
-.mainCont{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1em;
-    padding-block: 1em;
-}
-.mainPhoto{
-    box-shadow: var(--boxShadow);
-    overflow: hidden;
-    background-size: contain;
-    background-repeat: no-repeat;
-    border-radius: var(--borderBox);
-}
-.mainPhoto img{
-    height: 300px;
-    width: 100%;
-   
-}
-.mainP{
-    padding-left: 1em;
-    font-size: var(--mainSize);
-    text-align: right;
-}
-.middleP{
-    text-align: left;
-}
-/* Login / SignUp Forms */
-#credsDiv {
+
+@media only screen and (max-width: 900px){
+   /* Update cards page */
+#updateDiv h2{
     text-align: center;
+    margin: 1em;
+    font-size: var(--headerSize);
+}
+#updateDiv form{
+    justify-content: center;
+    align-items: center;
+    font-size: var(--mainSize);
+}
+.updatePartial form{
     display: flex;
-    flex-direction: row;
-    padding: 2em;
-    flex-wrap: nowrap;
-    gap: 2em;
-    margin-block: 2em;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--mainSize);
 }
-#loginDiv, #signupDiv{
-    border-radius: var(--borderBox); 
-    padding: 1em;
-    box-shadow:var(--boxShadow);
+.updatePartial input{
+    width: 80%;
+    margin-block: 1em;
+  }
+
+#updateBtnDiv button{
+    width: 25%;
 }
-#loginDiv h2, #signupDiv h2{
-    padding-top: 0.7em;
-}
-#loginForm, #signupForm{
+/* Create a deck */
+#topInput{
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-#loginForm label, #signupForm label{
-    text-align: left;
-    padding-left: 0.8em;
+#topInput h1{
+    font-size: 1.5em;
 }
-#loginForm input, #signupForm input{
-    border-radius: var(--borderBox);
-    border: 1px solid var(--lightBlue);
-    padding: 1em;
-    margin: 0.5em;
-    margin-bottom: 1em;
+#topInput input{
+    width: 80%;
 }
-#loginForm button, #signupForm button{
-    margin-top: 0.5em;
+#topInput textarea{
+    width: 80%;
 }
-/* Dashboard */
+.cardForm{
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   gap: 0.5em;
+}
+
+.cardForm input{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 80%; 
+padding: 0.3em;
+}
+#bottomButtons{
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+#bottomButtons button{
+    font-size: var(--smallSize);
+}
+  /* Dashboard */
 #dashboardCont{
     margin: 1em;
+    font-size: var(--mainSize);
 }
 #welcomeDiv{
     padding: 1em;
@@ -163,18 +499,16 @@ nav button{
     gap: 1em;
     height: 250px;
 }
+
 #todayDeck{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: var(--smallSize);
+   
+}
+#todayDeck{
 }
 #createDeck{
-    margin-top: 2em;
-    font-size: var(--smallSize);
-    align-items: center;
+  
 }
+
 #deckDesc{
     padding: 1em;
     margin-bottom: 1em;
@@ -185,272 +519,128 @@ nav button{
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
 }
-/* Create a deck */
-#topInput{
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em;
-    margin-inline: 1em;
-}
-#topInput h1{
-    font-size: var(--headerSize);
-}
-#topInput label{
-    font-size: var(--mainSize);
-    padding-block: 0.5em;
-}
-#topInput input{
-    width: 50%;
-    border: 1px solid var(--lightBlue);
-    border-radius: var(--borderBox);
-    padding: 0.5em;
-}
-#topInput textarea{
-    width: 50%;
-    border: 1px solid var(--lightBlue);
-    border-radius: var(--borderBox);
-    padding: 0.5em;
-}
-#cue-card-container{
-    display: flex;
-    flex-direction: column;
-   
-}
-.cardDiv{
-    border: none;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
-    margin: 1em;
-    padding: 1em;
-    background-color: var(--superWhite);
-}
-.cardForm{
-    padding: 0.5em;
-}
 
-.cardForm input{
-    border: 1px solid var(--lightBlue);
-    padding: 0.2em;
-    border-radius: var(--borderBox);
-    width: 40%;
-    margin-inline: 0.5em;
+=======
 }
-#bottomButtons{
-  display: flex;
-  justify-content: space-between;
-  margin: 2em;
+#finishDiv a {
+  color: var(--lightBlue);
+  padding: 1em;
 }
-#bottomButtons button{
-    font-size: var(--smallSize);
-
-}
-/* Review Deck Card */
-#flashCard{
-    margin: 5em;
-    padding: 7em;
-    border-radius: var(--borderBox);
-    box-shadow: var(--boxShadow);
-}
-#flashCard h1{
-    text-align: center;
-  
-}
-#flashCardBtnsDiv{
-    padding: 1em;
-}
-#flashCardBtn{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-#radioCont{
-    display: flex;
-    flex-direction: row;
-   justify-content: center;
-    gap: 1em;
-    background: var(--lightBlue);
-    width: 40%;
-    padding: 1em;
-    border-radius: var(--borderBox);
-}
-#radioCont input{
-    color: var(--blue);
-  
-}
-/* Update cards page */
-#updateDiv{
-    margin: 1em;
-}
-#updateDiv h2{
-    margin-block: 0.5em;
-}
-#updateDiv form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-#updateDiv input{
-    width: 50%;
-    margin-block: 1em;
-    padding: 0.5em;
-    border-radius: var(--borderBox);
-    border: 1px solid var(--lightBlue);
-}
-#updateCardsDiv{
-    margin: 1em;
-}
-.updatePartial{
-    margin-block: 1em;
-    border: none;
-    border-radius: var(--borderBox);
-    box-shadow: var(--boxShadow);
-    padding: 1.5em;
-}
-.updatePartial form{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-   
-}
-.updatePartial input{
-  border: 1px solid var(--lightBlue);
-padding: 0.5em;
-  border-radius: var(--borderBox);
-}
-
-#updateBtnDiv{
-    margin-block: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-#updateBtnDiv button{
-    font-size: var(--smallSize);
-}
-
-/* Finished the deck */
-#finishDiv{
-   margin: 10em;
-   text-align: center;
-}
-#finishDiv h1{
-   color: var(--blue);
-   font-size: 3em;
-}
-#finishDiv p{
-    font-size: var(--mainSize);
-}
-#finishDiv a{
-    color: var(--lightBlue);
-    padding: 1em;
-
-}
-
 
 /* Needed for all links */
-a{
-    text-decoration: none;
-    color: var(--black);
+a {
+  text-decoration: none;
+  color: var(--black);
 }
 
+/* Error page */
+.error-card-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-card {
+  width: 45rem;
+  max-width: 100%;
+}
+
+.error-card-photo {
+  min-width: 340px;
+}
+
+.error-card-photo > img {
+  object-fit: cover;
+}
+
+.error-card-text > * {
+  text-align: center;
+}
 
 /* Media screens */
 @media only screen and (max-width: 750px) {
-   header{
+  header {
     display: flex;
     flex-direction: column;
-   
-   }
-   header h1{
+  }
+  header h1 {
     text-align: center;
-   }
-   nav{
+  }
+  nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-   }
-    #credsDiv{
-     flex-wrap: wrap;
-    }
-    #finishDiv{
-        margin: 6em;
-    }
-    .mainCont{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    .mainPhoto{
-        width: 60%;
-        margin-block: 1em;
-    }
-    .mainPhoto img{
-       height: 250px;   
-    }
-    .mainP{
-        font-size: var(--smallSize);
-        width: 100%;
-        text-align: center;
-        padding: 1em;
-    }
-    .middle{
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    #flashCard{
-        margin: 3em;
-        padding: 4em;
-    }
-    #flashCard h1{
-        font-size: var(--mainSize);
-    }
-    #flashCardBtn{
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: center;
-        gap: 1em;
-        font-size: var(--smallSize);
-    }
-    #radioCont{
-        width: 60%;
-    }
-   
-  
-   }
-   @media only screen and (max-width: 950px){
-    #topInput input{
-        width: 100%;
-    }
-    #topInput textarea{
-        width: 100%;
-    }
-    .cardForm{
-        padding: 0.5em;
-        display: flex;
-        flex-direction: column;
-    }
-    .cardForm input{
-        margin-block: 0.5em;
-        width: 100%;
-    }
-   
-    .updatePartial form{
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
-   
-   }
+  }
+  #credsDiv {
+    flex-wrap: wrap;
+  }
+  #finishDiv {
+    margin: 6em;
+  }
+  .mainCont {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .mainPhoto {
+    width: 60%;
+    margin-block: 1em;
+  }
+  .mainPhoto img {
+    height: 250px;
+  }
+  .mainP {
+    font-size: var(--smallSize);
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+  }
+  .middle {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #flashCard {
+    margin: 3em;
+    padding: 4em;
+  }
+  #flashCard h1 {
+    font-size: var(--mainSize);
+  }
+  #flashCardBtn {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    font-size: var(--smallSize);
+  }
+  #radioCont {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 950px) {
+  #topInput input {
+    width: 100%;
+  }
+  #topInput textarea {
+    width: 100%;
+  }
+  .cardForm {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+  .cardForm input {
+    margin-block: 0.5em;
+    width: 100%;
+  }
 
-   
-
-
-
-   
-   
-   
-  
+  .updatePartial form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+}

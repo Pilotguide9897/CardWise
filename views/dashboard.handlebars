@@ -1,21 +1,21 @@
 <div id="dashboardCont" class="pure-g">
-    <!--Welcome part -->
-    <div id="welcomeDiv" class=" pure-u-1-3">
-        <!--Still not working--> 
-    <h2> Welcome {{user.name}}</h2>
+  <!--Welcome part -->
+  <div id="welcomeDiv" class="pure-u-1-3">
+    <h2> Welcome {{userData.name}}</h2>
     <div id="todayDeck">
-    <h2>Today's Deck:</h2>
-    <button id="todaysDeck"><a href="/review">Start</a></button>
+      <h3>Today's Deck:</h3>
+      <button id="todaysDeck"><a href="/review/all">Review all Cards</a></button>
     </div>
+  </div>
+  <!-- Loads each deck from the user from a partial -->
+  <div id="decksDiv" class="pure-u-2-3">
+    {{#each userData.decks as |deck|}}
+    {{>dashboardDeckCard}}
+    {{/each}}
+
     <button id="createDeck"><a href="/create">Create Deck</a></button>
+  </div>
 </div>
 
-<!-- Loads each deck from the user from a partial -->
-<div id="decksDiv" class="pure-u-2-3">
-    {{#each deckData as |deck|}}
-    {{> singledeck}}
-    {{/each}}
-    
-</div>
-</div>
+
 

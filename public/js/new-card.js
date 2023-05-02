@@ -1,4 +1,3 @@
-// Client side logic for card creation
 const addCardButton = document.getElementById('add-cue-card');
 const createButton = document.getElementById('create');
 const cueCardContainer = document.getElementById('cue-card-container');
@@ -22,10 +21,9 @@ function addCard() {
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
 }
-addCard();
+// addCard();
 
 async function createCueCards() {
-
   const cueCardData = [];
 
   const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
@@ -50,7 +48,7 @@ async function createCueCards() {
 
   const response = await fetch('/api/decks', {
     method: 'POST',
-    body: JSON.stringify({name, description, new_cards_per_day, cueCardData}),
+    body: JSON.stringify({ name, description, new_cards_per_day, cueCardData }),
     headers: { 'Content-Type': 'application/json' },
   });
 
