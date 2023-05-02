@@ -467,6 +467,44 @@ a {
   .delCard {
     padding: 0.5em 1em;
   }
+ /* Dashboard */
+ #dashboardCont{
+  margin: 0;
+  padding: 0;
+ }
+ #welcomeDiv {
+  gap: 0.2em;
+  height: 80px;
+  font-size: var(--smallSize);
+  box-shadow: none;
+}
+#createDeck {
+  font-size: var(--smallSize);
+}
+#deckDesc {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+width: 90%;
+font-size: var(--smallSize);
+
+}
+.leftDeck{
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+  gap: 0.5em;
+  margin-bottom: 0.3em;
+}
+.rightDeck{
+  display: flex;
+  flex-direction: row;
+  font-size: var(--smallSize);
+  width: 100%;
+  gap: 0.5em;
+}
 }
 
 @media only screen and (max-width: 750px) {
@@ -564,32 +602,6 @@ a {
   #bottomButtons button {
     font-size: var(--smallSize);
   }
-  /* Dashboard */
-  #dashboardCont {
-    margin: 1em;
-    font-size: var(--mainSize);
-  }
-  #welcomeDiv {
-    padding: 1em;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    height: 250px;
-  }
-
-  #deckDesc {
-    padding: 1em;
-    margin-bottom: 1em;
-    margin-inline: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
-  }
-
   #finishDiv a {
     color: var(--lightBlue);
     padding: 1em;
@@ -625,7 +637,7 @@ a {
 
   .error-card-text > * {
     text-align: center;
-  }
+  }}
 
   /* Media screens */
   @media only screen and (max-width: 750px) {
@@ -728,5 +740,32 @@ a {
       flex-direction: column;
       gap: 1em;
     }
-  }
+    /* Dashboard */
+#dashboardCont {
+ display: flex;
+ flex-direction: column;
 }
+
+#welcomeDiv {
+  width: 100%;
+  gap: 1em;
+  height: 150px;
+  box-shadow:  none;
+}
+#createDeck {
+  width: 30%;
+}
+#decksDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-block: 1em;
+  padding: 0;
+}
+#deckDesc {
+  display: flex;
+  flex-direction: row;
+}
+}
+
