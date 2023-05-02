@@ -354,30 +354,44 @@ a {
   color: var(--black);
 }
 
-/* Error page */
-.error-card-container {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media only screen and (min-width: 375px){
+    #dashboardCont{
+        margin: 0.2em;
+    }
+    #welcomeDiv{
+        font-size: var(--smallSize);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-bottom: 1em;
+    }
+    #todayDeck{
+     margin: 0;
+     padding: 0;
+    }
+    #welcomeDiv button{
+        width: 100px;
+        margin: 0;
+    }
+   button{
+    font-size: var(--smallSize);
+   }
 }
+@media screen and (max-width: 650px){
+    /* Dashboard */
+    #dashboardCont{
+        margin: 0.5em;
+        font-size: var(--smallSize);
+    }
+    .rightDeck{
+        display: flex;
+        flex-direction: row;
+    }
+   .rightDeck button{
+    width: 50%;
+    margin-left: 1em;
 
-.error-card {
-  width: 45rem;
-  max-width: 100%;
-}
-
-.error-card-photo {
-  min-width: 340px;
-}
-
-.error-card-photo > img {
-  object-fit: cover;
-}
-
-.error-card-text > * {
-  text-align: center;
+   }
 }
 
 /* Media screens */
@@ -441,44 +455,9 @@ a {
     #radioCont{
         width: 60%;
     }
-    /* Dashboard */
-    #dashboardCont{
-        margin: 1em;
-    }
-    #welcomeDiv{
-        padding: 1em;
-        box-shadow: var(--boxShadow);
-        border-radius: var(--borderBox);
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        height: 250px;
-    }
-    #todayDeck{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        font-size: var(--smallSize);
-    }
-    #createDeck{
-        margin-top: 2em;
-        font-size: var(--smallSize);
-        align-items: center;
-    }
-    #deckDesc{
-        padding: 1em;
-        margin-bottom: 1em;
-        margin-inline: 1em;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        box-shadow: var(--boxShadow);
-        border-radius: var(--borderBox);
-    }
-   
-  
    }
+
+
    @media only screen and (max-width: 950px){
     #topInput input{
         width: 100%;
