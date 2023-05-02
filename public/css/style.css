@@ -246,8 +246,9 @@ nav button {
   justify-content: space-between;
   margin: 2em;
 }
-#bottomButtons button {
-  font-size: var(--smallSize);
+#bottomButtons button{
+    font-size: var(--mainSize);
+
 }
 /* Review Deck Card */
 #flashCard {
@@ -441,4 +442,49 @@ nav button{
 #updateBtnDiv button{
     width: 25%;
 }
-  }
+/* Create a deck */
+#topInput{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#topInput h1{
+    font-size: 1.5em;
+}
+#topInput input{
+    width: 80%;
+}
+#topInput textarea{
+    width: 80%;
+}
+.cardForm{
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   gap: 0.5em;
+}
+
+.cardForm input{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 80%; 
+padding: 0.3em;
+}
+#bottomButtons{
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+#bottomButtons button{
+    font-size: var(--smallSize);
+}
+  
+
+
+
+}
