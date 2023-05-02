@@ -1,41 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
-:root{
-    --black: #4D3E3E;
-    --grey: #d7d7d7;
-    --darkGrey: #484747;
-    --white: #f8f8f8;
-    --superWhite: #ffffff;
-    --blue: #87BED6;
-    --lightBlue: #9ecee4;
-    --borderBox: 10px;
-    --borderButton: 35px;
-    --headerSize: 1.8em;
-    --mainSize: 1.1em;
-    --smallSize: 0.8em;
-    --fontFamily: 'Comfortaa', cursive;
-    --boxShadow: 5px 10px 15px 4px var(--grey);
-
+:root {
+  --black: #4d3e3e;
+  --grey: #d7d7d7;
+  --darkGrey: #484747;
+  --white: #f8f8f8;
+  --superWhite: #ffffff;
+  --blue: #87bed6;
+  --lightBlue: #9ecee4;
+  --borderBox: 10px;
+  --borderButton: 35px;
+  --headerSize: 1.8em;
+  --mainSize: 1.1em;
+  --smallSize: 0.8em;
+  --fontFamily: 'Comfortaa', cursive;
+  --boxShadow: 5px 10px 15px 4px var(--grey);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: var(--fontFamily);
   font-size: var(--mainSize);
   color: var(--black);
   background-color: var(--white);
 }
-button{
-    padding: 1em 1.5em;
-    background-color: var(--lightBlue);
-    border: none;
-    border-radius: var(--borderButton);
-    text-align: center;
-    width: 125px;
-    cursor: pointer;  
+
+button {
+  padding: 1em 1.5em;
+  background-color: var(--lightBlue);
+  border: none;
+  border-radius: var(--borderButton);
+  text-align: center;
+  width: 125px;
+  cursor: pointer;
 }
+
 /* Header/Nav */
 header {
   display: flex;
@@ -45,23 +48,28 @@ header {
   color: var(--white);
   padding-left: 1em;
 }
+
 nav {
   margin: 1em;
 }
+
 nav a {
   text-decoration: none;
   padding: 1em;
   color: var(--white);
 }
+
 nav a:hover {
   color: var(--black);
 }
+
 nav button {
   padding: 1em 1.5em;
   background-color: var(--lightBlue);
   border: none;
   border-radius: var(--borderButton);
 }
+
 /* Main Page */
 #mainContent {
   min-height: 500px;
@@ -74,6 +82,7 @@ nav button {
   margin: 0;
   overflow: hidden;
 }
+
 #titleDiv {
   padding: 1em;
   text-align: right;
@@ -81,14 +90,17 @@ nav button {
   box-shadow: var(--boxShadow);
   float: right;
 }
-#titleDiv h2{
-    font-size: var(--headerSize);
-    padding-bottom: 2em;
-    font-weight: bold;
+
+#titleDiv h2 {
+  font-size: var(--headerSize);
+  padding-bottom: 2em;
+  font-weight: bold;
 }
+
 #titleDiv p {
   font-size: var(--mainSize);
 }
+
 .mainCont {
   display: flex;
   flex-direction: row;
@@ -97,6 +109,7 @@ nav button {
   margin: 1em;
   padding-block: 1em;
 }
+
 .mainPhoto {
   box-shadow: var(--boxShadow);
   overflow: hidden;
@@ -104,20 +117,23 @@ nav button {
   background-repeat: no-repeat;
   border-radius: var(--borderBox);
 }
-.mainPhoto img{
-    height: 250px;
-    width: 100%;
-    object-fit: cover;  
 
+.mainPhoto img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
 }
+
 .mainP {
   padding-left: 1em;
   font-size: var(--mainSize);
   text-align: right;
 }
+
 .middleP {
   text-align: left;
 }
+
 /* Login / SignUp Forms */
 #credsDiv {
   text-align: center;
@@ -128,12 +144,14 @@ nav button {
   gap: 2em;
   margin-block: 2em;
 }
+
 #loginDiv,
 #signupDiv {
   border-radius: var(--borderBox);
   padding: 1em;
   box-shadow: var(--boxShadow);
 }
+
 #loginDiv h2,
 #signupDiv h2 {
   padding-top: 0.7em;
@@ -143,11 +161,13 @@ nav button {
   display: flex;
   flex-direction: column;
 }
+
 #loginForm label,
 #signupForm label {
   text-align: left;
   padding-left: 0.8em;
 }
+
 #loginForm input,
 #signupForm input {
   border-radius: var(--borderBox);
@@ -156,48 +176,51 @@ nav button {
   margin: 0.5em;
   margin-bottom: 1em;
 }
+
 #loginForm button,
 #signupForm button {
   margin-top: 0.5em;
 }
+
 /* Dashboard */
-#dashboardCont{
-    margin: 1em;
-    font-size: var(--mainSize);
-}
-#welcomeDiv{
-    padding: 1em;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    height: 200px;
+#dashboardCont {
+  margin: 1em;
+  font-size: var(--mainSize);
 }
 
-#todayDeck{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-   
+#welcomeDiv {
+  padding: 1em;
+  box-shadow: var(--boxShadow);
+  border-radius: var(--borderBox);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  height: 200px;
 }
 
-#createDeck{
+#todayDeck {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#createDeck {
   float: right;
   width: 30%;
 }
 
-#deckDesc{
-    padding: 1em;
-    margin-bottom: 1em;
-    margin-left: 0.5em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderBox);
+#deckDesc {
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: var(--boxShadow);
+  border-radius: var(--borderBox);
 }
+
 /* Create a deck */
 #topInput {
   display: flex;
@@ -205,13 +228,16 @@ nav button {
   padding: 0.5em;
   margin-inline: 1em;
 }
+
 #topInput h1 {
   font-size: var(--headerSize);
 }
+
 #topInput label {
   font-size: var(--mainSize);
   padding-block: 0.5em;
 }
+
 #topInput input {
   width: 50%;
   border: 1px solid var(--lightBlue);
@@ -224,10 +250,12 @@ nav button {
   border-radius: var(--borderBox);
   padding: 0.5em;
 }
+
 #cue-card-container {
   display: flex;
   flex-direction: column;
 }
+
 .cardDiv {
   border: none;
   box-shadow: var(--boxShadow);
@@ -236,6 +264,7 @@ nav button {
   padding: 1em;
   background-color: var(--superWhite);
 }
+
 .cardForm {
   padding: 0.5em;
 }
@@ -247,14 +276,17 @@ nav button {
   width: 40%;
   margin-inline: 0.5em;
 }
+
 #bottomButtons {
   display: flex;
   justify-content: space-between;
   margin: 2em;
 }
-#bottomButtons button{
-    font-size: var(--mainSize);
+
+#bottomButtons button {
+  font-size: var(--mainSize);
 }
+
 /* Review Deck Card */
 #flashCard {
   margin: 5em;
@@ -262,18 +294,22 @@ nav button {
   border-radius: var(--borderBox);
   box-shadow: var(--boxShadow);
 }
+
 #flashCard h1 {
   text-align: center;
 }
+
 #flashCardBtnsDiv {
   padding: 1em;
 }
+
 #flashCardBtn {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 #radioCont {
   display: flex;
   flex-direction: row;
@@ -283,21 +319,24 @@ nav button {
   width: 40%;
   padding: 1em;
   border-radius: var(--borderBox);
-#radioCont input{
-    color: var(--blue);
+  color: var(--blue);
 }
+
 /* Update cards page */
 #updateDiv {
   margin: 1em;
 }
+
 #updateDiv h2 {
   margin-block: 0.5em;
 }
+
 #updateDiv form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 #updateDiv input {
   width: 50%;
   margin-block: 1em;
@@ -305,192 +344,203 @@ nav button {
   border-radius: var(--borderBox);
   border: 1px solid var(--lightBlue);
 }
+
 #updateCardsDiv {
   margin: 1em;
 }
 
-.updatePartial{
-    margin-block: 1em;
-    border: none;
-    border-radius: var(--borderBox);
-    box-shadow: var(--boxShadow);
-    padding: 1em;
+.updatePartial {
+  margin-block: 1em;
+  border: none;
+  border-radius: var(--borderBox);
+  box-shadow: var(--boxShadow);
+  padding: 1em;
 }
-.updatePartial form{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  
+
+.updatePartial form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .updatePartial input {
   border: 1px solid var(--lightBlue);
   padding: 0.5em;
   width: 30%;
   border-radius: var(--borderBox);
 }
-#updateBtnDiv{
-    margin-block: 2em;
-    margin-inline: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+#updateBtnDiv {
+  margin-block: 2em;
+  margin-inline: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-#updateBtnDiv button{
-   width: 20%;
+
+#updateBtnDiv button {
+  width: 20%;
   border-radius: var(--borderBox);
 }
+
 /* Finished the deck */
 #finishDiv {
   margin: 10em;
   text-align: center;
 }
+
 #finishDiv h1 {
   color: var(--blue);
   font-size: 3em;
 }
+
 #finishDiv p {
   font-size: var(--mainSize);
 }
+
 #finishDiv a {
   color: var(--lightBlue);
   padding: 1em;
 }
+
 /* Needed for all links */
 a {
   text-decoration: none;
   color: var(--black);
 }
-@media only screen and (max-width: 600px){
-    /* Header/Nav */
-header{
+
+@media only screen and (max-width: 600px) {
+  /* Header/Nav */
+  header {
     display: flex;
     flex-direction: column;
     text-align: center;
-}
-nav button{
+  }
+  nav button {
     padding: 1em 1.5em;
     background-color: var(--lightBlue);
     border: none;
     border-radius: var(--borderButton);
-}
-/* Update Page */
-    #updateBtnDiv{
-        display: flex;
-        flex-direction: column;
-    }
-    #updateBtnDiv{
-       display: flex;
-       flex-direction: row;
-       justify-content: space-between;
-       gap: 1em;
-       font-size: 0.6em;
-    }
-    .delCard{
-        padding: 0.5em 1em;
-    }
-}
-@media only screen and (max-width: 750px){
-    /* Main Page */
-    .mainCont{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-    }
-    .mainPhoto{
-        width: 80%;
-        margin-block: 1em;
-    }
-    .mainPhoto img{
-       height: 250px;   
-    }
-    .mainP{
-        font-size: 0.8em;
-        text-align: center;
-        width: 100%;
-        padding-block: 1em;
-    }
-    .middle{
-        display: flex;
-        flex-direction: column-reverse;
-        text-align: center;
-
-    }
+  }
+  /* Update Page */
+  #updateBtnDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  #updateBtnDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+    font-size: 0.6em;
+  }
+  .delCard {
+    padding: 0.5em 1em;
+  }
 }
 
-@media only screen and (max-width: 900px){
-   /* Update cards page */
-#updateDiv h2{
+@media only screen and (max-width: 750px) {
+  /* Main Page */
+  .mainCont {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .mainPhoto {
+    width: 80%;
+    margin-block: 1em;
+  }
+  .mainPhoto img {
+    height: 250px;
+  }
+  .mainP {
+    font-size: 0.8em;
+    text-align: center;
+    width: 100%;
+    padding-block: 1em;
+  }
+  .middle {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  /* Update cards page */
+  #updateDiv h2 {
     text-align: center;
     margin: 1em;
     font-size: var(--headerSize);
-}
-#updateDiv form{
+  }
+  #updateDiv form {
     justify-content: center;
     align-items: center;
     font-size: var(--mainSize);
-}
-.updatePartial form{
+  }
+  .updatePartial form {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: var(--mainSize);
-}
-.updatePartial input{
+  }
+  .updatePartial input {
     width: 80%;
     margin-block: 1em;
   }
 
-#updateBtnDiv button{
+  #updateBtnDiv button {
     width: 25%;
-}
-/* Create a deck */
-#topInput{
+  }
+  /* Create a deck */
+  #topInput {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
-#topInput h1{
+  }
+  #topInput h1 {
     font-size: 1.5em;
-}
-#topInput input{
+  }
+  #topInput input {
     width: 80%;
-}
-#topInput textarea{
+  }
+  #topInput textarea {
     width: 80%;
-}
-.cardForm{
+  }
+
+  .cardForm {
     padding: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   gap: 0.5em;
-}
+    gap: 0.5em;
+  }
 
-.cardForm input{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 80%; 
-padding: 0.3em;
-}
-#bottomButtons{
-  display: flex;
-  justify-content: space-between;
-  margin: 2em;
-}
-#bottomButtons button{
+  .cardForm input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 0.3em;
+  }
+  #bottomButtons {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+  }
+  #bottomButtons button {
     font-size: var(--smallSize);
-}
+  }
   /* Dashboard */
-#dashboardCont{
+  #dashboardCont {
     margin: 1em;
     font-size: var(--mainSize);
-}
-#welcomeDiv{
+  }
+  #welcomeDiv {
     padding: 1em;
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
@@ -498,18 +548,16 @@ padding: 0.3em;
     flex-direction: column;
     gap: 1em;
     height: 250px;
-}
+  }
 
-#todayDeck{
-   
-}
-#todayDeck{
-}
-#createDeck{
-  
-}
+  #todayDeck {
+  }
+  #todayDeck {
+  }
+  #createDeck {
+  }
 
-#deckDesc{
+  #deckDesc {
     padding: 1em;
     margin-bottom: 1em;
     margin-inline: 1em;
@@ -518,129 +566,145 @@ padding: 0.3em;
     justify-content: space-between;
     box-shadow: var(--boxShadow);
     border-radius: var(--borderBox);
-}
-
-=======
-}
-#finishDiv a {
-  color: var(--lightBlue);
-  padding: 1em;
-}
-
-/* Needed for all links */
-a {
-  text-decoration: none;
-  color: var(--black);
-}
-
-/* Error page */
-.error-card-container {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.error-card {
-  width: 45rem;
-  max-width: 100%;
-}
-
-.error-card-photo {
-  min-width: 340px;
-}
-
-.error-card-photo > img {
-  object-fit: cover;
-}
-
-.error-card-text > * {
-  text-align: center;
-}
-
-/* Media screens */
-@media only screen and (max-width: 750px) {
-  header {
-    display: flex;
-    flex-direction: column;
   }
-  header h1 {
-    text-align: center;
-  }
-  nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-  #credsDiv {
-    flex-wrap: wrap;
-  }
-  #finishDiv {
-    margin: 6em;
-  }
-  .mainCont {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .mainPhoto {
-    width: 60%;
-    margin-block: 1em;
-  }
-  .mainPhoto img {
-    height: 250px;
-  }
-  .mainP {
-    font-size: var(--smallSize);
-    width: 100%;
-    text-align: center;
+
+  #finishDiv a {
+    color: var(--lightBlue);
     padding: 1em;
   }
-  .middle {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  #flashCard {
-    margin: 3em;
-    padding: 4em;
-  }
-  #flashCard h1 {
-    font-size: var(--mainSize);
-  }
-  #flashCardBtn {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-    font-size: var(--smallSize);
-  }
-  #radioCont {
-    width: 60%;
-  }
-}
-@media only screen and (max-width: 950px) {
-  #topInput input {
-    width: 100%;
-  }
-  #topInput textarea {
-    width: 100%;
-  }
-  .cardForm {
-    padding: 0.5em;
-    display: flex;
-    flex-direction: column;
-  }
-  .cardForm input {
-    margin-block: 0.5em;
-    width: 100%;
+
+  /* Needed for all links */
+  a {
+    text-decoration: none;
+    color: var(--black);
   }
 
-  .updatePartial form {
+  /* Error page */
+  .error-card-container {
+    height: 80%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 1em;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-card {
+    width: 45rem;
+    max-width: 100%;
+  }
+
+  .error-card-photo {
+    min-width: 340px;
+  }
+
+  .error-card-photo > img {
+    object-fit: cover;
+  }
+
+  .error-card-text > * {
+    text-align: center;
+  }
+
+  /* Media screens */
+  @media only screen and (max-width: 750px) {
+    header {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header h1 {
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    #credsDiv {
+      flex-wrap: wrap;
+    }
+
+    #finishDiv {
+      margin: 6em;
+    }
+
+    .mainCont {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .mainPhoto {
+      width: 60%;
+      margin-block: 1em;
+    }
+
+    .mainPhoto img {
+      height: 250px;
+    }
+
+    .mainP {
+      font-size: var(--smallSize);
+      width: 100%;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    #flashCard {
+      margin: 3em;
+      padding: 4em;
+    }
+
+    #flashCard h1 {
+      font-size: var(--mainSize);
+    }
+
+    #flashCardBtn {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      font-size: var(--smallSize);
+    }
+
+    #radioCont {
+      width: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 950px) {
+    #topInput input {
+      width: 100%;
+    }
+
+    #topInput textarea {
+      width: 100%;
+    }
+
+    .cardForm {
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cardForm input {
+      margin-block: 0.5em;
+      width: 100%;
+    }
+
+    .updatePartial form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
   }
 }
