@@ -144,19 +144,21 @@ router.get('/decks/:id', withAuth, async (req, res) => {
 router.get('/review/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
-      const deckData = await Deck.findByPk(req.params.id, {
-        where: {
-          id: req.params.id,
-        },
-      });
-
-      const deck = deckData.get({ plain: true });
-
-      if (deck.user_id !== req.session.user_id) {
-        res.render('error', {
-          error: 'Restricted. This deck belongs to another user.',
+      if (req.params.id.toLowerCase() !== 'all') {
+        const deckData = await Deck.findByPk(req.params.id, {
+          where: {
+            id: req.params.id,
+          },
         });
-        return;
+
+        const deck = deckData.get({ plain: true });
+
+        if (deck.user_id !== req.session.user_id) {
+          res.render('error', {
+            error: 'Restricted. This deck belongs to another user.',
+          });
+          return;
+        }
       }
 
       res.render('review', {
