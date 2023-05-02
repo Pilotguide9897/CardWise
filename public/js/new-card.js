@@ -7,7 +7,7 @@ let cueCardCount = 0;
 function addCard() {
   cueCardCount++;
   const cueDiv = document.createElement('div');
-  cueDiv.setAttribute('class', 'pure-g cardDiv');
+  cueDiv.setAttribute('class', 'pure-g cardDiv updatePartial');
   const cueCardForm = document.createElement('form');
   cueCardForm.setAttribute('id', `cue-card-form-${cueCardCount}`);
   cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
@@ -17,6 +17,7 @@ function addCard() {
     <input type="text" id="front-${cueCardCount-5}" name="front-${cueCardCount-5}">
     <label for="back-${cueCardCount-5}">Definition: </label>
     <input type="text" id="back-${cueCardCount-5}" name="back-${cueCardCount-5}">
+    <button class="delCard">Delete</button>
   `;
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
