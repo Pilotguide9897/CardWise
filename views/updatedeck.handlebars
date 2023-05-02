@@ -23,7 +23,7 @@
   <div class='pure-u-1'>
 
     {{#each deckData.cards as |card|}}
-      <div class='pure-g cardDiv'>
+      <div class='pure-g cardDiv updatePartial'>
         <form id='cue-card-form' class='pure-u-1 cardForm editCard'>
           <label for='front'>Term: </label>
           <input type='text' id='front' name='front' value='{{card.front}}' />

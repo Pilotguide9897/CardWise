@@ -393,7 +393,6 @@ nav button {
   justify-content: space-between;
   align-items: center;
 }
-
 .updatePartial input {
   border: 1px solid var(--lightBlue);
   padding: 0.5em;
