@@ -277,14 +277,17 @@ nav button {
 
 .cardForm {
   padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cardForm input {
   border: 1px solid var(--lightBlue);
-  padding: 0.2em;
+  padding: 0.5em;
   border-radius: var(--borderBox);
-  width: 40%;
   margin-inline: 0.5em;
+  flex-grow: 1;
 }
 
 #bottomButtons {
@@ -555,8 +558,9 @@ a {
     align-items: center;
     justify-content: center;
     width: 80%;
-    padding: 0.3em;
+    padding: 0.5em;
   }
+
   #bottomButtons {
     display: flex;
     justify-content: space-between;
