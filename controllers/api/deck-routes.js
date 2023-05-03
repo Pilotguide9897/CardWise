@@ -73,20 +73,28 @@ router.get('/:id', async (req, res) => {
 // Updating a deck and it's cards.
 router.put('/:id', async (req, res) => {
   try {
-    // update deck properties.
-    const deckData = await Deck.update(
-      {
-        user_id: req.session.user_id,
-        name: req.body.name,
-        description: req.body.description,
-        new_cards_per_day: req.body.new_cards_per_day,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
+    let newDeckData = {
+      user_id: req.session.user_id,
+      description: req.body.description,
+    };
+
+    // only add properties to the object that have a value.
+    // this lets the db assign default values when no value is assigned.
+    for (const key in req.body) {
+      if (Object.hasOwnProperty.call(req.body, key)) {
+        const element = req.body[key];
+        if (element && key !== 'cueCardData') {
+          newDeckData[key] = element;
+        }
       }
-    );
+    }
+
+    // update deck properties.
+    const deckData = await Deck.update(newDeckData, {
+      where: {
+        id: req.params.id,
+      },
+    });
     // get all cards associated to with this deck from the db.
     let currentCards = await Card.findAll({
       where: { deck_id: req.params.id },
@@ -96,7 +104,8 @@ router.put('/:id', async (req, res) => {
     // Make a list of cards that exist in currentCards that
     // but are missing from req.body.cards.
     const cardsToDelete = currentCards.filter(
-      (card) => !req.body.cardData.some((newCard) => newCard.id === card.id)
+      (card) =>
+        !req.body.cueCardData.some((newCard) => Number(newCard.id) === card.id)
     );
     // create a list of the card ids to be used for bulk destoy.
     const cardsToDeleteIds = cardsToDelete.map((card) => card.id);
@@ -105,7 +114,7 @@ router.put('/:id', async (req, res) => {
     }
 
     let cardQueue = [];
-    req.body.cardData.forEach((newCard) => {
+    req.body.cueCardData.forEach((newCard) => {
       // find card in both arrays with same id.
       let result = currentCards.find(
         (currentCard) => currentCard.id === newCard.id
@@ -132,7 +141,13 @@ router.put('/:id', async (req, res) => {
     });
 
     await Card.bulkCreate(cardQueue, {
-      updateOnDuplicate: ['front', 'back', 'interval', 'repetition', 'efactor'],
+      updateOnDuplicate: [
+        'front',
+        'back',
+        'sm_interval',
+        'sm_repetition',
+        'sm_efactor',
+      ],
       individualHooks: true,
       returning: true,
     });
