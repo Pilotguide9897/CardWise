@@ -71,15 +71,13 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const deckToUpdate = await Deck.findByPk(req.params.id, {
-        include: [{ model: Card, attributes: ['front', 'back'] }],
+        include: [{ model: Card, attributes: ['id','front', 'back'] }],
       });
       if (!deckToUpdate) {
         res.status(404).json({ message: 'Deck not found' });
         return;
       }
       const deckData = deckToUpdate.get({ plain: true });
-      console.log('----DEEECCCCKKKK');
-      console.log(deckData);
       if (deckData.user_id !== req.session.user_id) {
         res.render('error', {
           error: 'Restricted. This deck belongs to another user.',
