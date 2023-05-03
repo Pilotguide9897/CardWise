@@ -1,28 +1,3 @@
-// Delete Button Update Page:
-const button = document.querySelectorAll('.delCard');
-console.log(button);
-button.forEach(function async(btn) {
-  btn.addEventListener('click', async function (e) {
-    e.preventDefault();
-    let id = e.target.value;
-    console.log(id);
-    if (id) {
-      console.log('Matches');
-      const response = await fetch(`/api/cards/${id}`, {
-        method: 'DELETE',
-      });
-      window.location.reload();
-      if (response.ok) {
-        console.log('response is ok');
-      } else {
-        console.log('couldnt update');
-      }
-    } else {
-      console.log('Did not match');
-    }
-  });
-});
-
 const updateDeck = async (event) => {
   event.preventDefault();
   const name = document.getElementById('name').value;
@@ -74,6 +49,7 @@ const updateDeck = async (event) => {
   });
 
   if (response.ok) {
+    alert('Deck has been updated successfully!');
     window.location.replace('/dashboard');
   } else {
     alert('Couldnt update the deck');

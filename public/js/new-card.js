@@ -4,14 +4,6 @@ const cueCardContainer = document.getElementById('cue-card-container');
 
 let cueCardCount = 0;
 
-function removeCard(event) {
-  // Find the closest parent element with the class 'cardDiv' and remove it
-  const cardDiv = event.target.closest('.cardDiv');
-  if (cardDiv) {
-    cardDiv.remove();
-  }
-}
-
 function addCard() {
   cueCardCount++;
   const cueDiv = document.createElement('div');
@@ -29,9 +21,6 @@ function addCard() {
   `;
   cueDiv.appendChild(cueCardForm);
   cueCardContainer.appendChild(cueDiv);
-
-  const delButton = cueCardForm.querySelector('.delCard');
-  delButton.addEventListener('click', removeCard);
 }
 
 async function createCueCards() {
@@ -102,5 +91,6 @@ if (createButton) {
 // Create initial cue cards
 const initialCueCardCount = 5;
 for (let i = 0; i < initialCueCardCount; i++) {
+  console.log('NEW CARD PLZ');
   addCard();
 }
