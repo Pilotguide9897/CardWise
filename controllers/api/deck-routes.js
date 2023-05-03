@@ -154,12 +154,23 @@ router.put('/:id', async (req, res) => {
 // New Deck -working Victoria
 router.post('/', async (req, res) => {
   try {
-    const deckData = await Deck.create({
+    // setting up new deck data object
+    let newDeckData = {
       user_id: req.session.user_id,
-      name: req.body.name,
-      description: req.body.description,
-      new_cards_per_day: req.body.new_cards_per_day,
-    });
+    };
+
+    // only add properties to the object that have a value.
+    // this lets the db assign default values when no value is assigned.
+    for (const key in req.body) {
+      if (Object.hasOwnProperty.call(req.body, key)) {
+        const element = req.body[key];
+        if (element) {
+          newDeckData[key] = element;
+        }
+      }
+    }
+
+    const deckData = await Deck.create(newDeckData);
 
     const newCardData = req.body.cueCardData.map((card) => {
       return {
