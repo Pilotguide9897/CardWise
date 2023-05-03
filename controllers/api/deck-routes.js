@@ -86,7 +86,6 @@ router.put('/:id', async (req, res) => {
         },
       }
     );
-
     // get all cards associated to with this deck from the db.
     let currentCards = await Card.findAll({
       where: { deck_id: req.params.id },
