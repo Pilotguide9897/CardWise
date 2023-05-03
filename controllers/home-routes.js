@@ -78,7 +78,8 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
         return;
       }
       const deckData = deckToUpdate.get({ plain: true });
-
+      console.log('----DEEECCCCKKKK');
+      console.log(deckData);
       if (deckData.user_id !== req.session.user_id) {
         res.render('error', {
           error: 'Restricted. This deck belongs to another user.',
@@ -96,7 +97,6 @@ router.get('/updateDeck/:id', withAuth, async (req, res) => {
     }
   } else {
     res.render('homepage');
-    console.log('MAAAYBBEEE HEEEERREEE');
   }
 });
 
