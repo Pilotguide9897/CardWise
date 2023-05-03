@@ -24,12 +24,16 @@
 
     {{#each deckData.cards as |card|}}
       <div class='pure-g cardDiv updatePartial'>
-        <form id='cue-card-form' class='pure-u-1 cardForm editCard'>
+        <form
+          id='cue-card-form'
+          class='pure-u-1 cardForm editCard'
+          data-card-id='{{card.id}}'
+        >
           <label for='front'>Front: </label>
           <input type='text' id='front' name='front' value='{{card.front}}' />
           <label for='back'>Back: </label>
           <input type='text' id='back' name='back' value='{{card.back}}' />
-          <button class='delCard' value='{{card.id}}'>Delete</button>
+          <button class='delCard'>Delete</button>
         </form>
       </div>
     {{/each}}
