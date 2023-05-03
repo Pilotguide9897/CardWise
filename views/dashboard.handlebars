@@ -5,9 +5,16 @@
     <div id="todayDeck">
 
       <h3>Review all Cards:</h3>
-      <button id="todaysDeck" onclick="window.location = '/review/all'">Review</button>
-
+      <button 
+        id="todaysDeck" 
+        class="reviewBtn" 
+        {{#unless userData.totalQueued}}disabled{{/unless}}
+        onclick="window.location = '/review/all'">
+        {{#if userData.totalQueued}}<div><span>{{{userData.totalQueued}}}</span></div>{{/if}}
+          Review
+      </button>
     </div>
+        {{#unless userData.totalQueued}}<p>Come back tomorrow for more cards!</p>{{/unless}}
   </div>
   <!-- Loads each deck from the user from a partial -->
   <div id="decksDiv" class="pure-u-2-3">
