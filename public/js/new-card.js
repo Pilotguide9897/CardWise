@@ -43,10 +43,9 @@ async function createCueCards() {
 
     const cardFront = data.get('front');
     const cardBack = data.get('back');
-    console.log('front', cardFront);
-    console.log('back', cardBack);
+
     if (cardFront && cardBack) {
-      cueCardData.push({ cardFront, cardBack });
+      cueCardData.push({ front: cardFront, back: cardBack });
     } else {
       if (cardFront) {
         alert(
@@ -62,13 +61,16 @@ async function createCueCards() {
         // the card is empty and will be ignored.
       }
     }
-
-    console.log('getting down here?');
   }
-  return;
+
   const name = document.querySelector('#name').value;
   const description = document.querySelector('#description').value;
   const new_cards_per_day = document.querySelector('#cardsPerDay').value;
+
+  if (name.trim().length <= 0) {
+    alert('Deck name is a required field.');
+    return;
+  }
 
   const response = await fetch('/api/decks', {
     method: 'POST',
@@ -87,35 +89,6 @@ async function createCueCards() {
   } else {
     alert(response.statusText);
   }
-  // const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
-
-  // for (let i = 1; i <= actualCueCardCount; i++) {
-  //   const front = document.querySelector(`#front-${i}`).value.trim();
-  //   const back = document.querySelector(`#back-${i}`).value.trim();
-
-  //   if (front && back) {
-  //     cueCardData.push({ front, back });
-  //   } else {
-  //     alert(`Please fill in all fields for each of your cards.`);
-  //     return;
-  //   }
-  // }
-  // const name = document.querySelector('#name').value;
-  // const description = document.querySelector('#description').value;
-  // const new_cards_per_day = document.querySelector('#cardsPerDay').value;
-
-  // const response = await fetch('/api/decks', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ name, description, new_cards_per_day, cueCardData }),
-  //   headers: { 'Content-Type': 'application/json' },
-  // });
-
-  // if (response.ok) {
-  //   alert('New deck saved!');
-  //   window.location.replace('dashboard');
-  // } else {
-  //   alert(response.statusText);
-  // }
 }
 
 if (addCardButton) {
