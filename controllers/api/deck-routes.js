@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Deck, Card } = require('../../models');
 const { updateSupermemoInfo, withAuth } = require('../../utils/helpers');
+const { randomlyChooseCardsToQueue } = require('../../utils/update-queues');
 
 // Get all decks
 router.get('/', async (req, res) => {
@@ -193,6 +194,22 @@ router.post('/', async (req, res) => {
         repetition: 0,
         efactor: 2.5,
       };
+    });
+
+    const numberOfCardsToQueue = !newDeckData.newCardsPerDay
+      ? 10
+      : newDeckData.newCardsPerDay;
+    const theChosenOnes = randomlyChooseCardsToQueue(
+      numberOfCardsToQueue,
+      newCardData.length
+    );
+
+    theChosenOnes.forEach((id) => {
+      newCardData.forEach((card, index) => {
+        if (id === index) {
+          card.is_queued = true;
+        }
+      });
     });
 
     await Card.bulkCreate(newCardData, {

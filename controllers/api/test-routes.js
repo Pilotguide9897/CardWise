@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const updateDeckQueues = require('../../utils/update-queues');
+const { updateDeckQueues } = require('../../utils/update-queues');
 // const { practice } = require('../../utils/helpers');
 
 // Utility end point, used to queue cards for testing.
