@@ -60,8 +60,6 @@ router.get('/:id', async (req, res) => {
       return;
     }
     const deck = deckData.get({ plain: true });
-    console.log('----DEEECCCCKKKK');
-    console.log(deck);
     res.json(deck);
   } catch (err) {
     console.error({
@@ -88,7 +86,6 @@ router.put('/:id', async (req, res) => {
         },
       }
     );
-
     // get all cards associated to with this deck from the db.
     let currentCards = await Card.findAll({
       where: { deck_id: req.params.id },
@@ -151,7 +148,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// New Deck -working Victoria
+// New Deck
 router.post('/', async (req, res) => {
   try {
     const deckData = await Deck.create({
@@ -188,7 +185,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// deleting a deck - works Victoria
+// deleting a deck
 router.delete('/:id', async (req, res) => {
   try {
     const deckData = await Deck.destroy({
