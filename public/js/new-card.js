@@ -21,10 +21,10 @@ function addCard() {
   cueCardForm.setAttribute('class', 'pure-u-1 cardForm');
 
   cueCardForm.innerHTML = `
-    <label for="front-${cueCardCount}">Front: </label>
-    <input type="text" id="front-${cueCardCount}" name="front-${cueCardCount}">
-    <label for="back-${cueCardCount}">Back: </label>
-    <input type="text" id="back-${cueCardCount}" name="back-${cueCardCount}">
+    <label for="front">Front: </label>
+    <input type="text" class="card-front" name="front">
+    <label for="back">Back: </label>
+    <input type="text" class="card-back" name="back">
     <button class="delCard">Delete</button>
   `;
   cueDiv.appendChild(cueCardForm);
@@ -37,26 +37,47 @@ function addCard() {
 async function createCueCards() {
   const cueCardData = [];
 
-  const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
+  for (const card of cueCardContainer.children) {
+    const form = card.children[0];
+    const data = new FormData(form);
 
-  for (let i = 1; i <= actualCueCardCount; i++) {
-    const front = document.querySelector(`#front-${i}`).value.trim();
-    const back = document.querySelector(`#back-${i}`).value.trim();
-
-    if (front && back) {
-      cueCardData.push({ front, back });
+    const cardFront = data.get('front');
+    const cardBack = data.get('back');
+    console.log('front', cardFront);
+    console.log('back', cardBack);
+    if (cardFront && cardBack) {
+      cueCardData.push({ cardFront, cardBack });
     } else {
-      alert(`Please fill in all fields for each of your cards.`);
-      return;
+      if (cardFront) {
+        alert(
+          `⚠️ The card with a Front value of '${cardFront}' is missing a value for the Back. \n\nPlease fill out the back of the card to proceed.`
+        );
+        return;
+      } else if (cardBack) {
+        alert(
+          `⚠️ The card with a Back value of '${cardBack}' is missing a value for the Front. \n\nPlease fill out the front of the card to proceed.`
+        );
+        return;
+      } else {
+        // the card is empty and will be ignored.
+      }
     }
+
+    console.log('getting down here?');
   }
+  return;
   const name = document.querySelector('#name').value;
   const description = document.querySelector('#description').value;
   const new_cards_per_day = document.querySelector('#cardsPerDay').value;
 
   const response = await fetch('/api/decks', {
     method: 'POST',
-    body: JSON.stringify({ name, description, new_cards_per_day, cueCardData }),
+    body: JSON.stringify({
+      name,
+      description,
+      new_cards_per_day,
+      cueCardData,
+    }),
     headers: { 'Content-Type': 'application/json' },
   });
 
@@ -66,6 +87,35 @@ async function createCueCards() {
   } else {
     alert(response.statusText);
   }
+  // const actualCueCardCount = document.querySelectorAll('.cardDiv').length;
+
+  // for (let i = 1; i <= actualCueCardCount; i++) {
+  //   const front = document.querySelector(`#front-${i}`).value.trim();
+  //   const back = document.querySelector(`#back-${i}`).value.trim();
+
+  //   if (front && back) {
+  //     cueCardData.push({ front, back });
+  //   } else {
+  //     alert(`Please fill in all fields for each of your cards.`);
+  //     return;
+  //   }
+  // }
+  // const name = document.querySelector('#name').value;
+  // const description = document.querySelector('#description').value;
+  // const new_cards_per_day = document.querySelector('#cardsPerDay').value;
+
+  // const response = await fetch('/api/decks', {
+  //   method: 'POST',
+  //   body: JSON.stringify({ name, description, new_cards_per_day, cueCardData }),
+  //   headers: { 'Content-Type': 'application/json' },
+  // });
+
+  // if (response.ok) {
+  //   alert('New deck saved!');
+  //   window.location.replace('dashboard');
+  // } else {
+  //   alert(response.statusText);
+  // }
 }
 
 if (addCardButton) {
