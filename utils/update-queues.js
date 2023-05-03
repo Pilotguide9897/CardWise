@@ -77,5 +77,4 @@ const updateDeckQueues = async () => {
   // process.exit(0);
 };
 
-// updateDeckQueues();
-module.exports = updateDeckQueues;
+module.exports = { updateDeckQueues, randomlyChooseCardsToQueue };
