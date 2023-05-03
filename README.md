@@ -1,7 +1,10 @@
 # CardWise
 
-## Table of Contents
+![homepage](/public/photos/screenshot-homepage.png)
+![dashboard](/public/photos/screenshot-dashboard.png)
+![review](/public/photos/screenshot-review.png)
 
+## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
