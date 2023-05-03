@@ -20,6 +20,9 @@ cron.schedule('0 0 1 * * *', () => {
   updateDeckQueues();
 });
 
+// run this on server start so at least some cards will be queued.
+updateDeckQueues();
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 

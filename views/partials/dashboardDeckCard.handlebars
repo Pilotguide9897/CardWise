@@ -4,10 +4,15 @@
     <h4>{{description}}</h4>
   </div>
   <div class='rightDeck'>
-    <button
-      id='reviewBtn'
+    <button 
+      class="reviewBtn" 
+      {{#unless queueCount}}disabled{{/unless}}
       onclick="window.location = '/review/{{id}}'"
-    >Review</button>
+    >
+    {{#if queueCount}}<div><span>{{{queueCount}}}</span></div>{{/if}}
+    Review
+    </button>
+
     <button
       id='editBtn'
       onclick="window.location = '/updateDeck/{{id}}'"

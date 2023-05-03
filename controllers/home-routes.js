@@ -22,14 +22,26 @@ router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     try {
       const userData = await User.findByPk(req.session.user_id, {
-        include: [{ model: Deck }],
+        include: [{ model: Deck, include: [{ model: Card }] }],
       });
       if (!userData) {
         res.status(400).json({ message: 'Unable to locate decks.' });
         return;
       }
       const user = userData.get({ plain: true });
-      console.log(user);
+
+      let totalQueued = 0;
+      user.decks.forEach((deck) => {
+        let queueCount = 0;
+        deck.cards.forEach((card) => {
+          if (card.is_queued) {
+            queueCount++;
+          }
+        });
+        deck.queueCount = queueCount;
+        totalQueued += queueCount;
+      });
+      user.totalQueued = totalQueued;
 
       res.render('dashboard', {
         userData: user,
@@ -46,7 +58,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
   } else {
     res.render('homepage');
-    console.log('ISSSSUE HERE!!!!');
   }
 });
 

@@ -42,9 +42,9 @@ const updateDeckQueues = async () => {
       },
     ],
   });
-  const deckss = deckData.map((deck) => deck.get({ plain: true }));
+  const decks = deckData.map((deck) => deck.get({ plain: true }));
 
-  deckss.forEach((deck) => {
+  decks.forEach((deck) => {
     const cards = deck.cards.filter((card) => {
       // convert udpatedAt to dayjs data obj.
       const lastUpdate = dayjs(card.updatedAt);
