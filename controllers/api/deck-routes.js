@@ -196,9 +196,8 @@ router.post('/', async (req, res) => {
       };
     });
 
-    const numberOfCardsToQueue = !newDeckData.newCardsPerDay
-      ? 10
-      : newDeckData.newCardsPerDay;
+    const numberOfCardsToQueue = newDeckData.new_cards_per_day || 10;
+
     const theChosenOnes = randomlyChooseCardsToQueue(
       numberOfCardsToQueue,
       newCardData.length
