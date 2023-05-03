@@ -87,7 +87,6 @@ router.put('/:id', async (req, res) => {
         },
       }
     );
-
     // get all cards associated to with this deck from the db.
     let currentCards = await Card.findAll({
       where: { deck_id: req.params.id },
@@ -150,7 +149,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// New Deck -working Victoria
+// New Deck
 router.post('/', async (req, res) => {
   try {
     // setting up new deck data object
@@ -198,7 +197,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// deleting a deck - works Victoria
+// deleting a deck
 router.delete('/:id', async (req, res) => {
   try {
     const deckData = await Deck.destroy({
